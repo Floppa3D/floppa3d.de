@@ -1,0 +1,22 @@
+---
+// <picture> mit WebP-Quelle und PNG-Fallback (Nachbau von pictureHtml() aus build.js).
+// `src` ist der PNG-Pfad ab /assets/…; priority → fetchpriority=high statt lazy (LCP-Bilder).
+import { pngDimensions } from '../lib/png';
+
+interface Props {
+  src: string;
+  alt: string;
+  fallbackW?: number;
+  fallbackH?: number;
+  priority?: boolean;
+  [attr: string]: unknown;
+}
+
+const { src, alt, fallbackW = 600, fallbackH = 600, priority = false, ...imgAttrs } = Astro.props;
+const webp = src.replace(/\.png$/i, '.webp');
+const dims = pngDimensions(src) || { width: fallbackW, height: fallbackH };
+const loading = priority
+  ? { fetchpriority: 'high', decoding: 'async' }
+  : { loading: 'lazy', decoding: 'async' };
+---
+<picture><source srcset={webp} type="image/webp"><img src={src} alt={alt} width={dims.width} height={dims.height} {...loading} {...imgAttrs}></picture>

@@ -1,0 +1,25 @@
+/ /index.html 200
+
+# Adressen ohne Endung leiten auf die echte Datei (html_handling "none")
+/shop /shop.html 301
+/about /about.html 301
+/agb /agb.html 301
+/auftragsdruck /auftragsdruck.html 301
+/datenschutz /datenschutz.html 301
+/faq /faq.html 301
+/impressum /impressum.html 301
+/kontakt /kontakt.html 301
+/material /material.html 301
+/journal /journal/index.html 301
+/journal/ /journal/index.html 301
+/journal/pla-vs-petg /journal/pla-vs-petg.html 301
+/journal/3d-druck-deko-pflegen /journal/3d-druck-deko-pflegen.html 301
+
+# Produkte: je Slug eine Zeile (ein Platzhalter würde auch /produkte/x.html treffen → Schleife)
+/produkte/nordic-flow /produkte/nordic-flow.html 301
+/produkte/stack-pot /produkte/stack-pot.html 301
+/produkte/leaf-dock /produkte/leaf-dock.html 301
+/produkte/luma-arch /produkte/luma-arch.html 301
+/produkte/cozy-bunny /produkte/cozy-bunny.html 301
+/produkte/orbit-key-tray /produkte/orbit-key-tray.html 301
+/produkte/custom-fonts /produkte/custom-fonts.html 301

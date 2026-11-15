@@ -1,0 +1,64 @@
+---
+// FAQ.
+import Basis from '../layouts/Basis.astro';
+import { faqSections, faqJsonLd } from '../data/faq';
+---
+<Basis
+  title={"FAQ"}
+  description={"Antworten auf häufige Fragen zu Versand, Materialien, Pflege und Sonderwünschen. Verkauf läuft über Etsy."}
+  path="faq.html"
+  ogType="website"
+  jsonLd={[faqJsonLd]}
+>
+<!-- HERO -->
+<section class="hero section--tight">
+  <div class="container hero__inner">
+    <p class="hero__eyebrow eyebrow">FAQ</p>
+    <h1 class="hero__headline">Häufige Fragen.</h1>
+    <p class="hero__lead lead">Was Sie vor dem Kauf wissen möchten – zu Material, Versand und Bestellung.</p>
+  </div>
+</section>
+
+<hr class="section-divider section-divider--full">
+
+<!-- FAQ -->
+<section class="section" aria-label="Häufig gestellte Fragen">
+  <div class="container--narrow">
+
+    {faqSections.map((sec, i) => (
+      <>
+        {i > 0 && <hr class="section-divider">}
+        <h2 class="serif">{sec.heading}</h2>
+
+        <ul class="faq-list" aria-label={sec.label}>
+          {sec.items.map((item) => (
+            <li>
+              <details class="faq-item">
+                <summary>{item.q}</summary>
+                <div class="faq-item__content">
+                  <p set:html={item.a}></p>
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))}
+
+  </div>
+</section>
+
+<hr class="section-divider section-divider--full">
+
+<!-- CTA -->
+<section class="section section--tight" aria-label="Weitere Fragen">
+  <div class="container--narrow flow">
+    <p class="eyebrow">Noch offen?</p>
+    <h2 class="serif">Schreiben Sie uns.</h2>
+    <p class="lead">Wenn Ihre Frage hier nicht beantwortet wurde, erreichen Sie uns jederzeit direkt.</p>
+    <div class="cluster">
+      <a href="/kontakt.html" class="btn btn--primary">Kontakt aufnehmen →</a>
+    </div>
+  </div>
+</section>
+</Basis>

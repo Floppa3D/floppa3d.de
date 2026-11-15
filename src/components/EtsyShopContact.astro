@@ -1,0 +1,18 @@
+---
+// Etsy-Hinweis auf der Kontaktseite (ersetzt renderEtsyShopContact aus build.js).
+import { etsyShopUrl, safeUrl } from '../lib/etsy';
+
+const shopHref = safeUrl(etsyShopUrl);
+const live = Boolean(etsyShopUrl) && shopHref !== '#';
+---
+{live ? (
+  <>
+    <p><a href={shopHref} target="_blank" rel="noopener noreferrer">Zum Floppa3D-Shop auf Etsy</a></p>
+    <p class="text-sm" style="color: var(--color-fg-muted);">Bestellungen, Zahlung und Versand laufen über Etsy. Fragen vorab beantworten wir gern über das Formular oder per E-Mail.</p>
+  </>
+) : (
+  <>
+    <p>Bald auf Etsy verfügbar</p>
+    <p class="text-sm" style="color: var(--color-fg-muted);">Unser Etsy-Shop startet in Kürze. Bis dahin erreichen Sie uns am schnellsten über das Formular oder per E-Mail.</p>
+  </>
+)}

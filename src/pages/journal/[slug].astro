@@ -1,0 +1,41 @@
+---
+// Journal-Artikel: Rahmen (Hero + Artikelbereich) um den Markdown-Text.
+import { getCollection, render } from 'astro:content';
+import Basis from '../../layouts/Basis.astro';
+
+export async function getStaticPaths() {
+  const artikel = await getCollection('journal');
+  return artikel.map((eintrag) => ({ params: { slug: eintrag.id }, props: { eintrag } }));
+}
+
+const { eintrag } = Astro.props;
+const { title, description, eyebrow, lead } = eintrag.data;
+const { Content } = await render(eintrag);
+// Überschrift = Titel mit Schlusspunkt (Fragezeichen bleibt)
+const headline = /[.?!]$/.test(title) ? title : `${title}.`;
+---
+<Basis
+  title={title}
+  description={description}
+  path={`journal/${eintrag.id}.html`}
+  ogType="article"
+>
+<!-- HERO -->
+<section class="hero section--tight">
+  <div class="container hero__inner">
+    <p class="hero__eyebrow eyebrow">Journal · {eyebrow}</p>
+    <h1 class="hero__headline">{headline}</h1>
+    <p class="hero__lead lead">{lead}</p>
+  </div>
+</section>
+
+<hr class="section-divider section-divider--full">
+
+<section class="section" aria-label="Artikel">
+  <div class="container--narrow prose flow">
+
+    <Content />
+
+  </div>
+</section>
+</Basis>
