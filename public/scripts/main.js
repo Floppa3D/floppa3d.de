@@ -20,8 +20,8 @@ function setupMobileNav() {
     menu.classList.toggle('is-open', open);
     if (backdrop) backdrop.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    // Seite hinter dem offenen Menü nicht mitscrollen lassen
-    document.body.classList.toggle('nav-open', open);
+    // Seite hinter dem offenen Menü nicht mitscrollen lassen (html hält die Scroll-Position)
+    document.documentElement.classList.toggle('nav-open', open);
     if (open && closeBtn) closeBtn.focus();
     if (!open) toggle.focus();
   }
@@ -43,10 +43,27 @@ function setupMobileNav() {
     }
   });
 
-  // Close menu on Escape
+  // Escape schließt; Tab/Shift+Tab kreisen im offenen Menü
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+    if (!menu.classList.contains('is-open')) return;
+    if (e.key === 'Escape') {
       setOpen(false);
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    const ziele = [...menu.querySelectorAll('a[href], button:not([disabled])')];
+    if (ziele.length === 0) return;
+    const erstes = ziele[0];
+    const letztes = ziele[ziele.length - 1];
+    if (!menu.contains(document.activeElement)) {
+      e.preventDefault();
+      (e.shiftKey ? letztes : erstes).focus();
+    } else if (e.shiftKey && document.activeElement === erstes) {
+      e.preventDefault();
+      letztes.focus();
+    } else if (!e.shiftKey && document.activeElement === letztes) {
+      e.preventDefault();
+      erstes.focus();
     }
   });
 }
@@ -277,9 +294,12 @@ function setupShopFilter() {
       if (val === 'all') {
         const noneActive = active.kategorie.size === 0 && active.material.size === 0;
         chip.classList.toggle('is-active', noneActive);
+        chip.setAttribute('aria-pressed', String(noneActive));
       } else {
         const [group, value] = val.split(':');
-        chip.classList.toggle('is-active', active[group]?.has(value));
+        const an = Boolean(active[group]?.has(value));
+        chip.classList.toggle('is-active', an);
+        chip.setAttribute('aria-pressed', String(an));
       }
     });
   }
@@ -329,10 +349,24 @@ function setupStickyCta() {
   const bar = document.querySelector('.sticky-cta');
   if (!cta || !bar) return;
 
-  // Erst zeigen, wenn der Kaufbereich nach OBEN hinausgescrollt ist (nicht, solange er noch unten liegt)
-  new IntersectionObserver(([entry]) => {
-    bar.hidden = entry.isIntersecting || entry.boundingClientRect.top >= 0;
-  }).observe(cta);
+  // Lage statt Zustandswechsel prüfen: Sprünge über den Kaufbereich (scrollTo, Statusleisten-Tipp)
+  // würde ein IntersectionObserver verpassen. Sichtbar, sobald der Kaufbereich nach OBEN hinaus ist.
+  let geplant = false;
+  function pruefen() {
+    geplant = false;
+    bar.hidden = !(cta.getBoundingClientRect().bottom < 0);
+  }
+  function planen() {
+    if (geplant) return;
+    geplant = true;
+    requestAnimationFrame(pruefen);
+  }
+
+  window.addEventListener('scroll', planen, { passive: true });
+  window.addEventListener('resize', planen);
+  window.addEventListener('orientationchange', planen);
+  window.addEventListener('pageshow', planen); // auch nach Zurück-Navigation (bfcache)
+  pruefen();
 }
 
 /**

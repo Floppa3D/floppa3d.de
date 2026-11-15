@@ -85,6 +85,11 @@ fieldset {
   padding: 0;
 }
 
+/* Das hidden-Attribut gewinnt immer — sonst überstimmt jedes display: flex/grid es */
+[hidden] {
+  display: none !important;
+}
+
 button {
   background: none;
   border: none;

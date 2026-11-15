@@ -88,9 +88,11 @@ h6 {
 }
 
 /* Lange deutsche Komposita (z. B. „Verbraucherstreitbeilegung") dürfen
-   Überschriften auf schmalen Screens nicht sprengen */
+   Überschriften auf schmalen Screens nicht sprengen. anywhere statt break-word,
+   weil nur anywhere die Mindestbreite senkt (Trennung per hyphens greift nur mit Wörterbuch). */
 h1, h2, h3, h4 {
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .prose h2,

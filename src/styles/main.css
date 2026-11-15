@@ -288,11 +288,6 @@ html.no-transition * {
   z-index: var(--z-nav);
 }
 
-/* display: flex oben überstimmt sonst das hidden-Attribut */
-.sticky-cta[hidden] {
-  display: none;
-}
-
 /* Unter 768px Platz am Seitenende lassen, damit die Leiste den Fuß nicht verdeckt */
 @media (max-width: 767.98px) {
   body:has(.sticky-cta) {
@@ -334,6 +329,23 @@ html.no-transition * {
 .swatches button[aria-pressed="true"] {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 2px var(--color-bg) inset;
+}
+
+/* Antippfläche 44 x 44 per ::after; 16 px Abstand, damit sich die Flächen nicht überlappen */
+@media (max-width: 767.98px) {
+  .swatches {
+    gap: 16px;
+  }
+
+  .swatches button {
+    position: relative;
+  }
+
+  .swatches button::after {
+    content: "";
+    position: absolute;
+    inset: -10px; /* ab Innenkante der 2-px-Linie */
+  }
 }
 
 .swatch-label {
