@@ -25,7 +25,25 @@ export interface Product {
   etsyUrl: string;
 }
 
+/* Der Loader der Sammlung lässt ein Produkt ohne oder mit doppeltem slug nur mit einer
+   Meldung weg, der Build liefe durch. Alle Seiten holen Produkte hierüber, deshalb bricht die
+   Prüfung hier ab, bevor etwas gebaut wird. */
+function pruefeSlugs(): void {
+  const gesehen = new Map<string, number>();
+  (data.products as Array<{ slug?: unknown; name?: unknown }>).forEach((p, i) => {
+    const wer = `Produkt Nr. ${i + 1}${typeof p.name === 'string' && p.name ? ` („${p.name}")` : ''}`;
+    if (typeof p.slug !== 'string' || !p.slug.trim()) {
+      throw new Error(`src/data/products.json: ${wer} hat kein Feld "slug". Jedes Produkt braucht einen eigenen slug (die Adresse, z. B. "nordic-flow").`);
+    }
+    if (gesehen.has(p.slug)) {
+      throw new Error(`src/data/products.json: Der slug "${p.slug}" kommt doppelt vor (Produkt Nr. ${gesehen.get(p.slug)} und ${wer}). Jeder slug darf nur einmal vergeben sein.`);
+    }
+    gesehen.set(p.slug, i + 1);
+  });
+}
+
 export async function alleProdukte(): Promise<Product[]> {
+  pruefeSlugs();
   // getCollection liefert nicht die Reihenfolge der Datei — die Reihenfolge in products.json gilt.
   const reihenfolge = data.products.map((p) => p.slug);
   return (await getCollection('products'))

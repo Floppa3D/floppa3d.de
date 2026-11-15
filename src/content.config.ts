@@ -14,7 +14,8 @@ const products = defineCollection({
     slug: z.string().min(1),
     modelId: z.string().min(1),
     name: z.string().min(1),
-    category: z.string().min(1),
+    // erlaubte Werte; Tippfehler fallen so beim Build auf (Filter-Chips im Shop: blumen, organisation, deko)
+    category: z.enum(['blumen', 'organisation', 'deko', 'auftragsdruck']),
     categoryLabel: z.string().min(1),
     material: z.string().min(1),
     price: z.string().min(1),

@@ -27,13 +27,33 @@ function leseWeiterleitungen() {
   return map;
 }
 
+/* Kopfzeilen aus dist/_headers: eingerückte Zeilen der Form "Name: Wert" (die Datei hat nur einen
+   Block für alle Adressen). Lokal läuft alles über http, deshalb fliegt upgrade-insecure-requests
+   aus der CSP — sonst würde der Browser jede Anfrage auf https hochstufen und nichts mehr laden. */
+function leseKopfzeilen() {
+  const datei = path.join(DIST, '_headers');
+  if (!fs.existsSync(datei)) return {};
+  const kopf = {};
+  for (const zeile of fs.readFileSync(datei, 'utf8').split(/\r?\n/)) {
+    const m = zeile.match(/^\s+([A-Za-z][\w-]*):\s*(.+?)\s*$/);
+    if (!m) continue;
+    kopf[m[1]] = m[1].toLowerCase() === 'content-security-policy'
+      ? m[2].replace(/;?\s*upgrade-insecure-requests/, '')
+      : m[2];
+  }
+  return kopf;
+}
+
 export function starteServer(port = 4242) {
   const weiter = leseWeiterleitungen();
+  const kopfzeilen = leseKopfzeilen();
+  // Cloudflare liefert diese beiden Dateien nicht aus (sie steuern nur die Plattform)
+  const NICHT_AUSLIEFERN = new Set(['/_headers', '/_redirects']);
   const server = http.createServer((req, res) => {
     const pfad = decodeURIComponent(new URL(req.url, 'http://x').pathname);
     const regel = weiter.get(pfad);
     let datei = path.join(DIST, pfad);
-    const sicher = datei.startsWith(DIST);
+    const sicher = datei.startsWith(DIST) && !NICHT_AUSLIEFERN.has(pfad);
     if (sicher && fs.existsSync(datei) && fs.statSync(datei).isFile()) {
       // exakte Datei
     } else if (regel && regel.status === 301) {
@@ -42,10 +62,10 @@ export function starteServer(port = 4242) {
     } else if (regel && regel.status === 200) {
       datei = path.join(DIST, regel.nach);
     } else {
-      res.writeHead(404, { 'Content-Type': TYPEN['.html'] });
+      res.writeHead(404, { ...kopfzeilen, 'Content-Type': TYPEN['.html'] });
       return res.end(fs.readFileSync(path.join(DIST, '404.html')));
     }
-    res.writeHead(200, { 'Content-Type': TYPEN[path.extname(datei)] || 'application/octet-stream' });
+    res.writeHead(200, { ...kopfzeilen, 'Content-Type': TYPEN[path.extname(datei)] || 'application/octet-stream' });
     fs.createReadStream(datei).pipe(res);
   });
   return new Promise((resolve) => server.listen(port, '127.0.0.1', () => resolve(server)));

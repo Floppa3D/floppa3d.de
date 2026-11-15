@@ -38,9 +38,29 @@ Man muss Astro nicht kennen. Texte und Produkte stehen in normalen Textdateien (
 
 ### Produkt ändern oder hinzufügen
 1. `src/data/products.json` öffnen. Ein Produkt ist ein Block in der Liste `products`; die Reihenfolge dort ist die Reihenfolge im Shop.
-2. Ändern: Felder im Block anpassen. Neu: einen bestehenden Block kopieren und alle Felder ausfüllen. `slug` ist die Adresse (`/produkte/<slug>.html`), klein geschrieben, ohne Leerzeichen, und darf nur einmal vorkommen.
-3. Bilder nach `public/assets/products/<slug>/` legen; im Feld `images` stehen die Dateinamen (PNG). Zu jeder PNG gehört eine WebP-Version; `node tools/optimize-images.mjs` erzeugt sie.
-4. `npm test`. Fehlt ein Pflichtfeld, bricht der Build mit einer Meldung ab, die das Feld nennt. Produktseite, Shop-Karte, Sitemap und die Weiterleitung `/produkte/<slug>` entstehen von selbst.
+2. Ändern: Felder im Block anpassen. Neu: einen bestehenden Block kopieren (mit Komma dahinter einfügen) und ausfüllen.
+3. Nach dem Kopieren müsst ihr diese Felder auf jeden Fall ändern, sonst gehört der neue Block noch zum alten Produkt:
+   - `slug`: die Adresse des Produkts (`/produkte/<slug>.html`). Nur Kleinbuchstaben, Ziffern und Bindestriche, keine Leerzeichen. Jeder slug darf nur einmal vorkommen.
+   - `modelId`, `name`, `price` (so, wie es auf der Seite stehen soll, z. B. `22,00 €`) und `priceNumeric` (derselbe Preis mit Punkt, z. B. `22.00`; bei Preis auf Anfrage leer lassen).
+   - `shortDescription`, `longDescription`, `details`, `colors`, `tags`.
+   - `images` (siehe unten) und `etsyUrl` (leer lassen, bis es das Angebot bei Etsy gibt).
+4. `category` und `categoryLabel` gehören zusammen. Erlaubt sind nur diese Paare:
+
+   | `category` | `categoryLabel` |
+   |---|---|
+   | `blumen` | `Blume` |
+   | `organisation` | `Organisation` |
+   | `deko` | `Deko` |
+   | `auftragsdruck` | `Auftragsdruck` |
+
+   Der Shop-Filter kennt Blume, Organisation und Deko. Steht bei `category` etwas anderes (auch nur ein Tippfehler wie `blume`), bricht der Build ab.
+5. `featured`: `true` zeigt das Produkt auf der Startseite im Bereich „Ausgewählt“, `false` nur im Shop.
+6. `images`: eine Liste von Pfaden, jeweils ab `public/assets/products/` gerechnet, also zum Beispiel `"mein-topf/01.png"`. Die erste Datei ist das Titelbild, die zweite erscheint beim Darüberfahren in der Shop-Karte. Es müssen PNG-Dateien sein. Zu jeder PNG muss eine WebP-Datei mit demselben Namen im selben Ordner liegen (`01.png` und `01.webp`); die Seite lädt die WebP und nimmt die PNG nur als Ersatz. `node tools/optimize-images.mjs` erzeugt die WebP-Dateien.
+7. `npm test` ausführen. Das passiert dann:
+   - Fehlt ein Pflichtfeld (zum Beispiel `price`), oder ist `category` ungültig, bricht der Build ab und nennt Produkt und Feld.
+   - Fehlt der `slug` oder kommt er doppelt vor, bricht der Build ebenfalls ab. Die Meldung nennt `src/data/products.json` und das Produkt (Nummer in der Liste und Name).
+   - Fehlt eine Bilddatei (PNG oder WebP), baut die Seite zwar, aber `npm test` meldet einen „toten Verweis“ mit dem Dateipfad. Dann darf nichts live gehen.
+   - Sind alle Angaben in Ordnung, entstehen Produktseite, Shop-Karte, Eintrag in der Sitemap und die Weiterleitung `/produkte/<slug>` von selbst.
 
 ### Etsy-Link eines Produkts eintragen
 1. Das Angebot in Etsy öffnen und die Adresse kopieren (`https://www.etsy.com/de/listing/…`).
@@ -49,10 +69,16 @@ Man muss Astro nicht kennen. Texte und Produkte stehen in normalen Textdateien (
 4. Produkte mit Preis „auf Anfrage" (Auftragsdruck, zurzeit `custom-fonts`) bekommen keinen Etsy-Link; ihr Knopf führt zur Auftragsdruck-Seite.
 
 ### Journal-Artikel schreiben
-1. In `src/content/journal/` eine neue Datei `mein-artikel.md` anlegen. Der Dateiname ohne `.md` wird zur Adresse (`/journal/mein-artikel.html`).
-2. Oben zwischen zwei `---`-Zeilen die Kopfdaten, am besten von einem vorhandenen Artikel kopieren: `title`, `description` (für Suchmaschinen), `eyebrow` (Rubrik), `lead` (Einleitung auf der Artikelseite), `teaser` (Kartentext in der Übersicht), `order` (Reihenfolge, 1 steht oben).
+1. In `src/content/journal/` eine neue Datei `mein-artikel.md` anlegen. Der Dateiname ohne `.md` wird zur Adresse (`/journal/mein-artikel.html`): klein geschrieben, ohne Leerzeichen.
+2. Oben zwischen zwei `---`-Zeilen stehen die Kopfdaten. Am besten kopiert ihr sie von einem vorhandenen Artikel. Alle Felder außer `order` sind Pflicht:
+   - `title`: Überschrift des Artikels.
+   - `description`: ein bis zwei Sätze für Suchmaschinen.
+   - `eyebrow`: die kurze Rubrik über der Überschrift, z. B. „Pflege“.
+   - `lead`: die Einleitung direkt unter der Überschrift auf der Artikelseite.
+   - `teaser`: der Text auf der Karte in der Journal-Übersicht (er erscheint nur dort, nicht im Artikel).
+   - `order`: die Reihenfolge in der Übersicht und in der Sitemap. 1 steht oben, dann 2, 3 und so weiter. Fehlt `order`, steht der Artikel ganz hinten.
 3. Darunter der Text. Zwischenüberschriften wie in den vorhandenen Artikeln: `<h2 class="serif">Überschrift.</h2>`, Absätze als `<p>…</p>`.
-4. `npm test`. Übersicht, Artikelseite und Weiterleitung entstehen von selbst.
+4. `npm test`. Fehlt ein Pflichtfeld, bricht der Build ab und nennt Artikel und Feld. Sonst entstehen Artikelseite, Karte in der Übersicht, Eintrag in der Sitemap und die Weiterleitung `/journal/mein-artikel` von selbst.
 
 ### Bild oder Video ablegen
 - Bilder nach `public/assets/…` (Produkte: `public/assets/products/<slug>/`). Zu jeder PNG die WebP-Version mit `node tools/optimize-images.mjs` erzeugen.

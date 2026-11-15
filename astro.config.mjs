@@ -42,5 +42,6 @@ export default defineConfig({
   site: 'https://floppa3d.de',
   trailingSlash: 'never',
   build: { format: 'preserve' },
+  compressHTML: false,
   integrations: [redirectsAusDaten()],
 });

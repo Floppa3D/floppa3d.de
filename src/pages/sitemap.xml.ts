@@ -1,16 +1,19 @@
 // Sitemap (Nachbau von generateSitemap aus build.js; lastmod = Baudatum wie dort).
+import { getCollection } from 'astro:content';
 import { SITE_URL } from '../data/site';
 import { alleProdukte } from '../lib/produkt';
 
-const STATIC_PAGES = [
+/* Feste Seiten; die Journal-Artikel kommen zwischen ANFANG und REST aus der Sammlung. */
+const ANFANG = [
   { loc: '/', priority: '1.0' },
   { loc: '/shop.html', priority: '0.9' },
   { loc: '/auftragsdruck.html', priority: '0.8' },
   { loc: '/material.html', priority: '0.7' },
   { loc: '/about.html', priority: '0.7' },
   { loc: '/journal/index.html', priority: '0.6' },
-  { loc: '/journal/pla-vs-petg.html', priority: '0.6' },
-  { loc: '/journal/3d-druck-deko-pflegen.html', priority: '0.6' },
+];
+
+const REST = [
   { loc: '/faq.html', priority: '0.6' },
   { loc: '/kontakt.html', priority: '0.6' },
   { loc: '/impressum.html', priority: '0.3' },
@@ -20,8 +23,12 @@ const STATIC_PAGES = [
 
 export async function GET() {
   const products = await alleProdukte();
+  // Artikel in der Reihenfolge des Feldes `order` (wie in der Journal-Übersicht)
+  const artikel = (await getCollection('journal')).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
   const all = [
-    ...STATIC_PAGES,
+    ...ANFANG,
+    ...artikel.map((a) => ({ loc: `/journal/${a.id}.html`, priority: '0.6' })),
+    ...REST,
     ...products.map((p) => ({ loc: `/produkte/${p.slug}.html`, priority: '0.8' })),
   ];
   const today = new Date().toISOString().split('T')[0];
