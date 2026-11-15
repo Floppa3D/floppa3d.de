@@ -1,3 +1,5 @@
+> Historischer Stand (Juni 2026, vor dem Umbau auf Astro): beschreibt den alten Aufbau mit `build.js`, `templates/` und `pages/`, die es nicht mehr gibt. Nur zum Nachlesen.
+
 # Projekt-Audit — floppa3d.de
 
 Stand: 2026-06-11 · Branch `feat/website-upgrade`

@@ -1,8 +1,8 @@
 # 3D-Modelle für den Produkt-Viewer exportieren
 
 Der Viewer auf den Produktseiten blendet sich automatisch ein, sobald unter
-`assets/models/<slug>.glb` ein Modell liegt (iOS-AR zusätzlich `<slug>.usdz`).
-Slugs: `nordic-flow`, `stack-pot`, `leaf-dock`, `luma-arch`, `cozy-bunny`, `orbit-key-tray`.
+`public/assets/models/<slug>.glb` ein Modell liegt (iOS-AR zusätzlich `<slug>.usdz`).
+Slugs: `nordic-flow`, `stack-pot`, `leaf-dock`, `luma-arch`, `cozy-bunny`, `orbit-key-tray` (`custom-fonts` ist Auftragsdruck, dafür gibt es kein Modell).
 
 ## Schritt für Schritt (ca. 20 Min pro Produkt)
 
@@ -16,11 +16,11 @@ Slugs: `nordic-flow`, `stack-pot`, `leaf-dock`, `luma-arch`, `cozy-bunny`, `orbi
 5. **Optimieren:** `npx @gltf-transform/cli optimize input.glb output.glb`
    (Ziel: **< 5 MB** pro Datei).
 6. **iOS/AR:** GLB in den Apple **Reality Converter** ziehen → als `.usdz` exportieren.
-7. **Ablegen:** Beide Dateien nach `assets/models/<slug>.glb` und
-   `assets/models/<slug>.usdz`, dann committen. Kein Build nötig —
-   der Viewer erkennt die Dateien zur Laufzeit.
+7. **Ablegen:** Beide Dateien nach `public/assets/models/<slug>.glb` und
+   `public/assets/models/<slug>.usdz`, dann committen (Pull Request nach `main`).
+   Am Code ist nichts zu ändern — der Viewer erkennt die Dateien im Browser.
 
 ## Test
 
-Lokal `node server.js` starten, Produktseite öffnen → Sektion „In 3D ansehen"
+Lokal `npm run dev` starten, Produktseite öffnen → Sektion „In 3D ansehen"
 erscheint. Ohne Modell bleibt sie unsichtbar (kein Fehler in der Konsole).

@@ -1,13 +1,13 @@
 /**
  * Transparentes Logo (für E-Mail / hellen Hintergrund) — Floppa3D
- * Schreibt nach ../assets/logos/full-transparent.png
+ * Schreibt nach ../public/assets/logos/full-transparent.png
  * Ausführen: cd tools && node gen-transparent.js
  */
 const { createCanvas } = require('canvas');
 const fs = require('fs');
 const path = require('path');
 
-const OUT_PATH = path.join(__dirname, '..', 'assets', 'logos', 'full-transparent.png');
+const OUT_PATH = path.join(__dirname, '..', 'public', 'assets', 'logos', 'full-transparent.png');
 
 const S = 4;
 const LAYER_H = 7;
@@ -97,4 +97,4 @@ ctx.fillText('PROFESSIONAL PRINT STUDIO', textX, centerY + 24 * S);
 const outDir = path.dirname(OUT_PATH);
 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(OUT_PATH, canvas.toBuffer('image/png'));
-console.log('Saved: assets/logos/full-transparent.png');
+console.log('Saved: public/assets/logos/full-transparent.png');

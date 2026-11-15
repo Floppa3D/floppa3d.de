@@ -1,9 +1,11 @@
 /**
- * Erzeugt zu jeder PNG unter assets/ eine WebP-Version (Qualität 82).
+ * Erzeugt zu jeder PNG unter public/assets/ eine WebP-Version (Qualität 82).
  * Ausführen: npm i sharp --no-save && node tools/optimize-images.mjs
  */
 import { readdir, stat } from 'node:fs/promises';
 import { join, extname } from 'node:path';
+
+const ROOT = join(import.meta.dirname, '..');
 import sharp from 'sharp';
 
 async function walk(dir) {
@@ -18,4 +20,4 @@ async function walk(dir) {
     }
   }
 }
-await walk('assets');
+await walk(join(ROOT, 'public', 'assets'));

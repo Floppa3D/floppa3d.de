@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "logos": "cd tools && node generate-logos.js && node gen-transparent.js"
+    "test": "astro build && node tools/selftest.mjs",
+    "logos": "node tools/generate-logos.cjs && node tools/gen-transparent.cjs"
   },
   "author": "Floppa3D GbR",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "canvas": "^3.2.3"
+    "canvas": "^3.2.3",
+    "puppeteer-core": "^25.17.0"
   }
 }

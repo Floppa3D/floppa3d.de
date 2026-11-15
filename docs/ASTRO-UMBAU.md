@@ -1,11 +1,16 @@
-# Astro-Umbau — Vertrag für alle Beteiligten
+# Astro-Umbau — Bauregeln
+
+> **Stand: Der Umbau ist abgeschlossen** (Branch `feat/astro`). Dieses Dokument hält die
+> Bauregeln fest, an die sich Änderungen weiter halten sollen. Die Zielstruktur unten
+> beschreibt das tatsächlich Gebaute. Den alten Aufbau mit `build.js` gibt es nicht mehr;
+> Nacharbeiten danach: Etsy-Texte aus den Daten abgeleitet, `_redirects` beim Build erzeugt,
+> Journal-Übersicht aus der Sammlung, Werkzeuge in `tools/` auf die neue Struktur angepasst.
 
 Ziel: Der selbst gebaute Generator (`build.js` + `templates/` + `pages/`) wird durch
 Astro ersetzt. **Gestaltung, Texte und Adressen bleiben 1:1.** Es ist ein Techniktausch,
 keine Neugestaltung. Inhaltliche Änderungen kommen erst danach in einem eigenen Schritt.
 
 Arbeitsverzeichnis: `F:\floppa\floppa3d.de`, Branch `feat/astro`.
-Vergleichsstand der alten Seite (fertig gebautes HTML, Stand `main`): Pfad steht im Auftrag.
 
 ## Harte Regeln
 
@@ -37,21 +42,29 @@ Vergleichsstand der alten Seite (fertig gebautes HTML, Stand `main`): Pfad steht
 ## Zielstruktur
 
 ```
-astro.config.mjs          site: https://floppa3d.de, build.format 'preserve'
+astro.config.mjs          site https://floppa3d.de, build.format 'preserve', trailingSlash 'never';
+                          kleine Integration schreibt beim Build dist/_redirects
+                          (feste Zeilen aus public/_redirects + je Produkt/Artikel eine Zeile)
+wrangler.jsonc            Cloudflare: Build "npm run build", liefert ./dist aus
 src/
   content.config.ts       Sammlungen: products (aus src/data/products.json), journal (Markdown)
-  data/products.json      (verschoben aus data/) — bleibt die eine Quelle für Produkte + etsyShopUrl
+  data/products.json      die eine Quelle für Produkte + etsyShopUrl
   data/site.ts            SITE_URL, Standard-OG-Bild, Navigation
-  content/journal/*.md    Journal-Artikel
-  layouts/Basis.astro     ersetzt templates/_layout.html
-  components/             Header, Footer, Picture, ProductCard, JsonLd, EtsyCta …
-  lib/                    reine Hilfsfunktionen (safeUrl, colorFileSlug, pngDimensions, JSON-LD-Erzeuger)
-  pages/                  je Adresse eine Datei; produkte/[slug].astro; sitemap.xml.ts
-  styles/                 die vorhandenen CSS-Dateien, im Layout importiert (main.css)
+  data/faq.ts             Fragen der FAQ-Seite
+  content/journal/*.md    Journal-Artikel (Kopfdaten: title, description, eyebrow, lead, teaser, order)
+  layouts/Basis.astro     Seitenrahmen mit Theme-Skript, Header, Footer
+  components/             Header, Footer, Picture, ProductCard, ProductGallery, ProductColors,
+                          EtsyCta, StickyCta, EtsyShopContact
+  lib/                    etsy.ts, produkt.ts, jsonld.ts, png.ts (reine Hilfsfunktionen)
+  pages/                  je Adresse eine Datei; produkte/[slug].astro, journal/[slug].astro,
+                          journal/index.astro (aus der Sammlung), sitemap.xml.ts
+  styles/                 CSS-Dateien, im Layout über main.css eingebunden
 public/
-  assets/                 unverändert verschoben (Bild-Adressen bleiben gleich)
-  scripts/                main.js, theme.js, shop-filter.js unverändert
+  assets/                 Bilder, Logos, Schriften, vendor/ (Adressen /assets/… bleiben)
+  scripts/                main.js (Navigation, Reveals, Galerie, Shop-Filter, optionale Medien), theme.js
   _headers, _redirects, robots.txt, site.webmanifest
+tools/                    Hilfswerkzeuge (selftest, Logos, Bilder, Schriften, mobile-audit)
+docs/                     diese Regeln, Analytics-Anleitung; docs/archiv/ = alter Stand
 ```
 
 ## Schnittstellen (fest, damit parallel gebaut werden kann)
@@ -69,7 +82,7 @@ public/
 | `jsonLd` | object[]? | zusätzliche JSON-LD-Blöcke; Organisation hängt das Layout immer selbst an (zuerst) |
 
 Slot: Seiteninhalt (landet in `<main id="main">`). Benannter Slot `scripts` für zusätzliche
-Skript-Tags am Ende des `<body>` (z. B. `shop-filter.js`).
+Skript-Tags am Ende des `<body>` (zurzeit von keiner Seite genutzt).
 
 `src/components/Picture.astro` — bildet `pictureHtml()` aus `build.js` nach:
 Props `src` (PNG-Pfad ab `/assets/…`), `alt`, `fallbackW?`, `fallbackH?`, `priority?`, plus

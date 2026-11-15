@@ -37,6 +37,7 @@ const journal = defineCollection({
     description: z.string(),
     eyebrow: z.string(),
     lead: z.string(),
+    teaser: z.string(), // Kartentext in der Journal-Übersicht
     order: z.number().optional(),
   }),
 });

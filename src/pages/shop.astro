@@ -3,9 +3,10 @@
 // die alte Seite bindet kein eigenes ein.
 import Basis from '../layouts/Basis.astro';
 import ProductCard from '../components/ProductCard.astro';
-import { alleProdukte } from '../lib/produkt';
+import { alleProdukte, shopEtsyHref } from '../lib/produkt';
 
 const products = await alleProdukte();
+const shopHref = shopEtsyHref();
 ---
 <Basis
   title={'Shop'}
@@ -17,7 +18,7 @@ const products = await alleProdukte();
   <div class="container hero__inner">
     <p class="hero__eyebrow eyebrow">Shop</p>
     <h1 class="hero__headline">Alle Stücke.</h1>
-    <p class="hero__lead lead">{products.length} Stücke aus drei Kategorien – jedes wird erst gedruckt, wenn Sie es bestellen. Der Verkauf startet in Kürze über Etsy.</p>
+    <p class="hero__lead lead">{products.length} Stücke aus drei Kategorien – jedes wird erst gedruckt, wenn Sie es bestellen. {shopHref ? <>Der Verkauf läuft über unseren <a href={shopHref} target="_blank" rel="noopener noreferrer">Etsy-Shop</a>.</> : 'Der Verkauf startet in Kürze über Etsy.'}</p>
   </div>
 </section>
 

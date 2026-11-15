@@ -2,10 +2,13 @@
  * Erzeugt die OG-Share-Card der Startseite (1200×630) im Layer-Line-Look
  * sowie Touch-Icons (180/192/512) aus dem Logo-Mark.
  * Ausführen: npm i sharp --no-save && node tools/make-og.mjs
- * Farben aus styles/variables.css (Dark-Theme): bg #16181D, Akzent #26B99F.
+ * Farben aus src/styles/variables.css (Dark-Theme): bg #16181D, Akzent #26B99F.
  */
 import sharp from 'sharp';
 import fs from 'node:fs';
+import path from 'node:path';
+
+const PUB = path.join(import.meta.dirname, '..', 'public');
 
 const BG = '#16181D';
 const ACCENT = '#26B99F';
@@ -22,12 +25,12 @@ const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
   <text x="64" y="340" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="${ACCENT}">floppa3d.de</text>
 </svg>`;
 
-fs.mkdirSync('assets/og', { recursive: true });
-await sharp(Buffer.from(svg)).png().toFile('assets/og/home.png');
-console.log('→ assets/og/home.png');
+fs.mkdirSync(path.join(PUB, 'assets/og'), { recursive: true });
+await sharp(Buffer.from(svg)).png().toFile(path.join(PUB, 'assets/og/home.png'));
+console.log('→ public/assets/og/home.png');
 
 // Touch-Icons aus dem SVG-Mark, quadratisch auf Brand-Hintergrund gesetzt
-const markSvg = fs.readFileSync('assets/logos/mark.svg');
+const markSvg = fs.readFileSync(path.join(PUB, 'assets/logos/mark.svg'));
 async function icon(size, out, bg) {
   const inner = Math.round(size * 0.62);
   const mark = await sharp(markSvg, { density: 300 })
@@ -41,7 +44,7 @@ async function icon(size, out, bg) {
   console.log('→', out);
 }
 
-await icon(180, 'assets/logos/apple-touch-icon.png', '#F5F1EA');
-await icon(192, 'assets/logos/icon-192.png', '#F5F1EA');
-await icon(512, 'assets/logos/icon-512.png', '#F5F1EA');
+await icon(180, path.join(PUB, 'assets/logos/apple-touch-icon.png'), '#F5F1EA');
+await icon(192, path.join(PUB, 'assets/logos/icon-192.png'), '#F5F1EA');
+await icon(512, path.join(PUB, 'assets/logos/icon-512.png'), '#F5F1EA');
 console.log('✓ OG-Card + Icons erzeugt.');

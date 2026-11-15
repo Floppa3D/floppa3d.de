@@ -1,6 +1,9 @@
 ---
 // Über uns.
 import Basis from '../layouts/Basis.astro';
+import { shopEtsyHref } from '../lib/produkt';
+
+const shopHref = shopEtsyHref();
 ---
 <Basis
   title={'Über uns'}
@@ -89,7 +92,7 @@ import Basis from '../layouts/Basis.astro';
   <div class="container--narrow flow">
     <p class="eyebrow">Sortiment</p>
     <h2 class="serif">Überzeugen Sie sich selbst.</h2>
-    <p class="lead">Alle aktuellen Stücke finden Sie im Shop – der Verkauf startet in Kürze über Etsy.</p>
+    <p class="lead">Alle aktuellen Stücke finden Sie im Shop –{' '}{shopHref ? <>der Verkauf läuft über unseren <a href={shopHref} target="_blank" rel="noopener noreferrer">Etsy-Shop</a>.</> : 'der Verkauf startet in Kürze über Etsy.'}</p>
     <div class="cluster">
       <a href="/shop.html" class="btn btn--primary">Sortiment ansehen →</a>
     </div>

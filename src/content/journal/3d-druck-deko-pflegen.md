@@ -3,6 +3,7 @@ title: "3D-gedruckte Deko richtig pflegen"
 description: "Reinigen mit lauwarmem Wasser, was Sie vermeiden sollten, Umgang mit Kratzern – und wann ein Stück wirklich ersetzt werden muss."
 eyebrow: "Pflege"
 lead: "Unsere Stücke sind für den Alltag gemacht, nicht für die Vitrine. Mit ein paar einfachen Regeln sehen sie auch nach Jahren noch aus wie am ersten Tag – hier sind sie."
+teaser: "Lauwarmes Wasser ja, Spülmaschine nein – und was Sie bei Kratzern, praller Sonne und nach Jahren des Gebrauchs tun können. Eine kurze, praktische Anleitung."
 order: 2
 ---
 <h2 class="serif">Reinigen: lauwarm und mild.</h2>

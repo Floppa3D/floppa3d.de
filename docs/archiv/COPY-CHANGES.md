@@ -1,3 +1,5 @@
+> Historischer Stand (Juni 2026, vor dem Umbau auf Astro): beschreibt den alten Aufbau mit `build.js`, `templates/` und `pages/`, die es nicht mehr gibt. Nur zum Nachlesen.
+
 # Copy-Änderungen (Phase 4) — Vorher / Nachher
 
 Rechtsseiten unangetastet (nur mechanische Phase-1-Ersetzungen). Die Produkttexte in

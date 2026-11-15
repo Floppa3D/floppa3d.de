@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { getCollection } from 'astro:content';
 import { SITE_URL } from '../data/site';
-import { safeUrl } from './etsy';
+import { etsyShopUrl, safeUrl } from './etsy';
 import data from '../data/products.json';
 
 export interface Product {
@@ -78,6 +78,12 @@ export function colorImage(slug: string, color: string): string | undefined {
 export function liveEtsyHref(p: Pick<Product, 'etsyUrl'>): string | null {
   const href = safeUrl(p.etsyUrl);
   return Boolean(p.etsyUrl) && href !== '#' ? href : null;
+}
+
+/** Adresse des Etsy-Shops, wenn gepflegt (etsyShopUrl), sonst null. */
+export function shopEtsyHref(): string | null {
+  const href = safeUrl(etsyShopUrl);
+  return Boolean(etsyShopUrl) && href !== '#' ? href : null;
 }
 
 export function relatedProducts(current: Product, all: Product[]): Product[] {

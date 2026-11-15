@@ -1,3 +1,5 @@
+> Historischer Stand (Juni 2026, vor dem Umbau auf Astro): beschreibt den alten Aufbau mit `build.js`, `templates/` und `pages/`, die es nicht mehr gibt. Nur zum Nachlesen.
+
 # FLOPPA3D WEBSITE-UPGRADE — Arbeitsanweisung für Claude Code
 
 > **Dieses Dokument ist dein kompletter Auftrag.** Lies es einmal ganz durch.

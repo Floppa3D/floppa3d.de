@@ -1,6 +1,9 @@
 ---
 // Journal-Übersicht.
+import { getCollection } from 'astro:content';
 import Basis from '../../layouts/Basis.astro';
+
+const artikel = (await getCollection('journal')).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 ---
 <Basis
   title={"Journal"}
@@ -23,19 +26,14 @@ import Basis from '../../layouts/Basis.astro';
 <section class="section" aria-label="Artikel">
   <div class="container--narrow flow">
 
+    {artikel.map((a) => (
     <article class="surface reveal" style="padding: var(--space-5);">
-      <p class="eyebrow">Material</p>
-      <h2 class="serif"><a href="/journal/pla-vs-petg.html">PLA oder PETG – welcher Topf passt zu Ihnen?</a></h2>
-      <p>Die Kurzantwort gibt es im ersten Absatz, die ehrliche Langfassung danach: Wasser, Sonne, Hitze und Optik im direkten Vergleich – und welche Wahl für Fensterbrett oder Balkon die richtige ist.</p>
-      <p><a href="/journal/pla-vs-petg.html">Lesen →</a></p>
+      <p class="eyebrow">{a.data.eyebrow}</p>
+      <h2 class="serif"><a href={`/journal/${a.id}.html`}>{a.data.title}</a></h2>
+      <p>{a.data.teaser}</p>
+      <p><a href={`/journal/${a.id}.html`}>Lesen →</a></p>
     </article>
-
-    <article class="surface reveal" style="padding: var(--space-5);">
-      <p class="eyebrow">Pflege</p>
-      <h2 class="serif"><a href="/journal/3d-druck-deko-pflegen.html">3D-gedruckte Deko richtig pflegen</a></h2>
-      <p>Lauwarmes Wasser ja, Spülmaschine nein – und was Sie bei Kratzern, praller Sonne und nach Jahren des Gebrauchs tun können. Eine kurze, praktische Anleitung.</p>
-      <p><a href="/journal/3d-druck-deko-pflegen.html">Lesen →</a></p>
-    </article>
+    ))}
 
   </div>
 </section>

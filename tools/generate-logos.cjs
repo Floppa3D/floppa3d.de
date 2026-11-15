@@ -1,13 +1,13 @@
 /**
  * Logo-Generator für Floppa3D
- * Schreibt nach ../assets/logos/ mit dem aktuellen Namensschema.
+ * Schreibt nach ../public/assets/logos/ mit dem aktuellen Namensschema.
  * Ausführen: cd tools && node generate-logos.js
  */
 const { createCanvas } = require('canvas');
 const fs = require('fs');
 const path = require('path');
 
-const OUT_DIR = path.join(__dirname, '..', 'assets', 'logos');
+const OUT_DIR = path.join(__dirname, '..', 'public', 'assets', 'logos');
 
 const S = 4;
 const LAYER_H = 7;
@@ -127,7 +127,7 @@ function drawIconOnly(opts) {
 const out = (name, canvas) => {
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(path.join(OUT_DIR, name), canvas.toBuffer('image/png'));
-  console.log('Saved: assets/logos/' + name);
+  console.log('Saved: public/assets/logos/' + name);
 };
 
 // Full logo on dark
@@ -174,4 +174,4 @@ out('mark-transparent.png', drawIconOnly({
   bg: null, colorF: '#00875A', colorThree: '#26B99F',
 }));
 
-console.log('\nAll 8 logos generated. (full-transparent.png separat via gen-transparent.js)');
+console.log('\nAll 8 logos generated. (full-transparent.png separat via gen-transparent.cjs)');

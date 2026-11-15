@@ -1,3 +1,5 @@
+> Historischer Stand (Juni 2026, vor dem Umbau auf Astro): beschreibt den alten Aufbau mit `build.js`, `templates/` und `pages/`, die es nicht mehr gibt. Nur zum Nachlesen.
+
 # Website-Upgrade — Zusammenfassung
 
 Branch `feat/website-upgrade` · Juni 2026 · Alle Phasen des Playbooks (`FLOPPA3D-WEBSITE-UPGRADE.md`) umgesetzt.

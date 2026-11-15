@@ -3,6 +3,7 @@ title: "PLA oder PETG – welcher Topf passt zu Ihnen?"
 description: "PLA und PETG im ehrlichen Vergleich: Wasser, UV, Hitze und Optik – und welche Wahl für Fensterbrett oder Balkon die richtige ist."
 eyebrow: "Material"
 lead: "Beide Materialien laufen bei uns durch dieselben Drucker – und trotzdem würden wir Ihnen nie denselben Topf für Fensterbrett und Balkon empfehlen. Hier ist der ehrliche Vergleich."
+teaser: "Die Kurzantwort gibt es im ersten Absatz, die ehrliche Langfassung danach: Wasser, Sonne, Hitze und Optik im direkten Vergleich – und welche Wahl für Fensterbrett oder Balkon die richtige ist."
 order: 1
 ---
 <h2 class="serif">Die Kurzantwort.</h2>
