@@ -209,7 +209,11 @@ function setupGallerySwipe(gallery) {
     const slideWidth = slides[0].offsetWidth;
     if (slideWidth === 0) return;
     const index = Math.round(track.scrollLeft / slideWidth);
-    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === index);
+      if (i === index) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
   }
 
   track.addEventListener('scroll', updateDots, { passive: true });
@@ -245,11 +249,16 @@ function setupShopFilter() {
     material: new Set(),
   };
 
+  // Karten können mehrere Materialien tragen ("pla / petg")
+  function materialListe(wert) {
+    return (wert || '').split(/[\/,]/).map((m) => m.trim().toLowerCase()).filter(Boolean);
+  }
+
   function applyFilter() {
     let visible = 0;
     cards.forEach((card) => {
       const catMatch = active.kategorie.size === 0 || active.kategorie.has(card.dataset.category);
-      const matMatch = active.material.size  === 0 || active.material.has(card.dataset.material);
+      const matMatch = active.material.size === 0 || materialListe(card.dataset.material).some((m) => active.material.has(m));
       const show = catMatch && matMatch;
       card.style.display = show ? '' : 'none';
       if (show) visible++;
@@ -304,7 +313,7 @@ function setupShopFilter() {
     katParam.split(',').forEach((v) => v && active.kategorie.add(v.trim()));
   }
   if (matParam) {
-    matParam.split(',').forEach((v) => v && active.material.add(v.trim()));
+    matParam.split(',').forEach((v) => v && active.material.add(v.trim().toLowerCase()));
   }
 
   syncChipStates();
@@ -320,8 +329,9 @@ function setupStickyCta() {
   const bar = document.querySelector('.sticky-cta');
   if (!cta || !bar) return;
 
+  // Erst zeigen, wenn der Kaufbereich nach OBEN hinausgescrollt ist (nicht, solange er noch unten liegt)
   new IntersectionObserver(([entry]) => {
-    bar.hidden = entry.isIntersecting;
+    bar.hidden = entry.isIntersecting || entry.boundingClientRect.top >= 0;
   }).observe(cta);
 }
 

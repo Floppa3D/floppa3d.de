@@ -288,6 +288,18 @@ html.no-transition * {
   z-index: var(--z-nav);
 }
 
+/* display: flex oben überstimmt sonst das hidden-Attribut */
+.sticky-cta[hidden] {
+  display: none;
+}
+
+/* Unter 768px Platz am Seitenende lassen, damit die Leiste den Fuß nicht verdeckt */
+@media (max-width: 767.98px) {
+  body:has(.sticky-cta) {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+}
+
 @media (min-width: 768px) {
   .sticky-cta {
     display: none;

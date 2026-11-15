@@ -25,7 +25,7 @@ export const faqSections = [
     "items": [
       {
         "q": "PLA oder PETG – was ist der Unterschied?",
-        "a": "PLA wird aus pflanzlichen Rohstoffen gewonnen und eignet sich für Innenobjekte. Es ist steif, detailscharf und matte in der Oberfläche. PETG ist ein technischer Kunststoff: schlagfester, feuchtigkeitsresistenter und deutlich UV-stabiler – deshalb unsere Wahl für Blumentöpfe und Außenobjekte."
+        "a": "PLA wird aus pflanzlichen Rohstoffen gewonnen und eignet sich für Innenobjekte. Es ist steif, detailscharf und matt in der Oberfläche. PETG ist ein technischer Kunststoff: schlagfester, feuchtigkeitsresistenter und deutlich UV-stabiler – deshalb unsere Wahl für Blumentöpfe und Außenobjekte."
       },
       {
         "q": "Ist PLA kompostierbar?",

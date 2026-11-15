@@ -348,6 +348,12 @@ body.nav-open {
   transform: rotate(180deg);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .theme-toggle__icon svg {
+    transform: rotate(180deg);
+  }
+}
+
 /* CSS-only half-circle icon fallback (when no SVG is provided) */
 .theme-toggle__icon--css {
   width: 1rem;

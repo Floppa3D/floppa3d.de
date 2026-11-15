@@ -27,6 +27,7 @@ Man muss Astro nicht kennen. Texte und Produkte stehen in normalen Textdateien (
 | `src/components/`, `src/layouts/` | Wiederverwendete Bausteine (Kopf, Fuß, Kaufen-Knopf …) |
 | `src/styles/` | Gestaltung (CSS) |
 | `public/assets/` | Bilder, Logos, Schriften — liegen im Netz unter derselben Adresse (`/assets/…`) |
+| `quellen/bilder/` | Große PNG-Originale, aus denen die WebP für Kategorien und Hero entstehen — werden nicht ausgeliefert |
 | `public/scripts/` | Die Skripte der Seite |
 | `public/_headers` | Sicherheitsregeln (siehe unten) |
 | `public/_redirects` | Feste Weiterleitungen; die für Produkte und Artikel entstehen beim Build von selbst |
@@ -81,7 +82,7 @@ Man muss Astro nicht kennen. Texte und Produkte stehen in normalen Textdateien (
 4. `npm test`. Fehlt ein Pflichtfeld, bricht der Build ab und nennt Artikel und Feld. Sonst entstehen Artikelseite, Karte in der Übersicht, Eintrag in der Sitemap und die Weiterleitung `/journal/mein-artikel` von selbst.
 
 ### Bild oder Video ablegen
-- Bilder nach `public/assets/…` (Produkte: `public/assets/products/<slug>/`). Zu jeder PNG die WebP-Version mit `node tools/optimize-images.mjs` erzeugen.
+- Bilder nach `public/assets/…` (Produkte: `public/assets/products/<slug>/`). Zu jeder PNG die WebP-Version mit `node tools/optimize-images.mjs` erzeugen. Große Originale, die nur als WebP gebraucht werden (Kategorie- und Hero-Bilder), kommen nach `quellen/bilder/<Unterordner>/`; das Skript schreibt die WebP dann nach `public/assets/<Unterordner>/`.
 - Hero-Video der Startseite: `public/assets/video/hero-timelapse.mp4` (unter 15 MB). Es wird automatisch eingebunden, sobald die Datei existiert.
 - 3D-Modelle: siehe `tools/README-3D.md`. Farbbilder: siehe `OFFENE-PUNKTE.md`.
 
