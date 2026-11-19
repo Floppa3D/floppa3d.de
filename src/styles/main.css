@@ -217,17 +217,6 @@ html.no-transition * {
   z-index: 1;
 }
 
-/* Kleinere Fassung für Hintergrundbilder ohne Textzeile (Hero, Kategorie-Kacheln) */
-.ki-badge--klein {
-  inset: var(--space-3) var(--space-3) auto auto;
-  padding: 0 6px;
-  background: rgba(20, 20, 20, 0.6);
-}
-
-.ki-badge--hero {
-  inset: auto var(--space-4) var(--space-4) auto;
-}
-
 .gallery__ki-note {
   margin-block: var(--space-3) 0;
 }
