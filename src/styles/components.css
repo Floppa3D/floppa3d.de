@@ -1166,16 +1166,15 @@ html.nav-open {
   min-height: clamp(480px, 70vh, 720px);
   display: flex;
   align-items: center;
-  background-image: url('/assets/video/hero-timelapse-poster.webp');
+  background-image: url('/assets/hero/hero-filament.webp');
   background-size: cover;
-  background-position: center;
+  background-position: center right;
   background-repeat: no-repeat;
   background-color: #1a1a1a;
 }
 
-/* Override the default decorative ::before — Verlauf über Standbild/Video (z-index 1: über dem Video) */
+/* Override the default decorative ::before — we use the photo instead */
 .hero--featured::before {
-  z-index: 1;
   background-image: linear-gradient(
     100deg,
     rgba(0, 0, 0, 0.85) 0%,
@@ -1215,7 +1214,7 @@ html.nav-open {
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Light theme: dunkler Verlauf bleibt, der Hero ist in beiden Themes gleich */
+/* Light theme: keep dark gradient since photo has bright wall on the left */
 [data-theme="light"] .hero--featured .hero__eyebrow,
 [data-theme="light"] .hero--featured .hero__headline,
 [data-theme="light"] .hero--featured .hero__lead {
@@ -1252,7 +1251,6 @@ html.nav-open {
 @media (max-width: 768px) {
   .hero--featured {
     min-height: 560px;
-    background-image: url('/assets/video/hero-timelapse-poster-720.webp');
     background-position: 75% center;
   }
   .hero--featured::before {
@@ -1261,6 +1259,77 @@ html.nav-open {
       rgba(0, 0, 0, 0.55) 0%,
       rgba(0, 0, 0, 0.75) 60%,
       rgba(0, 0, 0, 0.85) 100%
+    );
+  }
+}
+
+/* Hero mit Zeitraffer-Hintergrund (Auftragsdruck): niedriger als .hero--featured,
+   gleiche Lesbarkeit durch dunklen Verlauf und helle Schrift in beiden Themes.
+   Unten Luft für den Abspielknopf (.hero-video-toggle). */
+.hero--video {
+  padding-block: var(--space-8) 5rem;
+  min-height: clamp(420px, 55vh, 520px);
+  display: flex;
+  align-items: center;
+  background-image: url('/assets/video/hero-timelapse-poster.webp');
+  background-size: cover;
+  background-position: center top; /* Zuschnitt nur unten: der Druckkopf bleibt sichtbar */
+  background-repeat: no-repeat;
+  background-color: #1a1a1a;
+}
+
+.hero--video::before {
+  z-index: 1;
+  background-image: linear-gradient(
+    100deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.72) 30%,
+    rgba(0, 0, 0, 0.45) 55%,
+    rgba(0, 0, 0, 0.2) 80%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  opacity: 1;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.hero--video .hero__inner {
+  width: 100%;
+}
+
+.hero--video .hero__eyebrow,
+.hero--video .hero__headline,
+.hero--video .hero__lead,
+[data-theme="light"] .hero--video .hero__eyebrow,
+[data-theme="light"] .hero--video .hero__headline,
+[data-theme="light"] .hero--video .hero__lead {
+  color: #F1ECE3;
+}
+
+.hero--video .hero__lead {
+  max-width: 46ch;
+  color: rgba(241, 236, 227, 0.88);
+}
+
+.hero--video .hero__headline {
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .hero.hero--video {
+    min-height: 460px;
+    padding-block: var(--space-7) 5rem;
+    background-image: url('/assets/video/hero-timelapse-poster-720.webp');
+  }
+  .hero--video::before {
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.78) 60%,
+      rgba(0, 0, 0, 0.88) 100%
     );
   }
 }
@@ -1945,14 +2014,15 @@ html.nav-open {
   background-color: color-mix(in srgb, var(--color-accent) 5%, var(--color-bg));
 }
 
-/* Hero eyebrow: keep white in hero--featured, accent elsewhere */
-.hero:not(.hero--featured) .hero__eyebrow,
-.hero:not(.hero--featured) .eyebrow {
+/* Hero eyebrow: keep white in hero--featured und hero--video, accent elsewhere */
+.hero:not(.hero--featured):not(.hero--video) .hero__eyebrow,
+.hero:not(.hero--featured):not(.hero--video) .eyebrow {
   color: var(--color-accent);
 }
 
 /* Hero--featured eyebrow stays light (overrides eyebrow rule above) */
-.hero--featured .hero__eyebrow {
+.hero--featured .hero__eyebrow,
+.hero--video .hero__eyebrow {
   color: rgba(241, 236, 227, 0.75);
   opacity: 1;
 }

@@ -423,7 +423,7 @@ function setupViewer3d() {
  * Die Dateien gehören fest zum Build, deshalb keine Existenzprüfung.
  */
 function setupHeroVideo() {
-  const hero = document.querySelector('.hero--featured');
+  const hero = document.querySelector('.hero--video');
   if (!hero) return;
 
   const klein = window.matchMedia('(max-width: 767px)').matches;
