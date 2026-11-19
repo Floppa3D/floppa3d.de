@@ -136,7 +136,12 @@ function setupGallery() {
     let selectedSrc = mainImg.src;
     let selectedAlt = mainImg.alt;
 
-    function setMainSrc(src, alt) {
+    const kiBadge = gallery.querySelector('.gallery__main .ki-badge');
+    let selectedKi = kiBadge ? !kiBadge.hidden : false;
+
+    function setMainSrc(src, alt, ki) {
+      // KI-Etikett nur, wenn das gezeigte Bild KI-bearbeitet ist
+      if (kiBadge && ki !== undefined) kiBadge.hidden = !ki;
       // Bei <picture> gewinnt die <source> — beide nachziehen
       const source = mainImg.parentElement.querySelector('source');
       if (source) source.srcset = src.replace(/\.png$/i, '.webp');
@@ -149,20 +154,21 @@ function setupGallery() {
       thumb.setAttribute('aria-current', 'true');
       selectedSrc = thumb.dataset.src;
       if (thumb.dataset.alt !== undefined) selectedAlt = thumb.dataset.alt;
+      selectedKi = thumb.dataset.ki === '1';
     }
 
     thumbs.forEach((thumb) => {
       thumb.addEventListener('mouseenter', () => {
-        setMainSrc(thumb.dataset.src, thumb.dataset.alt);
+        setMainSrc(thumb.dataset.src, thumb.dataset.alt, thumb.dataset.ki === '1');
       });
 
       thumb.addEventListener('mouseleave', () => {
-        setMainSrc(selectedSrc, selectedAlt);
+        setMainSrc(selectedSrc, selectedAlt, selectedKi);
       });
 
       thumb.addEventListener('click', () => {
         setSelected(thumb);
-        setMainSrc(selectedSrc, selectedAlt);
+        setMainSrc(selectedSrc, selectedAlt, selectedKi);
       });
     });
   }

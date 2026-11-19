@@ -2,7 +2,7 @@
 // Produktkarte (Nachbau von productCard / productCardWithDataAttrs aus build.js).
 // filterAttrs → data-*-Attribute für den Shop-Filter.
 import Picture from './Picture.astro';
-import type { Product } from '../lib/produkt';
+import { kiProBild, type Product } from '../lib/produkt';
 
 interface Props {
   product: Product;
@@ -11,6 +11,7 @@ interface Props {
 
 const { product: p, filterAttrs = false } = Astro.props;
 const img = p.images && p.images[0] ? p.images[0] : 'placeholder.webp';
+const ki = kiProBild(p); // KI-Etikett je Bild: Kartenbild und zweites Bild (beim Darüberfahren)
 const filter = filterAttrs
   ? { 'data-product': '', 'data-category': p.category, 'data-material': p.material.toLowerCase(), 'data-tags': (p.tags || []).join(',') }
   : {};
@@ -18,7 +19,8 @@ const filter = filterAttrs
 <a class="product-card reveal" href={`/produkte/${p.slug}.html`} {...filter}>
     <figure class="product-card__image-wrap" style={`view-transition-name: vt-${p.slug}`}>
       <Picture src={`/assets/products/${img}`} alt={p.name} />{p.images && p.images[1] && <span class="product-card__img-alt" aria-hidden="true"><Picture src={`/assets/products/${p.images[1]}`} alt="" /></span>}
-      {p.kiBilder && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}
+      {ki[0] && <span class={`ki-badge${p.images[1] && !ki[1] ? ' ki-badge--nur-karte' : ''}`} aria-hidden="true">Mit KI verbessert</span>}
+      {!ki[0] && ki[1] && <span class="ki-badge ki-badge--nur-hover" aria-hidden="true">Mit KI verbessert</span>}
     </figure>
     <div class="product-card__body">
       <p class="eyebrow">{p.categoryLabel} · {p.material}</p>

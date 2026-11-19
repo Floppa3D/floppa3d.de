@@ -212,6 +212,7 @@
         "custom-fonts/f-einzeln-weiss.png",
         "custom-fonts/floppa3d-schriftzug-stehend.png",
         "custom-fonts/floppa3d-schriftzug-liegend.png",
+        "custom-fonts/floppa3d-werkstatt-echt.png",
         "custom-fonts/a-zweifarbig.png",
         "custom-fonts/r-schreibschrift.png",
         "custom-fonts/wandspruch-dream-it.png",
@@ -223,6 +224,7 @@
         "Einzelnes weißes F als 3D-gedruckter Buchstabe auf einer Schneidematte, dahinter eine Zimmerpflanze und eine Lampe",
         "Schriftzug FLOPPA3D aus einzelnen 3D-gedruckten Buchstaben, stehend auf einem Holzregal; F und 3 in Grün, die übrigen Buchstaben weiß",
         "Schriftzug FLOPPA3D aus einzelnen 3D-gedruckten Buchstaben, liegend auf einer grauen Fläche; F und 3 in Grün, die übrigen Buchstaben weiß",
+        "Schriftzug FLOPPA3D aus einzelnen 3D-gedruckten Buchstaben an der Werkstattwand; F und 3 in Grün, die übrigen Buchstaben hell",
         "Großer Buchstabe A, zweifarbig gedruckt: Vorderseite weiß, Seiten schwarz",
         "Buchstabe R in Schreibschrift, gedruckt in Rosa und Schwarz",
         "Wandspruch „Dream it. Believe it. Achieve it.“ in Schreibschrift aus 3D-gedruckten Buchstaben",
@@ -233,7 +235,8 @@
       "etsyUrl": "",
       "tags": ["auftragsdruck", "custom", "schriften", "personalisiert", "unikat", "text"],
       "featured": true,
-      "kiBilder": true
+      "kiBilder": true,
+      "echteBilder": ["custom-fonts/floppa3d-werkstatt-echt.png"]
     }
   ]
 }
