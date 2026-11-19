@@ -90,41 +90,49 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
           <p class="product__price serif">{product.price}</p>
           <p class="legal-note">Preis inkl. der gesetzlichen Umsatzsteuer, zzgl. Versand.</p>
           <EtsyCta product={product} />
-          <ul class="product__trust" aria-label="Vertrauenshinweise">
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 6L9 17l-5-5"/>
-              </svg>
-              Handgefertigt in Bayern
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 6L9 17l-5-5"/>
-              </svg>
-              Versand mit DHL
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 6L9 17l-5-5"/>
-              </svg>
-              Auf Bestellung gedruckt
-            </li>
-          </ul>
-          <p class="product__bundle-hint">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-            </svg>
-            Mehrere Stücke? Versandkosten fallen nur einmal an.
-          </p>
         </section>
       </aside>
     </div>
 
-    <!-- Langer Produkttext: unter Galerie und Kaufspalte, in gut lesbarer Zeilenlänge -->
-    <section class="product__story prose flow">
-      <p class="eyebrow">Über das Stück</p>
-      <h2 class="serif">Im Detail.</h2>
-      {absaetze.map((absatz) => <p>{absatz}</p>)}
+    <!-- Vertrauens- und Versandhinweise: nachrangig, deshalb unter dem Zweispalter -->
+    <div class="product__assurances">
+      <ul class="product__trust" aria-label="Vertrauenshinweise">
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          Handgefertigt in Bayern
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          Versand mit DHL
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          Auf Bestellung gedruckt
+        </li>
+      </ul>
+      <p class="product__bundle-hint">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+        Mehrere Stücke? Versandkosten fallen nur einmal an.
+      </p>
+    </div>
+
+    <!-- Langer Produkttext: unter Galerie und Kaufspalte über die volle Breite, ab 1024 px zweispaltig -->
+    <section class="product__story">
+      <header class="product__story-head">
+        <p class="eyebrow">Über das Stück</p>
+        <h2 class="serif">Im Detail.</h2>
+      </header>
+      <div class="product__story-text prose">
+        {absaetze.map((absatz) => <p>{absatz}</p>)}
+      </div>
     </section>
 
     <!-- Sicherheits- und Pflegehinweise -->
