@@ -9,20 +9,29 @@ interface Props {
 const { product } = Astro.props;
 const href = liveEtsyHref(product);
 const shopHref = shopEtsyHref();
+// Auftragsdruck: Einzelangebot, sonst Etsy-Shop
+const etsyTarget = href ?? shopHref;
 ---
 {product.category === 'auftragsdruck' ? (
 <>
-<p class="text-sm text-muted">Anfragen und Bestellung über Auftragsdruck-Service.</p>
-<a class="btn btn--primary" href="/auftragsdruck.html">
-  <span>Zur Auftragsdruck-Seite</span>
+<p class="text-sm text-muted">{etsyTarget ? 'Fertige Auswahl auf Etsy, alles andere per Auftragsdruck.' : 'Anfragen und Bestellung über Auftragsdruck-Service.'}</p>
+<div class="cta-pair">
+{etsyTarget && (
+<a class="btn btn--primary" href={etsyTarget} target="_blank" rel="noopener noreferrer">
+  <span>Fertige Auswahl auf Etsy</span>
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M7 17L17 7"/><path d="M7 7h10v10"/>
   </svg>
 </a>
-<div class="etsy-hints">
-{shopHref && <a class="etsy-hint text-sm" href={shopHref} target="_blank" rel="noopener noreferrer">Fertige Auswahl im Etsy-Shop →</a>}
-<a class="etsy-hint text-sm" href="/kontakt.html">Direkter Kontakt →</a>
+)}
+<a class={etsyTarget ? 'btn btn--ghost' : 'btn btn--primary'} href="/auftragsdruck.html">
+  <span>{etsyTarget ? 'Individuell per Auftragsdruck' : 'Zur Auftragsdruck-Seite'}</span>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M7 17L17 7"/><path d="M7 7h10v10"/>
+  </svg>
+</a>
 </div>
+<a class="etsy-hint text-sm" href="/kontakt.html">Direkter Kontakt →</a>
 </>
 ) : href ? (
 <>

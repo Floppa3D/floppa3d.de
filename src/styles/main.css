@@ -175,6 +175,24 @@ html.no-transition * {
   margin-top: var(--space-2);
 }
 
+/* Zwei gleich große Knöpfe nebeneinander, auf schmalen Bildschirmen untereinander */
+.cta-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.cta-pair .btn {
+  flex: 1 1 10rem;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .cta-pair .btn {
+    flex-basis: 100%;
+  }
+}
+
 /* Zwei Hinweislinks untereinander (Auftragsdruck: Etsy-Shop und Kontakt) */
 .etsy-hints {
   display: flex;
