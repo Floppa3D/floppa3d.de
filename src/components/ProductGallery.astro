@@ -19,7 +19,7 @@ const alt = (i: number) => imageAlts?.[i] ?? (i === 0 ? name : '');
 <div class="gallery">
   <figure class="gallery__main" id="gallery-main" style={`view-transition-name: vt-${slug}`}>
     <Picture src={`/assets/products/${images[0]}`} alt={alt(0)} priority data-gallery-zoom="" aria-label="Bild vergrößern" />
-    {kiBilder && <span class="ki-badge" aria-hidden="true">KI</span>}
+    {kiBilder && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}
   </figure>
   <div class="gallery__thumbs">
     {images.map((img, i) => (
@@ -27,7 +27,7 @@ const alt = (i: number) => imageAlts?.[i] ?? (i === 0 ? name : '');
     ))}
   </div>
   <div class="gallery__swipe">
-    {kiBilder && <span class="ki-badge" aria-hidden="true">KI</span>}
+    {kiBilder && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}
     <div class="gallery__swipe-track">
       {images.map((img, i) => (
         <figure class="gallery__swipe-slide"><Picture src={`/assets/products/${img}`} alt={alt(i)} priority={i === 0} /></figure>

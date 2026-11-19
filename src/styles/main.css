@@ -211,7 +211,8 @@ html.no-transition * {
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1.4;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
   pointer-events: none;
   z-index: 1;
 }
@@ -299,6 +300,7 @@ html.no-transition * {
 
 .product-card__image-wrap {
   position: relative;
+  margin: 0; /* figure-Standardrand sonst: Bild nur ~80 px breit, Etikett läuft über */
 }
 
 .product-card__img-alt {
