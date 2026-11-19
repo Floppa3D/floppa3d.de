@@ -8,10 +8,6 @@
 - **Wo:** `src/data/products.json` → je Produkt `etsyUrl` (Format `https://www.etsy.com/de/listing/…`). Schritt für Schritt: README.md.
 - **Danach:** `npm test`, committen, Pull Request. Knopf („Auf Etsy ansehen") und `offers` schalten automatisch um.
 
-## [P7] Hero-Timelapse drehen (sobald möglich)
-- **Was fehlt:** Video eines Drucks im Zeitraffer: 10–15 s, 1080p, loopfähig, **< 15 MB**
-- **Wo:** `public/assets/video/hero-timelapse.mp4` ablegen, committen, Pull Request. Am Code ist nichts zu ändern: `setupHeroVideo()` in `public/scripts/main.js` prüft im Browser, ob die Datei existiert, und setzt sie dann in den Startseiten-Hero (`.hero--featured`). Bei Reduced-Motion bleibt es aus.
-
 ## [P7] Instagram-Grid (10 Min)
 - **Was fehlt:** Mindestens 6 quadratische Bilder unter `public/assets/social/`
 - **Status:** Bewusst noch nicht eingebaut (kein Embed, keine externen Skripte geplant — statisches Grid mit Link aufs Profil). Bilder ablegen, dann Bescheid geben oder selbst ein 6er-Grid in `src/pages/index.astro` ergänzen. Der Instagram-Link steht bereits im Footer.

@@ -368,7 +368,7 @@ html.no-transition * {
 }
 
 /* =============================================================================
-   Timelapse-Hero-Video (wird per JS nur eingefügt, wenn die Datei existiert)
+   Timelapse-Hero-Video (wird per JS eingefügt; das Standbild ist der CSS-Hintergrund)
    ============================================================================= */
 
 .hero--featured {
@@ -376,6 +376,7 @@ html.no-transition * {
   overflow: hidden;
 }
 
+/* Video liegt unter dem dunklen Verlauf (::before, z-index 1) und dem Inhalt */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -385,13 +386,58 @@ html.no-transition * {
   z-index: 0;
 }
 
-/* Lesbarkeits-Overlay über dem Video, unter dem Inhalt */
-.hero--featured:has(.hero-video)::after {
-  content: "";
+/* Abspiel-/Anhalte-Knopf unten rechts, mindestens 44×44 px */
+.hero-video-toggle {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(18, 24, 32, 0.55), rgba(18, 24, 32, 0.35));
-  z-index: 0;
+  inset-block-end: var(--space-4);
+  inset-inline-end: clamp(1rem, 4vw, 3rem);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: #F1ECE3;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(241, 236, 227, 0.6);
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.hero-video-toggle:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: var(--brand-mint);
+}
+
+.hero-video-toggle:focus-visible {
+  outline: 3px solid var(--brand-mint);
+  outline-offset: 3px;
+}
+
+/* Symbol aus CSS: Dreieck (abspielen) bzw. zwei Balken (anhalten) */
+.hero-video-toggle__icon {
+  width: 0.8rem;
+  height: 0.8rem;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.hero-video-toggle.is-playing .hero-video-toggle__icon {
+  clip-path: none;
+  width: 0.28rem;
+  margin-inline-end: 0.5rem;
+  box-shadow: 0.5rem 0 0 currentColor;
+}
+
+@media (max-width: 768px) {
+  .hero-video-toggle {
+    inset-inline-end: 1rem;
+  }
 }
 
 .hero--featured .hero__inner {

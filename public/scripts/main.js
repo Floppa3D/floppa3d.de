@@ -417,26 +417,62 @@ function setupViewer3d() {
 }
 
 /**
- * Timelapse-Hero: Video nur einbinden, wenn die Datei existiert
- * und keine Reduced-Motion-Präferenz gesetzt ist.
+ * Timelapse-Hero: Das Standbild ist per CSS der Hintergrund (auch ohne JS).
+ * Ohne Reduced-Motion startet das Video stumm in Schleife, mit Reduced-Motion
+ * erst nach Klick auf den Knopf. Der Knopf hält die Bewegung jederzeit an (WCAG 2.2.2).
+ * Die Dateien gehören fest zum Build, deshalb keine Existenzprüfung.
  */
-async function setupHeroVideo() {
+function setupHeroVideo() {
   const hero = document.querySelector('.hero--featured');
-  if (!hero || REDUCED_MOTION.matches) return;
+  if (!hero) return;
 
-  try {
-    const r = await fetch('/assets/video/hero-timelapse.mp4', { method: 'HEAD' });
-    if (!r.ok) return;
-    const v = document.createElement('video');
-    Object.assign(v, { muted: true, loop: true, autoplay: true, playsInline: true });
-    v.setAttribute('muted', '');
-    v.setAttribute('playsinline', '');
-    v.src = '/assets/video/hero-timelapse.mp4';
-    v.className = 'hero-video';
-    v.setAttribute('aria-hidden', 'true');
-    hero.prepend(v);
-  } catch (e) {
-    /* Datei fehlt/offline → Hero bleibt wie gehabt */
+  const klein = window.matchMedia('(max-width: 767px)').matches;
+  const basis = '/assets/video/hero-timelapse';
+  const teil = klein ? '-720' : '';
+  let video = null;
+
+  const knopf = document.createElement('button');
+  knopf.type = 'button';
+  knopf.className = 'hero-video-toggle';
+  knopf.innerHTML = '<span class="hero-video-toggle__icon" aria-hidden="true"></span><span class="hero-video-toggle__text"></span>';
+  const text = knopf.querySelector('.hero-video-toggle__text');
+
+  const zeigeZustand = (laeuft) => {
+    text.textContent = laeuft ? 'Zeitraffer anhalten' : 'Zeitraffer abspielen';
+    knopf.classList.toggle('is-playing', laeuft);
+  };
+
+  const erzeugeVideo = () => {
+    video = document.createElement('video');
+    Object.assign(video, { muted: true, loop: true, playsInline: true });
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('aria-hidden', 'true');
+    video.tabIndex = -1;
+    video.className = 'hero-video';
+    video.poster = `${basis}-poster${teil}.webp`;
+    video.src = `${basis}${teil}.mp4`;
+    video.addEventListener('play', () => zeigeZustand(true));
+    video.addEventListener('pause', () => zeigeZustand(false));
+    hero.prepend(video);
+    return video;
+  };
+
+  const starte = () => {
+    const v = video || erzeugeVideo();
+    v.play().catch(() => zeigeZustand(false)); // z. B. Datensparmodus blockiert Autoplay
+  };
+
+  knopf.addEventListener('click', () => {
+    if (video && !video.paused) video.pause();
+    else starte();
+  });
+
+  zeigeZustand(false);
+  hero.append(knopf);
+  if (!REDUCED_MOTION.matches) {
+    zeigeZustand(true);
+    starte();
   }
 }
 
