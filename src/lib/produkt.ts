@@ -24,6 +24,7 @@ export interface Product {
   tags: string[];
   featured: boolean;
   kiBilder: boolean;
+  echteBilder?: string[];
   etsyUrl: string;
 }
 
@@ -42,6 +43,11 @@ function pruefeSlugs(): void {
     }
     gesehen.set(p.slug, i + 1);
   });
+}
+
+/** KI-Kennzeichnung je Bild (gleiche Reihenfolge wie images): kiBilder gilt als Standard, echteBilder nimmt Ausnahmen heraus. */
+export function kiProBild(p: Pick<Product, 'images' | 'kiBilder' | 'echteBilder'>): boolean[] {
+  return (p.images || []).map((img) => p.kiBilder && !p.echteBilder?.includes(img));
 }
 
 export async function alleProdukte(): Promise<Product[]> {

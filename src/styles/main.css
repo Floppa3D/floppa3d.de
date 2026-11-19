@@ -217,6 +217,11 @@ html.no-transition * {
   z-index: 1;
 }
 
+/* Kartenbild echt, zweites Bild (beim Darüberfahren) KI: Etikett erst dann; umgekehrt nur am Kartenbild */
+.ki-badge--nur-hover {
+  display: none;
+}
+
 .gallery__ki-note {
   margin-block: var(--space-3) 0;
 }
@@ -314,6 +319,15 @@ html.no-transition * {
 
   .product-card:hover .product-card__img-alt {
     opacity: 1;
+  }
+
+  /* Etikett folgt dem Bild, das gerade zu sehen ist (ohne Übergang, wie bei reduce) */
+  .product-card:hover .ki-badge--nur-karte {
+    display: none;
+  }
+
+  .product-card:hover .ki-badge--nur-hover {
+    display: block;
   }
 }
 

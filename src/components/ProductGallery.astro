@@ -7,10 +7,12 @@ interface Props {
   name: string;
   slug: string;
   imageAlts?: string[];
-  kiBilder?: boolean;
+  kiFlags?: boolean[]; // je Bild: true = mit KI bearbeitet (Etikett), Reihenfolge wie images
 }
 
-const { images, name, slug, imageAlts, kiBilder = false } = Astro.props;
+const { images, name, slug, imageAlts, kiFlags = [] } = Astro.props;
+const ki = (i: number) => kiFlags[i] === true;
+const irgendKi = kiFlags.some(Boolean);
 // Alt-Text je Bild, sonst wie bisher der Produktname am ersten Bild
 const alt = (i: number) => imageAlts?.[i] ?? (i === 0 ? name : '');
 ---
@@ -19,18 +21,17 @@ const alt = (i: number) => imageAlts?.[i] ?? (i === 0 ? name : '');
 <div class="gallery">
   <figure class="gallery__main" id="gallery-main" style={`view-transition-name: vt-${slug}`}>
     <Picture src={`/assets/products/${images[0]}`} alt={alt(0)} priority data-gallery-zoom="" aria-label="Bild vergrößern" />
-    {kiBilder && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}
+    {irgendKi && <span class="ki-badge" aria-hidden="true" hidden={!ki(0)}>Mit KI verbessert</span>}
   </figure>
   <div class="gallery__thumbs">
     {images.map((img, i) => (
-      <button class="gallery__thumb" data-src={`/assets/products/${img}`} data-index={i} data-alt={imageAlts?.[i]} aria-label={`Bild ${i + 1} anzeigen`} aria-current={i === 0 ? 'true' : undefined}><Picture src={`/assets/products/${img}`} alt="" fallbackW={200} fallbackH={200} /></button>
+      <button class="gallery__thumb" data-src={`/assets/products/${img}`} data-index={i} data-alt={imageAlts?.[i]} data-ki={ki(i) ? '1' : '0'} aria-label={`Bild ${i + 1} anzeigen`} aria-current={i === 0 ? 'true' : undefined}><Picture src={`/assets/products/${img}`} alt="" fallbackW={200} fallbackH={200} /></button>
     ))}
   </div>
   <div class="gallery__swipe">
-    {kiBilder && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}
     <div class="gallery__swipe-track">
       {images.map((img, i) => (
-        <figure class="gallery__swipe-slide"><Picture src={`/assets/products/${img}`} alt={alt(i)} priority={i === 0} /></figure>
+        <figure class="gallery__swipe-slide"><Picture src={`/assets/products/${img}`} alt={alt(i)} priority={i === 0} />{ki(i) && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}</figure>
       ))}
     </div>
     {images.length > 1 && (
@@ -42,6 +43,8 @@ const alt = (i: number) => imageAlts?.[i] ?? (i === 0 ? name : '');
     )}
   </div>
 </div>
-{kiBilder && <p class="gallery__ki-note text-sm text-muted">Bilder mit KI verbessert, bearbeitet oder erstellt, um verschiedene Einsatzmöglichkeiten zu zeigen.</p>}
+{irgendKi && <p class="gallery__ki-note text-sm text-muted">{kiFlags.every(Boolean)
+  ? 'Bilder mit KI verbessert, bearbeitet oder erstellt, um verschiedene Einsatzmöglichkeiten zu zeigen.'
+  : `Gekennzeichnete Bilder wurden mit KI verbessert, bearbeitet oder erstellt, um verschiedene Einsatzmöglichkeiten zu zeigen.${ki(0) ? '' : ' Das erste Bild ist ein unbearbeitetes Foto.'}`}</p>}
 </>
 )}

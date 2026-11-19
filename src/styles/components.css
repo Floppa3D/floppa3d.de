@@ -2472,6 +2472,7 @@ html:not(.js) .process-road__node {
     aspect-ratio: 1 / 1;
     overflow: hidden;
     margin: 0;
+    position: relative; /* Bezug für das KI-Etikett je Slide */
   }
   .gallery__swipe-slide picture {
     display: block;

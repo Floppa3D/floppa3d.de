@@ -7,7 +7,7 @@ import ProductColors from '../../components/ProductColors.astro';
 import EtsyCta from '../../components/EtsyCta.astro';
 import StickyCta from '../../components/StickyCta.astro';
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../../data/site';
-import { alleProdukte, relatedProducts, productJsonLd, breadcrumbJsonLd, type Product } from '../../lib/produkt';
+import { alleProdukte, kiProBild, relatedProducts, productJsonLd, breadcrumbJsonLd, type Product } from '../../lib/produkt';
 
 export async function getStaticPaths() {
   const products = await alleProdukte();
@@ -58,7 +58,7 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
 
       <!-- Gallery -->
       <section class="product__gallery-col" aria-label="Produktbilder">
-        <ProductGallery images={product.images} imageAlts={product.imageAlts} name={product.name} slug={product.slug} kiBilder={product.kiBilder} />
+        <ProductGallery images={product.images} imageAlts={product.imageAlts} name={product.name} slug={product.slug} kiFlags={kiProBild(product)} />
 
         <!-- 3D-/AR-Viewer: bleibt verborgen, solange kein GLB-Modell existiert -->
         <section class="viewer3d" data-model={product.slug} hidden>
