@@ -725,7 +725,7 @@ html.nav-open {
 }
 
 .product__short {
-  /* Use with .lead class */
+  /* Use with .lead class; steht oben in der Info-Spalte */
   max-width: 50ch;
 }
 
@@ -734,19 +734,23 @@ html.nav-open {
   /* Expects .grid-12 as sibling/parent class in HTML */
 }
 
+/* Die Galerie bleibt beim Scrollen stehen, solange die längere Kaufspalte läuft */
 .product__gallery-col {
   grid-column: span 7;
-}
-
-.product__info-col {
-  grid-column: span 5;
   position: sticky;
   top: var(--space-6);
   align-self: start;
 }
 
+.product__info-col {
+  grid-column: span 5;
+  align-self: start;
+}
+
+/* Langer Text unter dem Zweispalter, linksbündig zur Galerie */
 .product__story {
-  padding-block-end: var(--space-6);
+  max-width: 70ch;
+  margin-block-start: var(--space-8);
 }
 
 .product__meta {

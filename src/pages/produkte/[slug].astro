@@ -52,7 +52,6 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
     <header class="product__header section--tight">
       <p class="eyebrow">{product.categoryLabel} · {product.material}</p>
       <h1 class="product__title">{product.name}</h1>
-      <p class="lead product__short">{product.shortDescription}</p>
     </header>
 
     <div class="product__layout grid-12">
@@ -71,14 +70,10 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
         </section>
       </section>
 
-      <!-- Sticky Info Column -->
+      <!-- Info-Spalte: Kurzfassung, Spezifikationen, Farben, Kauf -->
       <aside class="product__info-col">
 
-        <section class="product__story prose flow">
-          <p class="eyebrow">Über das Stück</p>
-          <h2 class="serif">Im Detail.</h2>
-          {absaetze.map((absatz) => <p>{absatz}</p>)}
-        </section>
+        <p class="lead product__short">{product.shortDescription}</p>
 
         <section class="product__meta surface" aria-label="Spezifikationen">
           <h3 class="eyebrow">Spezifikationen</h3>
@@ -124,6 +119,13 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
         </section>
       </aside>
     </div>
+
+    <!-- Langer Produkttext: unter Galerie und Kaufspalte, in gut lesbarer Zeilenlänge -->
+    <section class="product__story prose flow">
+      <p class="eyebrow">Über das Stück</p>
+      <h2 class="serif">Im Detail.</h2>
+      {absaetze.map((absatz) => <p>{absatz}</p>)}
+    </section>
 
     <!-- Sicherheits- und Pflegehinweise -->
     <section class="product__safety section--tight" aria-label="Sicherheits- und Pflegehinweise">
