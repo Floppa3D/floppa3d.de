@@ -1,43 +1,35 @@
 # Offene Punkte — nur Florian/Paul können das liefern
 
-## [A-T3] Draft-PR manuell öffnen (2 Min)
-- `gh` CLI ist auf diesem Rechner nicht installiert — Branch `feat/website-upgrade` ist gepusht, der PR muss über github.com geöffnet werden (Base: `main`, Body: `ZUSAMMENFASSUNG.md`). Alternativ: `winget install GitHub.cli`, `gh auth login` (f-floppa), dann `gh pr create --draft --title "Website-Upgrade" --body-file ZUSAMMENFASSUNG.md`.
+Änderungen kommen per Commit und Pull Request nach `main`; Cloudflare baut danach selbst (siehe README.md).
 
-## [P7] Hero-Timelapse drehen (sobald möglich)
-- **Was fehlt:** Video eines Drucks im Zeitraffer: 10–15 s, 1080p, loopfähig, **< 15 MB**
-- **Wo:** `assets/video/hero-timelapse.mp4` ablegen — die Startseite bindet es automatisch ein (bei Reduced-Motion bleibt es aus). Kein Build nötig.
+## [Etsy] Angebots-Link je Produkt eintragen (je 1 Min)
+- **Stand:** Der Etsy-Shop ist live (`etsyShopUrl` ist gesetzt). Bis ein Produkt seinen eigenen Link hat, führt der Knopf auf der Produktseite zum Shop („Im Etsy-Shop ansehen"), und die Strukturdaten (JSON-LD) enthalten noch kein Preisangebot (`offers`).
+- **Was fehlt:** Die Adresse des einzelnen Angebots (Listing) für `nordic-flow`, `stack-pot`, `leaf-dock`, `luma-arch`, `cozy-bunny`, `orbit-key-tray`. `custom-fonts` ist Auftragsdruck („auf Anfrage") und verweist auf Kontakt/Auftragsdruck — dort keinen Etsy-Link eintragen.
+- **Wo:** `src/data/products.json` → je Produkt `etsyUrl` (Format `https://www.etsy.com/de/listing/…`). Schritt für Schritt: README.md.
+- **Danach:** `npm test`, committen, Pull Request. Knopf („Auf Etsy ansehen") und `offers` schalten automatisch um.
 
 ## [P7] Instagram-Grid (10 Min)
-- **Was fehlt:** Mindestens 6 quadratische Bilder unter `assets/social/`
-- **Status:** Bewusst noch nicht eingebaut (kein Embed, keine externen Scripts geplant — statisches Grid mit Link aufs Profil). Bilder ablegen, dann kurz Bescheid geben oder selbst ein 6er-Grid auf der Startseite ergänzen.
+- **Was fehlt:** Mindestens 6 quadratische Bilder unter `public/assets/social/`
+- **Status:** Bewusst noch nicht eingebaut (kein Embed, keine externen Skripte geplant — statisches Grid mit Link aufs Profil). Bilder ablegen, dann Bescheid geben oder selbst ein 6er-Grid in `src/pages/index.astro` ergänzen. Der Instagram-Link steht bereits im Footer.
 
 ## [P7] Analytics aktivieren (optional, 5 Min)
-- Vorbereitet aber inaktiv — Anleitung in `docs/analytics-setup.md`, DSE-Absatz-Entwurf in `docs/dse-absatz-analytics.md` (vor Einbau prüfen!).
+- Vorbereitet, aber inaktiv (auskommentierter Block in `src/layouts/Basis.astro`) — Anleitung in `docs/analytics-setup.md`, DSE-Absatz-Entwurf in `docs/dse-absatz-analytics.md` (vor Einbau prüfen!).
 
 ## [Bonus] Schrift-Subsets prüfen (optional)
-- Fraunces/Inter Tight/JetBrains Mono wurden als Variable Fonts (latin-Subset, SIL-OFL) self-hosted nach `assets/fonts/` geladen — die Site nutzt damit erstmals ihre eigentliche Typografie. Kurz visuell abnehmen.
+- Fraunces/Inter Tight/JetBrains Mono liegen als Variable Fonts (latin-Subset, SIL-OFL) self-hosted unter `public/assets/fonts/`. Kurz visuell abnehmen.
 
 ## [P5] Farbbilder für Swatch-Bildwechsel (optional, ca. 30 Min)
 - **Was fehlt:** Je Produkt Fotos/Renders pro Farbvariante — aktuell existiert für KEIN Produkt ein Farbbild
-- **Schema:** `assets/products/<slug>/farbe-<name>.webp` (Name kleingeschrieben, Leerzeichen → `-`, Umlaute ae/oe/ue/ss; z. B. `farbe-sand-beige.webp`)
-- **Danach:** `node build.js` — Swatches bekommen automatisch `data-img` und wechseln das Hauptbild.
+- **Schema:** `public/assets/products/<slug>/farbe-<name>.webp` (Name kleingeschrieben, Leerzeichen → `-`, Umlaute ae/oe/ue/ss; z. B. `farbe-sand-beige.webp`)
+- **Danach:** Committen, Pull Request. Beim Build bekommen die Farbfelder automatisch `data-img` (`src/components/ProductColors.astro`) und wechseln das Hauptbild.
 
-## [P6] GLB + USDZ für alle 6 Produkte exportieren (ca. 20 Min/Produkt)
-- **Was fehlt:** 3D-Modelle unter `assets/models/<slug>.glb` (+ `.usdz` für iOS-AR)
-- **Anleitung:** `tools/README-3D.md` — Viewer erscheint automatisch, sobald die Dateien liegen.
-
-## ~~[P4] Interview-Input für die Über-uns-Seite~~ ✓ ERLEDIGT
-- Antworten wurden in die Story auf `pages/about.html` eingearbeitet (Name Flo+Paul → Floppa, Prusa Mini+ als Geschenk, Paul entwirft / Flo druckt). Platzhalter entfernt. Lieblingsstück-Frage wie gewünscht weggelassen.
+## [P6] GLB + USDZ für die sechs Etsy-Produkte exportieren (ca. 20 Min/Produkt)
+- **Was fehlt:** 3D-Modelle unter `public/assets/models/<slug>.glb` (+ `.usdz` für iOS-AR)
+- **Anleitung:** `tools/README-3D.md` — der Viewer erscheint automatisch (Prüfung im Browser), sobald die Dateien liegen.
 
 ## [P8] Foto-Shotlist — echte Bilder statt Stock (je 1 Foto, quer, mind. 1600 px breit)
-Die Site nutzt bewusst keine Stockfotos. Diese vier Motive würden die Seiten deutlich aufwerten — einfach fotografieren, als WebP/PNG ablegen und Bescheid geben:
-1. **Drucker in Aktion** (Nahaufnahme Düse + sichtbare Schichten) → für Auftragsdruck „Druck"-Station. Ablage: `assets/workshop/drucker-aktion.webp`
-2. **Filamentrollen als Farbpalette** (mehrere Rollen nebeneinander) → für Material & Nachhaltigkeit. Ablage: `assets/workshop/filament-farben.webp`
-3. **Hände beim Prüfen/Entgraten eines frischen Drucks** → für About/Qualitätsanspruch. Ablage: `assets/workshop/qualitaetspruefung.webp`
-4. **Fertig verpacktes Paket** (gern mit Logo-Aufkleber) → für Auftragsdruck „Versand"-Station. Ablage: `assets/workshop/paket.webp`
-
-## [P2] Etsy-URLs eintragen, sobald der Shop live ist (5 Min)
-- **Was fehlt:** Echte Etsy-URLs (Shop + 6 Listings)
-- **Wo:** `data/products.json` → `etsyShopUrl` (Shop-Link für Footer) und je Produkt `etsyUrl`
-- **Danach:** `node build.js` ausführen und committen. Buttons, Footer-Link und JSON-LD-`offers` schalten automatisch um.
-- **Zusätzlich manuell:** Etsy-Block auf `pages/kontakt.html` wieder auf den Shop verlinken (steht aktuell auf „Bald verfügbar").
+Die Site nutzt bewusst keine Stockfotos. Diese vier Motive würden die Seiten deutlich aufwerten — einfach fotografieren, als WebP/PNG ablegen und Bescheid geben (eingebaut sind sie noch nicht):
+1. **Drucker in Aktion** (Nahaufnahme Düse + sichtbare Schichten) → für Auftragsdruck „Druck"-Station. Ablage: `public/assets/workshop/drucker-aktion.webp`
+2. **Filamentrollen als Farbpalette** (mehrere Rollen nebeneinander) → für Material & Nachhaltigkeit. Ablage: `public/assets/workshop/filament-farben.webp`
+3. **Hände beim Prüfen/Entgraten eines frischen Drucks** → für About/Qualitätsanspruch. Ablage: `public/assets/workshop/qualitaetspruefung.webp`
+4. **Fertig verpacktes Paket** (gern mit Logo-Aufkleber) → für Auftragsdruck „Versand"-Station. Ablage: `public/assets/workshop/paket.webp`

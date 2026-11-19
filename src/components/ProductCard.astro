@@ -1,0 +1,27 @@
+---
+// Produktkarte (Nachbau von productCard / productCardWithDataAttrs aus build.js).
+// filterAttrs → data-*-Attribute für den Shop-Filter.
+import Picture from './Picture.astro';
+import type { Product } from '../lib/produkt';
+
+interface Props {
+  product: Product;
+  filterAttrs?: boolean;
+}
+
+const { product: p, filterAttrs = false } = Astro.props;
+const img = p.images && p.images[0] ? p.images[0] : 'placeholder.webp';
+const filter = filterAttrs
+  ? { 'data-product': '', 'data-category': p.category, 'data-material': p.material.toLowerCase(), 'data-tags': (p.tags || []).join(',') }
+  : {};
+---
+<a class="product-card reveal" href={`/produkte/${p.slug}.html`} {...filter}>
+    <figure class="product-card__image-wrap" style={`view-transition-name: vt-${p.slug}`}>
+      <Picture src={`/assets/products/${img}`} alt={p.name} />{p.images && p.images[1] && <span class="product-card__img-alt" aria-hidden="true"><Picture src={`/assets/products/${p.images[1]}`} alt="" /></span>}
+    </figure>
+    <div class="product-card__body">
+      <p class="eyebrow">{p.categoryLabel} · {p.material}</p>
+      <h3 class="product-card__title serif">{p.name}</h3>
+      <p class="product-card__price">{p.price}</p>
+    </div>
+  </a>

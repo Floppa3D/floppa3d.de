@@ -1,11 +1,14 @@
 /**
  * Mobile-Audit — prüft alle Seiten bei 390×844 (iPhone-ähnlich) auf
  * horizontalen Overflow und macht Mobile-Screenshots.
- * Ausführen: node tools/mobile-audit.mjs  (Server auf :4242 muss laufen)
+ * Voraussetzung: gebautes dist/ (npm run build) und Microsoft Edge.
+ * Der Server (tools/serve-dist.mjs) und Edge werden hier selbst gestartet.
+ * Ausführen: node tools/mobile-audit.mjs
  */
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import path from 'node:path';
+import { starteServer } from './serve-dist.mjs';
 
 const EDGE_PATHS = [
   'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
@@ -32,10 +35,9 @@ const PAGES = [
 
 const VW = 390;
 
-// Erwartet eine bereits laufende Edge-Instanz:
-// msedge --headless=new --remote-debugging-port=9223 --remote-allow-origins=* --user-data-dir=<tmp>
-const PORT = 9223;
-const browser = await puppeteer.connect({ browserURL: `http://127.0.0.1:${PORT}`, defaultViewport: null });
+const PORT = 4242;
+const server = await starteServer(PORT);
+const browser = await puppeteer.launch({ executablePath: edge, headless: true, defaultViewport: null });
 const page = await browser.newPage();
 await page.setViewport({ width: VW, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 // Scroll-Reveals sofort sichtbar machen, sonst sind Fullpage-Screenshots
@@ -43,7 +45,7 @@ await page.setViewport({ width: VW, height: 844, deviceScaleFactor: 2, isMobile:
 await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
 
 for (const [name, url] of PAGES) {
-  await page.goto('http://localhost:4242' + url, { waitUntil: 'networkidle0', timeout: 15000 });
+  await page.goto(`http://127.0.0.1:${PORT}` + url, { waitUntil: 'networkidle0', timeout: 15000 });
   const report = await page.evaluate((vw) => {
     const doc = document.documentElement;
     const overflow = doc.scrollWidth - vw;
@@ -75,5 +77,6 @@ for (const [name, url] of PAGES) {
   await page.screenshot({ path: path.join(OUT, `p-${name}.png`), fullPage: true });
 }
 
-await browser.disconnect();
+await browser.close();
+server.close();
 console.log('\nScreenshots: ' + OUT);

@@ -1,18 +1,23 @@
 {
   "name": "floppa3d",
   "version": "1.0.0",
-  "description": "Floppa3D – statische Schaufenster-Website (GitHub Pages, Verkauf via Etsy)",
-  "main": "build.js",
+  "description": "Floppa3D – statische Schaufenster-Website (Astro, Cloudflare Workers Assets, Verkauf via Etsy)",
+  "type": "module",
   "scripts": {
-    "build": "node build.js",
-    "serve": "node server.js",
-    "logos": "cd tools && node generate-logos.js && node gen-transparent.js"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "astro build && node tools/selftest.mjs",
+    "logos": "node tools/generate-logos.cjs && node tools/gen-transparent.cjs"
   },
-  "keywords": [],
   "author": "Floppa3D GbR",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "canvas": "^3.2.3"
+    "astro": "^7.4.12",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "canvas": "^3.2.3",
+    "puppeteer-core": "^25.17.0"
   }
 }

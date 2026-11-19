@@ -1,0 +1,101 @@
+---
+// Grundgerüst jeder Seite (ersetzt templates/_layout.html).
+// Sicherheit: Außer dem Theme-Skript unten wird kein Skript eingebettet — die CSP
+// in public/_headers erlaubt nur 'self' und den Hash dieses einen Skripts.
+import '../styles/main.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../data/site';
+import { orgJsonLd, jsonLdString } from '../lib/jsonld';
+
+interface Props {
+  title: string;
+  titleTag?: string;
+  description: string;
+  path: string;
+  ogType?: string;
+  ogImage?: string;
+  jsonLd?: object[];
+}
+
+const { title, titleTag, description, path, ogType = 'website', ogImage = DEFAULT_OG_IMAGE, jsonLd = [] } = Astro.props;
+const canonical = path === '' ? `${SITE_URL}/` : `${SITE_URL}/${path}`;
+const fullTitle = titleTag ?? `${title} | Floppa3D`;
+const blocks = [orgJsonLd, ...jsonLd];
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F5F1EA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1F1B17" media="(prefers-color-scheme: dark)">
+
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={ogType}>
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Floppa3D">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+
+  <!-- Favicon / Icons / Manifest -->
+  <link rel="icon" type="image/svg+xml" href="/assets/logos/mark.svg">
+  <link rel="alternate icon" href="/assets/logos/mark-on-light.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/logos/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Preload Critical Assets (das Stylesheet bindet Astro selbst ein) -->
+  <link rel="preload" href="/assets/logos/mark.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/InterTight-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Theme: prevent flash by setting before render -->
+  <script is:inline>
+    (function() {
+      document.documentElement.classList.add('js');
+      try {
+        var t = localStorage.getItem('floppa3d-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  {/* Analytics (GoatCounter) — erst nach Freigabe aktivieren, siehe docs/analytics-setup.md:
+      <script data-goatcounter="https://CODE.goatcounter.com/count" async src="/assets/vendor/count.js"></script> */}
+
+  {blocks.map((b) => <script is:inline type="application/ld+json" set:html={jsonLdString(b)} />)}
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- HEADER (Navigation Slot) -->
+  <Header />
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <!-- FOOTER Slot -->
+  <Footer />
+
+  <script is:inline type="module" src="/scripts/theme.js"></script>
+  <script is:inline type="module" src="/scripts/main.js"></script>
+  <slot name="scripts" />
+</body>
+</html>

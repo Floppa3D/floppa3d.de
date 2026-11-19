@@ -1,0 +1,23 @@
+---
+// Farb-Swatches (Nachbau von generateColors aus build.js).
+// Bildwechsel (data-img) nur, wenn das Farbbild wirklich existiert.
+import { colorHex, colorImage } from '../lib/produkt';
+
+interface Props {
+  colors: string[];
+  slug: string;
+}
+
+const { colors, slug } = Astro.props;
+---
+{colors && colors.length > 0 && (
+<section class="product__colors" aria-label="Verfügbare Farben">
+  <h3 class="eyebrow">Farben</h3>
+  <div class="swatches" role="group" aria-label="Farbe wählen">
+    {colors.map((c, i) => (
+      <button type="button" data-color={c} title={c} aria-label={c} aria-pressed={i === 0 ? 'true' : 'false'} style={`--sw:${colorHex(c)}`} data-img={colorImage(slug, c)}></button>
+    ))}
+  </div>
+  <p class="swatch-label text-sm">Gewählte Farbe: {colors[0]}</p>
+</section>
+)}

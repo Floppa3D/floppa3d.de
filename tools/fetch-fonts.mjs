@@ -1,6 +1,6 @@
 /**
- * Lädt die in styles/typography.css erwarteten Variable Fonts (latin-Subset)
- * von der Google-Fonts-API und legt sie unter assets/fonts/ ab (Self-Hosting,
+ * Lädt die in src/styles/typography.css erwarteten Variable Fonts (latin-Subset)
+ * von der Google-Fonts-API und legt sie unter public/assets/fonts/ ab (Self-Hosting,
  * kein Laufzeit-CDN). Einmalig ausführen: node tools/fetch-fonts.mjs
  * Lizenzen: Fraunces, Inter Tight, JetBrains Mono — alle SIL OFL.
  */
@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36';
-const OUT = path.join(import.meta.dirname, '..', 'assets', 'fonts');
+const OUT = path.join(import.meta.dirname, '..', 'public', 'assets', 'fonts');
 
 async function cssText(family) {
   const r = await fetch(`https://fonts.googleapis.com/css2?family=${family}&display=swap`, {
@@ -37,7 +37,7 @@ async function download(url, filename) {
   const buf = Buffer.from(await r.arrayBuffer());
   fs.mkdirSync(OUT, { recursive: true });
   fs.writeFileSync(path.join(OUT, filename), buf);
-  console.log(`→ assets/fonts/${filename} (${(buf.length / 1024).toFixed(0)} KB)`);
+  console.log(`→ public/assets/fonts/${filename} (${(buf.length / 1024).toFixed(0)} KB)`);
 }
 
 const fraunces = await cssText('Fraunces:opsz,wght@9..144,100..900');

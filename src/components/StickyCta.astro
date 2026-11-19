@@ -1,0 +1,22 @@
+---
+// Sticky Mobile-CTA: Angebot, Etsy-Shop (ohne Einzelangebot) oder "Bald verfügbar".
+import { liveEtsyHref, shopEtsyHref, type Product } from '../lib/produkt';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const href = liveEtsyHref(product);
+const shopHref = shopEtsyHref();
+---
+<div class="sticky-cta" hidden>
+  <span class="sticky-cta__price serif">{product.price} <small class="text-xs text-muted">zzgl. Versand</small></span>
+  {product.category === 'auftragsdruck'
+    ? <a class="btn btn--primary btn--sm" href="/auftragsdruck.html">Zum Auftragsdruck</a>
+    : href
+      ? <a class="btn btn--primary btn--sm" href={href} target="_blank" rel="noopener noreferrer">Auf Etsy ansehen</a>
+      : shopHref
+        ? <a class="btn btn--primary btn--sm" href={shopHref} target="_blank" rel="noopener noreferrer">Im Etsy-Shop ansehen</a>
+        : <span class="btn btn--primary btn--sm is-coming-soon" aria-disabled="true">Bald auf Etsy</span>}
+</div>
