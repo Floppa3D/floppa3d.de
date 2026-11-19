@@ -55,10 +55,12 @@ Man muss Astro nicht kennen. Texte und Produkte stehen in normalen Textdateien (
    | `auftragsdruck` | `Auftragsdruck` |
 
    Der Shop-Filter kennt Blume, Organisation und Deko. Steht bei `category` etwas anderes (auch nur ein Tippfehler wie `blume`), bricht der Build ab.
-5. `featured`: `true` zeigt das Produkt auf der Startseite im Bereich „Ausgewählt“, `false` nur im Shop.
-6. `images`: eine Liste von Pfaden, jeweils ab `public/assets/products/` gerechnet, also zum Beispiel `"mein-topf/01.png"`. Die erste Datei ist das Titelbild, die zweite erscheint beim Darüberfahren in der Shop-Karte. Es müssen PNG-Dateien sein. Zu jeder PNG muss eine WebP-Datei mit demselben Namen im selben Ordner liegen (`01.png` und `01.webp`); die Seite lädt die WebP und nimmt die PNG nur als Ersatz. `node tools/optimize-images.mjs` erzeugt die WebP-Dateien.
-7. `npm test` ausführen. Das passiert dann:
-   - Fehlt ein Pflichtfeld (zum Beispiel `price`), oder ist `category` ungültig, bricht der Build ab und nennt Produkt und Feld.
+5. `kiBilder` (Pflichtfeld, ohne Vorgabe): `true`, wenn die Produktbilder mit KI verbessert, bearbeitet oder erstellt wurden, sonst `false`. Bei `true` zeigen Produktkarten (Shop, Startseite, „Verwandte Stücke“) und die Galerie der Produktseite ein kleines Etikett „Mit KI verbessert“ in der Bildecke, unter der Galerie steht zusätzlich ein Hinweissatz. Das Feld hat absichtlich keinen Standardwert: Bei jedem neuen Produkt muss bewusst entschieden werden, ob die Bilder KI-Anteile haben. Fehlt es, bricht der Build mit einer Meldung ab, die sagt, was einzutragen ist. Hero und Kategorie-Kacheln der Startseite tragen kein Etikett; der allgemeine Satz „Einige Bilder auf dieser Website wurden mit KI verbessert.“ steht im Fuß jeder Seite (`src/components/Footer.astro`).
+   Optional `imageAlts`: eine Liste mit je einem beschreibenden Alt-Text pro Bild, in derselben Reihenfolge wie `images` (gleiche Anzahl, sonst bricht der Build ab). Ohne `imageAlts` gilt der Produktname als Alt-Text des ersten Bildes.
+6. `featured`: `true` zeigt das Produkt auf der Startseite im Bereich „Ausgewählt“, `false` nur im Shop.
+7. `images`: eine Liste von Pfaden, jeweils ab `public/assets/products/` gerechnet, also zum Beispiel `"mein-topf/01.png"`. Die erste Datei ist das Titelbild, die zweite erscheint beim Darüberfahren in der Shop-Karte. Es müssen PNG-Dateien sein. Zu jeder PNG muss eine WebP-Datei mit demselben Namen im selben Ordner liegen (`01.png` und `01.webp`); die Seite lädt die WebP und nimmt die PNG nur als Ersatz. `node tools/optimize-images.mjs` erzeugt die WebP-Dateien.
+8. `npm test` ausführen. Das passiert dann:
+   - Fehlt ein Pflichtfeld (zum Beispiel `price` oder `kiBilder`), oder ist `category` ungültig, bricht der Build ab und nennt Produkt und Feld.
    - Fehlt der `slug` oder kommt er doppelt vor, bricht der Build ebenfalls ab. Die Meldung nennt `src/data/products.json` und das Produkt (Nummer in der Liste und Name).
    - Fehlt eine Bilddatei (PNG oder WebP), baut die Seite zwar, aber `npm test` meldet einen „toten Verweis“ mit dem Dateipfad. Dann darf nichts live gehen.
    - Sind alle Angaben in Ordnung, entstehen Produktseite, Shop-Karte, Eintrag in der Sitemap und die Weiterleitung `/produkte/<slug>` von selbst.

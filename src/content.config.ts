@@ -25,9 +25,17 @@ const products = defineCollection({
     details: z.record(z.string(), z.string()),
     colors: z.array(z.string().min(1)),
     images: z.array(z.string().min(1)),
+    imageAlts: z.array(z.string().min(1)).optional(), // Alt-Texte je Bild, gleiche Reihenfolge wie images; ohne Angabe gilt der Produktname
     tags: z.array(z.string()),
     featured: z.boolean(),
+    // Bewusst ohne Standardwert: bei jedem neuen Produkt muss entschieden werden, ob die Bilder KI-Anteile haben.
+    kiBilder: z.boolean({
+      error: 'Das Feld "kiBilder" fehlt oder ist kein true/false. Bitte im Produkt in src/data/products.json eintragen: true, wenn die Bilder mit KI verbessert, bearbeitet oder erstellt wurden (dann erscheint der KI-Hinweis), sonst false.',
+    }),
     etsyUrl: z.string(), // darf leer sein, solange der Etsy-Shop nicht live ist
+  }).refine((p) => !p.imageAlts || p.imageAlts.length === p.images.length, {
+    message: 'imageAlts braucht genau einen Alt-Text pro Bild in images (gleiche Anzahl, gleiche Reihenfolge) oder muss ganz fehlen.',
+    path: ['imageAlts'],
   }),
 });
 

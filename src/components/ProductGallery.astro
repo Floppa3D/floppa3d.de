@@ -6,24 +6,31 @@ interface Props {
   images: string[];
   name: string;
   slug: string;
+  imageAlts?: string[];
+  kiBilder?: boolean;
 }
 
-const { images, name, slug } = Astro.props;
+const { images, name, slug, imageAlts, kiBilder = false } = Astro.props;
+// Alt-Text je Bild, sonst wie bisher der Produktname am ersten Bild
+const alt = (i: number) => imageAlts?.[i] ?? (i === 0 ? name : '');
 ---
 {images && images.length > 0 && (
+<>
 <div class="gallery">
   <figure class="gallery__main" id="gallery-main" style={`view-transition-name: vt-${slug}`}>
-    <Picture src={`/assets/products/${images[0]}`} alt={name} priority data-gallery-zoom="" aria-label="Bild vergrößern" />
+    <Picture src={`/assets/products/${images[0]}`} alt={alt(0)} priority data-gallery-zoom="" aria-label="Bild vergrößern" />
+    {kiBilder && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}
   </figure>
   <div class="gallery__thumbs">
     {images.map((img, i) => (
-      <button class="gallery__thumb" data-src={`/assets/products/${img}`} data-index={i} aria-label={`Bild ${i + 1} anzeigen`} aria-current={i === 0 ? 'true' : undefined}><Picture src={`/assets/products/${img}`} alt="" fallbackW={200} fallbackH={200} /></button>
+      <button class="gallery__thumb" data-src={`/assets/products/${img}`} data-index={i} data-alt={imageAlts?.[i]} aria-label={`Bild ${i + 1} anzeigen`} aria-current={i === 0 ? 'true' : undefined}><Picture src={`/assets/products/${img}`} alt="" fallbackW={200} fallbackH={200} /></button>
     ))}
   </div>
   <div class="gallery__swipe">
+    {kiBilder && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}
     <div class="gallery__swipe-track">
       {images.map((img, i) => (
-        <figure class="gallery__swipe-slide"><Picture src={`/assets/products/${img}`} alt={i === 0 ? name : ''} priority={i === 0} /></figure>
+        <figure class="gallery__swipe-slide"><Picture src={`/assets/products/${img}`} alt={alt(i)} priority={i === 0} /></figure>
       ))}
     </div>
     {images.length > 1 && (
@@ -35,4 +42,6 @@ const { images, name, slug } = Astro.props;
     )}
   </div>
 </div>
+{kiBilder && <p class="gallery__ki-note text-sm text-muted">Bilder mit KI verbessert, bearbeitet oder erstellt, um verschiedene Einsatzmöglichkeiten zu zeigen.</p>}
+</>
 )}

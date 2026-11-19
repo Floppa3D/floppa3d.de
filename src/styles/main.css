@@ -175,6 +175,52 @@ html.no-transition * {
   margin-top: var(--space-2);
 }
 
+/* Zwei gleich große Knöpfe nebeneinander, auf schmalen Bildschirmen untereinander */
+.cta-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.cta-pair .btn {
+  flex: 1 1 10rem;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .cta-pair .btn {
+    flex-basis: 100%;
+  }
+}
+
+/* Zwei Hinweislinks untereinander (Auftragsdruck: Etsy-Shop und Kontakt) */
+.etsy-hints {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* KI-Etikett: kleines Zeichen in der Bildecke, bleibt im Bild und fängt keine Klicks ab */
+.ki-badge {
+  position: absolute;
+  inset: var(--space-2) auto auto var(--space-2);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(20, 20, 20, 0.72);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gallery__ki-note {
+  margin-block: var(--space-3) 0;
+}
+
 /* =============================================================================
    Divider
    ============================================================================= */
@@ -243,6 +289,7 @@ html.no-transition * {
 
 .product-card__image-wrap {
   position: relative;
+  margin: 0; /* figure-Standardrand sonst: Bild nur ~80 px breit, Etikett läuft über */
 }
 
 .product-card__img-alt {

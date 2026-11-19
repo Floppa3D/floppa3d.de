@@ -134,32 +134,35 @@ function setupGallery() {
 
   if (mainImg && thumbs.length > 0) {
     let selectedSrc = mainImg.src;
+    let selectedAlt = mainImg.alt;
 
-    function setMainSrc(src) {
+    function setMainSrc(src, alt) {
       // Bei <picture> gewinnt die <source> — beide nachziehen
       const source = mainImg.parentElement.querySelector('source');
       if (source) source.srcset = src.replace(/\.png$/i, '.webp');
       mainImg.src = src;
+      if (alt !== undefined) mainImg.alt = alt;
     }
 
     function setSelected(thumb) {
       thumbs.forEach((t) => t.removeAttribute('aria-current'));
       thumb.setAttribute('aria-current', 'true');
       selectedSrc = thumb.dataset.src;
+      if (thumb.dataset.alt !== undefined) selectedAlt = thumb.dataset.alt;
     }
 
     thumbs.forEach((thumb) => {
       thumb.addEventListener('mouseenter', () => {
-        setMainSrc(thumb.dataset.src);
+        setMainSrc(thumb.dataset.src, thumb.dataset.alt);
       });
 
       thumb.addEventListener('mouseleave', () => {
-        setMainSrc(selectedSrc);
+        setMainSrc(selectedSrc, selectedAlt);
       });
 
       thumb.addEventListener('click', () => {
         setSelected(thumb);
-        setMainSrc(selectedSrc);
+        setMainSrc(selectedSrc, selectedAlt);
       });
     });
   }

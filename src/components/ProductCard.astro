@@ -18,6 +18,7 @@ const filter = filterAttrs
 <a class="product-card reveal" href={`/produkte/${p.slug}.html`} {...filter}>
     <figure class="product-card__image-wrap" style={`view-transition-name: vt-${p.slug}`}>
       <Picture src={`/assets/products/${img}`} alt={p.name} />{p.images && p.images[1] && <span class="product-card__img-alt" aria-hidden="true"><Picture src={`/assets/products/${p.images[1]}`} alt="" /></span>}
+      {p.kiBilder && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}
     </figure>
     <div class="product-card__body">
       <p class="eyebrow">{p.categoryLabel} · {p.material}</p>

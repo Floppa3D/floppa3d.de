@@ -20,8 +20,10 @@ export interface Product {
   details: Record<string, string>;
   colors: string[];
   images: string[];
+  imageAlts?: string[];
   tags: string[];
   featured: boolean;
+  kiBilder: boolean;
   etsyUrl: string;
 }
 
@@ -110,7 +112,7 @@ export function relatedProducts(current: Product, all: Product[]): Product[] {
   return all.filter((p) => p.slug !== current.slug).slice(0, 3);
 }
 
-/** JSON-LD Product (offers erst, wenn der Etsy-Shop live ist). */
+/** JSON-LD Product (offers nur mit Etsy-Link und Zahlenpreis). */
 export function productJsonLd(product: Product) {
   const data: Record<string, unknown> = {
     '@context': 'https://schema.org/',
@@ -124,7 +126,7 @@ export function productJsonLd(product: Product) {
     url: `${SITE_URL}/produkte/${product.slug}.html`,
   };
   const href = liveEtsyHref(product);
-  if (href) {
+  if (href && product.priceNumeric) {
     data.offers = {
       '@type': 'Offer',
       price: product.priceNumeric,
