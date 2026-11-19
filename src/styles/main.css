@@ -175,6 +175,44 @@ html.no-transition * {
   margin-top: var(--space-2);
 }
 
+/* Zwei Hinweislinks untereinander (Auftragsdruck: Etsy-Shop und Kontakt) */
+.etsy-hints {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* KI-Etikett: kleines Zeichen in der Bildecke, bleibt im Bild und fängt keine Klicks ab */
+.ki-badge {
+  position: absolute;
+  inset: var(--space-2) auto auto var(--space-2);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(20, 20, 20, 0.72);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Kleinere Fassung für Hintergrundbilder ohne Textzeile (Hero, Kategorie-Kacheln) */
+.ki-badge--klein {
+  inset: var(--space-3) var(--space-3) auto auto;
+  padding: 0 6px;
+  background: rgba(20, 20, 20, 0.6);
+}
+
+.ki-badge--hero {
+  inset: auto var(--space-4) var(--space-4) auto;
+}
+
+.gallery__ki-note {
+  margin-block: var(--space-3) 0;
+}
+
 /* =============================================================================
    Divider
    ============================================================================= */

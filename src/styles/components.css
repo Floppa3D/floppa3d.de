@@ -888,6 +888,7 @@ html.nav-open {
 .gallery__main {
   grid-column: 2;
   grid-row: 1;
+  position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
@@ -2362,6 +2363,8 @@ html:not(.js) .process-road__node {
   }
   .gallery__swipe {
     display: block;
+    position: relative;
+    min-width: 0;
     grid-column: 1;
   }
   .gallery__swipe-track {
@@ -2406,6 +2409,8 @@ html:not(.js) .process-road__node {
   /* Antippfläche 44 x 44, der sichtbare Punkt (6 px) sitzt als ::before in der Mitte */
   .gallery__swipe-dot {
     position: relative;
+    flex: 0 1 44px; /* bei vielen Bildern (9 × 44 px > Breite) schmaler statt über den Rand */
+    min-width: 0;
     width: 44px;
     height: 44px;
     border: none;

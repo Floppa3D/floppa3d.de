@@ -19,7 +19,10 @@ const shopHref = shopEtsyHref();
     <path d="M7 17L17 7"/><path d="M7 7h10v10"/>
   </svg>
 </a>
+<div class="etsy-hints">
+{shopHref && <a class="etsy-hint text-sm" href={shopHref} target="_blank" rel="noopener noreferrer">Fertige Auswahl im Etsy-Shop →</a>}
 <a class="etsy-hint text-sm" href="/kontakt.html">Direkter Kontakt →</a>
+</div>
 </>
 ) : href ? (
 <>

@@ -25,6 +25,7 @@ interface Props {
 const { product, related } = Astro.props;
 const first = product.images && product.images[0];
 const ogImage = first ? `${SITE_URL}/assets/products/${first}` : DEFAULT_OG_IMAGE;
+const absaetze = (product.longDescription || '').split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
 const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') : '';
 ---
 <Basis
@@ -42,11 +43,8 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
     <nav class="breadcrumb" aria-label="Brotkrumen">
       <ol class="cluster mono text-xs">
         <li><a href="/">Start</a></li>
-        <li aria-hidden="true">›</li>
         <li><a href="/shop.html">Shop</a></li>
-        <li aria-hidden="true">›</li>
         <li><a href={`/shop.html?kategorie=${product.category}`}>{product.categoryLabel}</a></li>
-        <li aria-hidden="true">›</li>
         <li aria-current="page">{product.name}</li>
       </ol>
     </nav>
@@ -61,7 +59,7 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
 
       <!-- Gallery -->
       <section class="product__gallery-col" aria-label="Produktbilder">
-        <ProductGallery images={product.images} name={product.name} slug={product.slug} />
+        <ProductGallery images={product.images} imageAlts={product.imageAlts} name={product.name} slug={product.slug} kiBilder={product.kiBilder} />
 
         <!-- 3D-/AR-Viewer: bleibt verborgen, solange kein GLB-Modell existiert -->
         <section class="viewer3d" data-model={product.slug} hidden>
@@ -79,7 +77,7 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
         <section class="product__story prose flow">
           <p class="eyebrow">Über das Stück</p>
           <h2 class="serif">Im Detail.</h2>
-          <p>{product.longDescription}</p>
+          {absaetze.map((absatz) => <p>{absatz}</p>)}
         </section>
 
         <section class="product__meta surface" aria-label="Spezifikationen">

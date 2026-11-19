@@ -29,7 +29,8 @@
       ],
       "etsyUrl": "",
       "tags": ["blume", "gerillt", "minimalistisch", "petg", "indoor"],
-      "featured": true
+      "featured": true,
+      "kiBilder": true
     },
     {
       "slug": "stack-pot",
@@ -60,7 +61,8 @@
       ],
       "etsyUrl": "",
       "tags": ["blume", "modular", "sukkulenten", "kräuter", "pla", "indoor"],
-      "featured": true
+      "featured": true,
+      "kiBilder": true
     },
     {
       "slug": "leaf-dock",
@@ -91,7 +93,8 @@
       ],
       "etsyUrl": "",
       "tags": ["organisation", "deko", "geschenk", "pflanzen", "pla", "indoor"],
-      "featured": true
+      "featured": true,
+      "kiBilder": true
     },
     {
       "slug": "luma-arch",
@@ -121,7 +124,8 @@
       ],
       "etsyUrl": "",
       "tags": ["deko", "bogen", "skandinavisch", "regal", "pla", "indoor"],
-      "featured": true
+      "featured": true,
+      "kiBilder": true
     },
     {
       "slug": "cozy-bunny",
@@ -152,7 +156,8 @@
       ],
       "etsyUrl": "",
       "tags": ["deko", "hase", "ostern", "fruehling", "geschenk", "pla", "indoor"],
-      "featured": true
+      "featured": true,
+      "kiBilder": true
     },
     {
       "slug": "orbit-key-tray",
@@ -182,7 +187,8 @@
       ],
       "etsyUrl": "",
       "tags": ["organisation", "deko", "schluessel", "schmuck", "eingang", "pla", "indoor"],
-      "featured": true
+      "featured": true,
+      "kiBilder": true
     },
     {
       "slug": "custom-fonts",
@@ -193,28 +199,44 @@
       "material": "PLA / PETG",
       "price": "auf Anfrage",
       "priceNumeric": "",
-      "shortDescription": "Individuelle 3D-gedruckte Schriftzüge und Worte – Namen, Zitate, Logos. Jeder Druck ein Unikat, genau nach Ihren Vorgaben.",
-      "longDescription": "Custom Fonts – das ist die Möglichkeit, Ihre eigenen Worte, Namen oder Zitate als 3D-gedrucktes Kunstwerk zu realisieren. Ob über dem Schreibtisch, im Wohnzimmer oder als Geschenk: personalisierte Schriftzüge verleihen jedem Raum eine persönliche Note.\n\nDas Besondere: Sie entscheiden über Schriftart, Größe, Material und Farbe. Unser Team übernimmt die technische Umsetzung – von der Vektorisierung bis zum perfekten Druck. Dank mehrschichtiger Fertigung entstehen lebendige Dimensionalität und Textur, die flache Drucke nicht erreichen.\n\nMöglich sind Schriftzüge aus PLA (biologisch abbaubar, matte Oberfläche) oder PETG (robuster, UV-beständiger). Große Farbpalette, variable Dimensionen, beleuchtbar mit LED (optional). Jeder Druck ist ein Einzelstück nach Ihren Vorgaben – Preis auf Anfrage nach Größe und Komplexität.",
+      "shortDescription": "Einzelne 3D-gedruckte Buchstaben, auf Wunsch zum Schriftzug zusammengestellt. Standard sind einfarbige Buchstaben; per Auftragsdruck auch mehrfarbig und in anderen Schriftarten.",
+      "longDescription": "Custom Fonts sind 3D-gedruckte Buchstaben für Schreibtisch, Regal, Wand oder Fassade. Standard ist jeder Buchstabe einzeln und einfarbig gedruckt, wie auf den ersten Bildern. Einen Schriftzug stellen wir aus diesen einzelnen Buchstaben zusammen, jeder in seiner eigenen Farbe, so wie der Schriftzug „FLOPPA3D“ auf den Fotos.\n\nPer Auftragsdruck ist mehr möglich: mehrfarbige Buchstaben, andere Schriftarten, andere Größen und Farben. Eine fertige Auswahl an Größen, Farben und Schriftarten finden Sie in unserem Etsy-Shop; per Auftragsdruck gibt es keine Grenzen. Unser Team übernimmt die technische Umsetzung, von der Vektorisierung bis zum Druck.\n\nZur Größe: Ein Buchstabe lässt sich in einem Stück bis etwa 25 cm drucken. Das ist der Bauraum unseres Druckers, einer Prusa CORE One mit 250 × 220 × 270 mm (Breite × Tiefe × Höhe); je nach Form des Buchstabens und Druckrichtung ist es etwas weniger oder mehr. Größere Buchstaben drucken wir in mehreren Teilen und setzen sie zusammen.\n\nMöglich sind Buchstaben aus PLA (biologisch abbaubar, matte Oberfläche) oder PETG (robuster, UV-beständiger), beleuchtbar mit LED (optional). Jeder Auftrag ist ein Einzelstück nach Ihren Vorgaben, der Preis folgt auf Anfrage nach Größe und Komplexität.",
       "details": {
-        "Basis": "Ihre Schriftart, Ihr Text",
+        "Standard": "Einzelne, einfarbige Buchstaben; ein Schriftzug besteht aus einzelnen Buchstaben, jeder in einer Farbe",
+        "Auftragsdruck": "Auch mehrfarbige Buchstaben und andere Schriftarten, keine Grenzen bei Größe, Farbe und Schrift",
+        "Fertige Auswahl": "Größen, Farben und Schriftarten im Etsy-Shop",
         "Material": "PLA oder PETG – Sie wählen",
-        "Farbe": "Beliebig aus unserer Palette",
-        "Größe": "Nach Anfrage (ca. 10–100 cm Breite)",
+        "Größe": "Ein Buchstabe in einem Stück bis etwa 25 cm (Bauraum 250 × 220 × 270 mm); größere Buchstaben in mehreren Teilen, zusammengesetzt",
         "LED-Integration": "Optional für zusätzliche Effekte",
         "Lieferzeit": "ca. 5–7 Arbeitstage nach Bestätigung"
       },
       "colors": ["Frei wählbar"],
       "images": [
-        "custom-fonts/01.png",
-        "custom-fonts/02.png",
-        "custom-fonts/03.png",
-        "custom-fonts/04.png",
-        "custom-fonts/05.png",
-        "custom-fonts/06.png"
+        "custom-fonts/f-einzeln-weiss.png",
+        "custom-fonts/floppa3d-schriftzug-stehend.png",
+        "custom-fonts/floppa3d-schriftzug-liegend.png",
+        "custom-fonts/a-zweifarbig.png",
+        "custom-fonts/r-schreibschrift.png",
+        "custom-fonts/wandspruch-dream-it.png",
+        "custom-fonts/hausschild-willkommen.png",
+        "custom-fonts/cafe-preistafel.png",
+        "custom-fonts/fassade-logo.png"
+      ],
+      "imageAlts": [
+        "Einzelnes weißes F als 3D-gedruckter Buchstabe auf einer Schneidematte, dahinter eine Zimmerpflanze und eine Lampe",
+        "Schriftzug FLOPPA3D aus einzelnen 3D-gedruckten Buchstaben, stehend auf einem Holzregal; F und 3 in Grün, die übrigen Buchstaben weiß",
+        "Schriftzug FLOPPA3D aus einzelnen 3D-gedruckten Buchstaben, liegend auf einer grauen Fläche; F und 3 in Grün, die übrigen Buchstaben weiß",
+        "Großer Buchstabe A, zweifarbig gedruckt: Vorderseite weiß, Seiten schwarz",
+        "Buchstabe R in Schreibschrift, gedruckt in Rosa und Schwarz",
+        "Wandspruch „Dream it. Believe it. Achieve it.“ in Schreibschrift aus 3D-gedruckten Buchstaben",
+        "Hausschild mit dem Wort „WILLKOMMEN“ aus 3D-gedruckten Buchstaben",
+        "Preistafel eines Cafés mit 3D-gedruckter Schrift an der Wand",
+        "Hausfassade mit dem Floppa3D-Logo als 3D-gedrucktem Schriftzug"
       ],
       "etsyUrl": "",
       "tags": ["auftragsdruck", "custom", "schriften", "personalisiert", "unikat", "text"],
-      "featured": true
+      "featured": true,
+      "kiBilder": true
     }
   ]
 }

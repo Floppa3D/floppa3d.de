@@ -20,8 +20,10 @@ export interface Product {
   details: Record<string, string>;
   colors: string[];
   images: string[];
+  imageAlts?: string[];
   tags: string[];
   featured: boolean;
+  kiBilder: boolean;
   etsyUrl: string;
 }
 
