@@ -88,6 +88,9 @@ const COLOR_HEX: Record<string, string> = {
   'Rot': '#A6252F',
   'Gold': '#BA7A47',
   'Silber': '#C0C3C7',
+  'Blau': '#1F3FA0',
+  'Pink-Beige': '#E8C4B8',
+  'Peach': '#F4A77A',
 };
 
 export function colorHex(name: string): string {
