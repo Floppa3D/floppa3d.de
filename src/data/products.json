@@ -237,6 +237,57 @@
       "featured": true,
       "kiBilder": true,
       "echteBilder": ["custom-fonts/floppa3d-werkstatt-echt.png"]
+    },
+    {
+      "slug": "swirl-tree",
+      "modelId": "F3D-ST",
+      "name": "Swirl Tree – Gedrehter Mini-Tannenbaum",
+      "category": "deko",
+      "categoryLabel": "Deko",
+      "material": "PLA",
+      "price": "ab 6,90 €",
+      "priceNumeric": "6.90",
+      "shortDescription": "Gedrehter Mini-Tannenbaum aus dem 3D-Drucker – von 5 bis 17 cm, einfarbig oder mehrfarbig, einzeln oder im Set. Weihnachtsdeko für Tisch, Regal und Fensterbank.",
+      "longDescription": "Der Swirl Tree ist ein schlanker Tannenbaum mit spiralförmig gedrehten Rillen. Je nach Licht wirft die Drehung weiche Schatten. Wir drucken ihn in sechs Höhen von 5 bis 17 cm, so dass sich große und kleine Bäume zu einer kleinen Winterlandschaft gruppieren lassen.\n\nEinfarbig gibt es ihn in jeder Höhe. Zwei- und dreifarbig wechseln sich die Farben in Streifen entlang der Spirale ab, wie bei den rot-weißen Bäumchen auf den Fotos; dreifarbig gibt es ihn ab 7 cm. Die Farben wählen Sie bei der Bestellung. Auf Wunsch drucken wir jeden Baum ohne Aufpreis mit Fuzzy Skin – einer fein aufgerauten, matten Oberfläche wie beim roten Baum auf den Fotos.\n\nDie Bäume gibt es einzeln oder als Set mit 2, 3 oder 5 Stück. Jeder Baum wird bei uns in der Werkstatt bei Freising aus PLA gedruckt und ist für den Innenbereich gedacht.",
+      "details": {
+        "Material": "PLA",
+        "Höhen": "5, 7, 9, 12, 15 oder 17 cm",
+        "Farben": "Einfarbig, zweifarbig oder dreifarbig (dreifarbig ab 7 cm)",
+        "Oberfläche": "Glatt oder Fuzzy Skin (fein aufgeraute, matte Oberfläche) – ohne Aufpreis",
+        "Erhältlich als": "Einzelstück oder Set mit 2, 3 oder 5 Stück",
+        "Preise": "Von 6,90 € (5 cm, einfarbig, einzeln) bis 129,90 € (17 cm, dreifarbig, 5er-Set)",
+        "Einsatzbereich": "Innenbereich"
+      },
+      "colors": ["Schwarz", "Weiß", "Grün", "Rot", "Gold", "Silber"],
+      "images": [
+        "swirl-tree/01.png",
+        "swirl-tree/02.png",
+        "swirl-tree/03.png",
+        "swirl-tree/04.png",
+        "swirl-tree/05.png",
+        "swirl-tree/06.png",
+        "swirl-tree/07.png",
+        "swirl-tree/08.png",
+        "swirl-tree/09.png",
+        "swirl-tree/10.png"
+      ],
+      "imageAlts": [
+        "Gruppe gedrehter 3D-gedruckter Tannenbäume in Grün, Rot und Gold mit rot-weiß gestreiften Mini-Bäumen auf einem Holzregal neben Büchern und einem Teelicht",
+        "Gedrehte Tannenbäume in Grün, Rot und Gold mit rot-weiß gestreiften Mini-Bäumen auf einem Holztablett, auf einem gedeckten Esstisch",
+        "Gedrehte Tannenbäume in Grün, Rot und Gold mit rot-weiß gestreiften Mini-Bäumen auf einem Sideboard unter einer Messinglampe",
+        "Gedrehte Tannenbäume in Grün, Rot und Gold mit rot-weiß gestreiften Mini-Bäumen auf einer Kommode vor einer weihnachtlich dekorierten Wohnzimmerecke",
+        "Echtes Werkstattfoto: Gruppe gedrehter Tannenbäume in Grün, Rot und Gold mit rot-weiß gestreiften Mini-Bäumen auf einer Schneidematte",
+        "Echtes Werkstattfoto: zwei kleine rot-weiß gestreifte gedrehte Tannenbäume auf einer Schneidematte",
+        "Echtes Werkstattfoto: roter gedrehter Tannenbaum mit fein aufgerauter Fuzzy-Skin-Oberfläche auf einer Schneidematte",
+        "Echtes Werkstattfoto: grüner gedrehter Tannenbaum auf einer Schneidematte",
+        "Echtes Werkstattfoto: goldener gedrehter Tannenbaum auf einer Schneidematte",
+        "Echtes Werkstattfoto: einzelner kleiner rot-weiß gestreifter gedrehter Tannenbaum auf einer Schneidematte"
+      ],
+      "etsyUrl": "",
+      "tags": ["deko", "weihnachten", "tannenbaum", "set", "pla", "indoor"],
+      "featured": true,
+      "kiBilder": true,
+      "echteBilder": ["swirl-tree/05.png", "swirl-tree/06.png", "swirl-tree/07.png", "swirl-tree/08.png", "swirl-tree/09.png", "swirl-tree/10.png"]
     }
   ]
 }

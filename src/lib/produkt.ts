@@ -82,6 +82,12 @@ const COLOR_HEX: Record<string, string> = {
   'Sandstone': '#C8B597',
   'Clay Brown': '#9B6A4F',
   'Matte Cream': '#EFE6D5',
+  'Schwarz': '#2B2B2B',
+  'Weiß': '#F4F4F2',
+  'Grün': '#1A9792',
+  'Rot': '#A6252F',
+  'Gold': '#BA7A47',
+  'Silber': '#C0C3C7',
 };
 
 export function colorHex(name: string): string {
