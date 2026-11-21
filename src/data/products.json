@@ -288,6 +288,49 @@
       "featured": true,
       "kiBilder": true,
       "echteBilder": ["swirl-tree/05.png", "swirl-tree/06.png", "swirl-tree/07.png", "swirl-tree/08.png", "swirl-tree/09.png", "swirl-tree/10.png"]
+    },
+    {
+      "slug": "glow-house",
+      "modelId": "F3D-GH",
+      "name": "Glow House – Lichthaus für LED-Kerzen",
+      "category": "deko",
+      "categoryLabel": "Deko",
+      "material": "PLA",
+      "price": "auf Anfrage",
+      "priceNumeric": "",
+      "shortDescription": "Kleines Haus aus dem 3D-Drucker mit Fenstern, Tür und Dachgaube. Mit einer LED-Kerze darin leuchten die Fenster warm. Verkauft wird nur das Haus, die LED-Kerze ist nicht dabei.",
+      "longDescription": "Das Glow House ist ein kleines Satteldachhaus mit Ziegeldach, Schornstein, runder Giebelöffnung, Sprossenfenstern und einer Tür mit Rundbogen. Stellen Sie eine LED-Kerze hinein, dann scheint das Licht durch alle Öffnungen nach außen, wie bei einem bewohnten Haus an einem Winterabend.\n\nWir drucken es in neun Farben: Schwarz, Weiß, Rot, Gold, Silber, Grün, Blau, Pink-Beige und Peach. Mehrere Häuser in verschiedenen Farben ergeben zusammen ein kleines Winterdorf auf Fensterbank, Regal oder Sideboard.\n\nBitte nur mit LED-Kerzen verwenden, die nicht heiß werden. Niemals echte Kerzen oder Teelichter mit offener Flamme hineinstellen: Das Haus ist aus PLA gedruckt, einem Kunststoff, der bei Wärme weich wird und brennen kann. Im Lieferumfang ist nur das Haus enthalten, die LED-Kerze gehört nicht dazu. Jedes Haus wird bei uns in der Werkstatt bei Freising gedruckt und ist für den Innenbereich gedacht.",
+      "details": {
+        "Material": "PLA",
+        "Maße": "ca. 6,9 × 5,1 × 6,3 cm (Breite × Tiefe × Höhe)",
+        "Lieferumfang": "Nur das Haus, ohne LED-Kerze",
+        "Beleuchtung": "Nur LED-Kerzen, die nicht heiß werden – keine echten Kerzen",
+        "Einsatzbereich": "Innenbereich"
+      },
+      "colors": ["Schwarz", "Weiß", "Rot", "Gold", "Silber", "Grün", "Blau", "Pink-Beige", "Peach"],
+      "images": ["glow-house/01.png", "glow-house/02.png", "glow-house/03.png", "glow-house/04.png", "glow-house/05.png", "glow-house/06.png", "glow-house/07.png", "glow-house/08.png", "glow-house/09.png", "glow-house/10.png", "glow-house/11.png", "glow-house/12.png", "glow-house/13.png", "glow-house/14.png", "glow-house/15.png"],
+      "imageAlts": [
+        "Rotes 3D-gedrucktes Haus mit warm leuchtenden Fenstern auf einem Holzregal neben Tannenzweigen, Christbaumkugeln und einem Windlicht",
+        "Haus in Peach mit leuchtenden Fenstern auf einer Marmorplatte neben roséfarbenen Christbaumkugeln und einem weißen Deko-Tannenbaum",
+        "Goldenes Haus mit leuchtenden Fenstern auf einem Holztisch neben einem Windlicht und goldenen Geschenkbändern",
+        "Blaues Haus mit leuchtenden Fenstern vor einem Fenster mit Winternacht, daneben Glasbaum und Geschenke",
+        "Schwarzes Haus mit leuchtenden Fenstern auf einer dunklen Ablage neben einem goldenen Rentier und einem Windlicht",
+        "Grünes Haus mit leuchtenden Fenstern auf einem Holzbrett neben Tannenzapfen, Christbaumkugeln und einem Windlicht",
+        "Silbernes Haus mit leuchtenden Fenstern auf einem Spiegeltablett neben silbernen Tannenbäumen und einem Rentier",
+        "Weißes Haus mit leuchtenden Fenstern auf einer Fensterbank neben einem Holzstern und einer Strickdecke",
+        "Haus in Pink-Beige mit leuchtenden Fenstern auf einer Marmorplatte neben Tannenzapfen und einem Windlicht",
+        "Echtes Werkstattfoto: rotes Haus von vorne, Fenster von innen beleuchtet, auf einer Schneidematte",
+        "Echtes Werkstattfoto: Giebelseite des roten Hauses mit runder Öffnung und beleuchteten Fenstern",
+        "Echtes Werkstattfoto: rotes Haus schräg von der Seite auf einer Schneidematte",
+        "Echtes Werkstattfoto: rotes Haus von der Seite mit Tür und beleuchteten Fenstern",
+        "Echtes Werkstattfoto: rotes Haus von schräg hinten mit Tür und beleuchteten Fenstern",
+        "Echtes Werkstattfoto: rotes Haus auf einer Schneidematte vor einem Bücherregal"
+      ],
+      "etsyUrl": "",
+      "tags": ["deko", "weihnachten", "haus", "led", "pla", "indoor"],
+      "featured": true,
+      "kiBilder": true,
+      "echteBilder": ["glow-house/10.png", "glow-house/11.png", "glow-house/12.png", "glow-house/13.png", "glow-house/14.png", "glow-house/15.png"]
     }
   ]
 }
