@@ -3,15 +3,26 @@
 // die alte Seite bindet kein eigenes ein.
 import Basis from '../layouts/Basis.astro';
 import ProductCard from '../components/ProductCard.astro';
-import { alleProdukte, shopEtsyHref } from '../lib/produkt';
+import { alleProdukte, shopEtsyHref, produktUrl } from '../lib/produkt';
+import { SITE_URL } from '../data/site';
 
 const products = await alleProdukte();
 const shopHref = shopEtsyHref();
+const listeJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Alle Stücke im Floppa3D Shop',
+  url: `${SITE_URL}/shop.html`,
+  numberOfItems: products.length,
+  itemListElement: products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: produktUrl(p.slug), name: p.name })),
+};
 ---
 <Basis
   title={'Shop'}
+  titleTag={'3D-gedruckte Deko kaufen – Shop | Floppa3D'}
   description={'Alle Stücke aus dem Floppa3D Studio. Deko und Einzelstücke per Auftragsdruck, gedruckt in unserer Werkstatt bei Freising aus PLA oder PETG.'}
   path="shop.html"
+  jsonLd={[listeJsonLd]}
 >
 <!-- HERO -->
 <section class="hero section--tight">
@@ -46,6 +57,7 @@ const shopHref = shopEtsyHref();
 <!-- PRODUKTE -->
 <section class="shop-grid-section section">
   <div class="container">
+    <h2 class="visually-hidden">Produkte</h2>
     <div class="shop-grid bento">
       {products.map((p) => <ProductCard product={p} filterAttrs />)}
     </div>

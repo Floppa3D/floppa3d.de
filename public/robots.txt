@@ -1,3 +1,6 @@
+# Alle Crawler (auch KI-Suche) dürfen alles lesen.
+# Hinweis: Cloudflare "Managed robots.txt" kann diese Datei live überschreiben bzw. ergänzen;
+# dort einstellen, wenn KI-Crawler nicht gesperrt werden sollen.
 User-agent: *
 Allow: /
 

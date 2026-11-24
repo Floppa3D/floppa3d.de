@@ -2613,3 +2613,35 @@ html:not(.js) .process-road__node {
     inset: -8px 0;
   }
 }
+
+/* --- Vergleichstabelle (Material, Journal) ---------------------------------- */
+.vergleich {
+  overflow-x: auto;
+  margin-block: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+.vergleich__tabelle {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+.vergleich__tabelle caption {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+.vergleich__tabelle th,
+.vergleich__tabelle td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-fg);
+}
+.vergleich__tabelle thead th { color: var(--color-accent); }
+.vergleich__tabelle tbody th { font-weight: 600; white-space: nowrap; }

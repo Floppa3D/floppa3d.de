@@ -56,6 +56,8 @@ const journal = defineCollection({
     lead: z.string(),
     teaser: z.string(), // Kartentext in der Journal-Übersicht
     order: z.number().optional(),
+    datum: z.string().optional(), // Erstveröffentlichung, JJJJ-MM-TT (für BlogPosting)
+    aktualisiert: z.string().optional(), // letzte inhaltliche Änderung, JJJJ-MM-TT
   }),
 });
 

@@ -68,7 +68,7 @@ Man muss Astro nicht kennen. Texte und Produkte stehen in normalen Textdateien (
 ### Etsy-Link eines Produkts eintragen
 1. Das Angebot in Etsy öffnen und die Adresse kopieren (`https://www.etsy.com/de/listing/…`).
 2. In `src/data/products.json` beim Produkt das Feld `etsyUrl` füllen. Nur Adressen, die mit `https://www.etsy.com/` beginnen, werden angenommen.
-3. `npm test`. Der Knopf führt dann direkt zum Angebot („Auf Etsy ansehen"), und die Seite meldet den Preis an Suchmaschinen. Solange `etsyUrl` leer ist, führt der Knopf zum Etsy-Shop (`etsyShopUrl` ganz oben in der Datei).
+3. `npm test`. Der Knopf führt dann direkt zum Angebot („Auf Etsy ansehen"), und die Angebots-URL im Produkt-Schema wechselt von der Produktseite auf das Etsy-Angebot. Den Preis meldet die Seite schon vorher an Suchmaschinen (sobald `priceNumeric` gesetzt ist). Solange `etsyUrl` leer ist, führt der Knopf zum Etsy-Shop (`etsyShopUrl` ganz oben in der Datei).
 4. Produkte mit Preis „auf Anfrage" (Auftragsdruck, zurzeit `custom-fonts`) bekommen keinen Etsy-Link; ihr Knopf führt zur Auftragsdruck-Seite.
 
 ### Journal-Artikel schreiben

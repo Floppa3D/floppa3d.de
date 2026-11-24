@@ -1,0 +1,33 @@
+# Floppa3D
+
+> Floppa3D ist ein 3D-Druck-Studio (Floppa3D GbR) in Neufahrn bei Freising, Bayern. Wir drucken Deko, personalisierte Buchstaben und Einzelstücke per Auftragsdruck aus PLA und PETG, jedes Stück erst auf Bestellung. Der Verkauf läuft über Etsy, Versand nur innerhalb Deutschlands.
+
+## Shop und Produkte
+
+- [Shop](https://floppa3d.de/shop.html): alle Stücke mit Filter nach Kategorie und Material
+- [Swirl Tree – Gedrehter Mini-Tannenbaum](https://floppa3d.de/produkte/swirl-tree.html)
+- [Glow House – Lichthaus für LED-Kerzen](https://floppa3d.de/produkte/glow-house.html)
+- [Custom Fonts – Personalisierte Schriftzüge](https://floppa3d.de/produkte/custom-fonts.html)
+
+## Auftragsdruck und Material
+
+- [Auftragsdruck](https://floppa3d.de/auftragsdruck.html): Einzelstücke, Kleinserien und Prototypen aus dem 3D-Drucker
+- [Material und Nachhaltigkeit](https://floppa3d.de/material.html): Eigenschaften und Grenzen von PLA und PETG
+
+## Über uns und Kontakt
+
+- [Über uns](https://floppa3d.de/about.html): wer hinter Floppa3D steckt
+- [FAQ](https://floppa3d.de/faq.html): Versand, Materialien, Pflege, Sonderwünsche
+- [Kontakt](https://floppa3d.de/kontakt.html): management@floppa3d.de
+
+## Journal
+
+- [PLA oder PETG – welcher Topf passt zu Ihnen?](https://floppa3d.de/journal/pla-vs-petg.html)
+- [3D-gedruckte Deko richtig pflegen](https://floppa3d.de/journal/3d-druck-deko-pflegen.html)
+- [Journal-Übersicht](https://floppa3d.de/journal/index.html)
+
+## Rechtliches
+
+- [Impressum](https://floppa3d.de/impressum.html)
+- [Datenschutz](https://floppa3d.de/datenschutz.html)
+- [AGB](https://floppa3d.de/agb.html)

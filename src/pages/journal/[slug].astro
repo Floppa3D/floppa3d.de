@@ -2,6 +2,8 @@
 // Journal-Artikel: Rahmen (Hero + Artikelbereich) um den Markdown-Text.
 import { getCollection, render } from 'astro:content';
 import Basis from '../../layouts/Basis.astro';
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../../data/site';
+import { ORG_ID } from '../../lib/jsonld';
 
 export async function getStaticPaths() {
   const artikel = await getCollection('journal');
@@ -9,16 +11,42 @@ export async function getStaticPaths() {
 }
 
 const { eintrag } = Astro.props;
-const { title, description, eyebrow, lead } = eintrag.data;
+const { title, description, eyebrow, lead, datum, aktualisiert } = eintrag.data;
 const { Content } = await render(eintrag);
 // Überschrift = Titel mit Schlusspunkt (Fragezeichen bleibt)
 const headline = /[.?!]$/.test(title) ? title : `${title}.`;
+const url = `${SITE_URL}/journal/${eintrag.id}.html`;
+// Daten nur ausgeben, wenn sie im Frontmatter stehen (JJJJ-MM-TT)
+const posting: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': `${url}#artikel`,
+  headline: title,
+  description,
+  image: DEFAULT_OG_IMAGE,
+  inLanguage: 'de-DE',
+  author: { '@id': ORG_ID },
+  publisher: { '@id': ORG_ID },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+};
+if (datum) posting.datePublished = datum;
+if (aktualisiert || datum) posting.dateModified = aktualisiert ?? datum;
+const brotkrumen = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Start', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Journal', item: `${SITE_URL}/journal/index.html` },
+    { '@type': 'ListItem', position: 3, name: title },
+  ],
+};
 ---
 <Basis
   title={title}
   description={description}
   path={`journal/${eintrag.id}.html`}
   ogType="article"
+  jsonLd={[posting, brotkrumen]}
 >
 <!-- HERO -->
 <section class="hero section--tight">

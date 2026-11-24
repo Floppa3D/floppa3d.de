@@ -7,6 +7,7 @@ import ProductColors from '../../components/ProductColors.astro';
 import EtsyCta from '../../components/EtsyCta.astro';
 import StickyCta from '../../components/StickyCta.astro';
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../../data/site';
+import { OG_WIDTH, OG_HEIGHT } from '../../data/site';
 import { alleProdukte, kiProBild, relatedProducts, productJsonLd, breadcrumbJsonLd, type Product } from '../../lib/produkt';
 
 export async function getStaticPaths() {
@@ -24,7 +25,8 @@ interface Props {
 
 const { product, related } = Astro.props;
 const first = product.images && product.images[0];
-const ogImage = first ? `${SITE_URL}/assets/products/${first}` : DEFAULT_OG_IMAGE;
+// Eigene Vorschaukarte je Produkt (tools/make-product-og.mjs), sonst Standardkarte
+const ogImage = first ? `${SITE_URL}/assets/og/produkt-${product.slug}.jpg` : DEFAULT_OG_IMAGE;
 const absaetze = (product.longDescription || '').split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
 const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') : '';
 ---
@@ -34,6 +36,9 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
   path={`produkte/${product.slug}.html`}
   ogType="product"
   ogImage={ogImage}
+  ogImageWidth={OG_WIDTH}
+  ogImageHeight={OG_HEIGHT}
+  ogImageAlt={`${product.name} – ${product.price}`}
   jsonLd={[productJsonLd(product), breadcrumbJsonLd(product)]}
 >
 <article class="product">

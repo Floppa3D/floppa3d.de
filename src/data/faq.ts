@@ -6,8 +6,8 @@ export const faqSections = [
     "label": "Versand und Lieferung",
     "items": [
       {
-        "q": "Wohin verschickt ihr?",
-        "a": "Aktuell verschicken wir ausschließlich innerhalb Deutschlands. Eine Erweiterung in weitere Länder ist geplant."
+        "q": "Wohin verschickt ihr? Liefert ihr ins Ausland?",
+        "a": "Wir verschicken aktuell ausschließlich innerhalb Deutschlands, per DHL. Bestellungen in andere Länder sind derzeit nicht möglich; eine Erweiterung auf weitere Länder ist geplant."
       },
       {
         "q": "Wie lange dauert der Versand?",
@@ -36,6 +36,10 @@ export const faqSections = [
         "a": "Alle Objekte werden mit einem feuchten Tuch gereinigt. Weder PLA noch PETG sind spülmaschinenfest. Vermeiden Sie bei PLA-Stücken direkte Sonneneinstrahlung und Temperaturen über 60 °C – das Material verliert sonst seine Form."
       },
       {
+        "q": "Kann ich echte Kerzen ins Glow House stellen?",
+        "a": "Nein, ins Glow House gehören nur LED-Kerzen, die nicht heiß werden, niemals echte Kerzen oder Teelichter. Das Haus ist aus PLA gedruckt, und PLA wird ab etwa 55–60 °C weich. Die LED-Kerze ist nicht im Lieferumfang enthalten; verkauft wird nur das Haus (ca. 6,9 × 5,1 × 6,3 cm)."
+      },
+      {
         "q": "Sind die Blumentöpfe für draußen geeignet?",
         "a": "Unsere Blumentöpfe werden aus PETG gedruckt und sind für überdachte Außenbereiche (Balkon, Terrasse) ausgelegt. PETG ist feuchtigkeitsbeständig und gegenüber UV-Strahlung deutlich stabiler als PLA – bei dauerhafter direkter Sonneneinstrahlung kann es allerdings langfristig zu Farbveränderungen kommen. Bei extremen Minusgraden empfehlen wir, empfindlichere Stücke ins Innere zu holen."
       }
@@ -52,6 +56,14 @@ export const faqSections = [
       {
         "q": "Bieten Sie Maßanfertigungen an?",
         "a": "Für Sondermaße und individuelle Projekte nehmen wir uns gerne Zeit. Schreiben Sie uns über das <a href=\"/kontakt.html\">Kontaktformular</a> mit einer kurzen Beschreibung Ihres Vorhabens. Kleine Anpassungen bestehender Modelle sind meist unkompliziert möglich."
+      },
+      {
+        "q": "Wie groß kann ein Buchstabe sein?",
+        "a": "Ein Buchstabe lässt sich in einem Stück bis etwa 25 cm drucken. Das ist der Bauraum unseres Druckers, einer Prusa CORE One mit 250 × 220 × 270 mm (Breite × Tiefe × Höhe); je nach Form und Druckrichtung ist es etwas weniger oder mehr. Größere Buchstaben drucken wir in mehreren Teilen und setzen sie zusammen."
+      },
+      {
+        "q": "Wo sitzt Floppa3D?",
+        "a": "Floppa3D sitzt in Neufahrn bei Freising in Bayern und wurde von Florian Kindler und Paul Breitsprecher gegründet. Dort drucken wir alle Stücke in unserer Werkstatt. Verkauft wird online über Etsy, verschickt wird per DHL innerhalb Deutschlands. Mehr über uns finden Sie auf der <a href=\"/about.html\">Über-uns-Seite</a>."
       },
       {
         "q": "Warum verkaufen Sie über Etsy und nicht direkt?",

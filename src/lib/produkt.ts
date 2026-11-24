@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { getCollection } from 'astro:content';
 import { SITE_URL } from '../data/site';
+import { ORG_ID } from './jsonld';
 import { etsyShopUrl, safeUrl } from './etsy';
 import data from '../data/products.json';
 
@@ -127,28 +128,43 @@ export function relatedProducts(current: Product, all: Product[]): Product[] {
   return all.filter((p) => p.slug !== current.slug).slice(0, 3);
 }
 
-/** JSON-LD Product (offers nur mit Etsy-Link und Zahlenpreis). */
+/** Adresse der Produktseite. */
+export function produktUrl(slug: string): string {
+  return `${SITE_URL}/produkte/${slug}.html`;
+}
+
+/** JSON-LD Product. offers gibt es immer, sobald ein Zahlenpreis (priceNumeric) gepflegt ist;
+    "ab …"-Preise werden zum AggregateOffer. Ohne Etsy-Link zeigt die Angebots-URL auf die Produktseite.
+    Bewusst ohne review/aggregateRating und ohne Versandpreis (es gibt keinen festen Wert). */
 export function productJsonLd(product: Product) {
+  const seite = produktUrl(product.slug);
   const data: Record<string, unknown> = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
+    '@id': `${seite}#product`,
     name: product.name,
     description: product.shortDescription,
     image: (product.images || []).map((i) => `${SITE_URL}/assets/products/${i}`),
+    sku: product.modelId,
     brand: { '@type': 'Brand', name: 'Floppa3D' },
     category: product.categoryLabel,
     material: product.material,
-    url: `${SITE_URL}/produkte/${product.slug}.html`,
+    url: seite,
   };
-  const href = liveEtsyHref(product);
-  if (href && product.priceNumeric) {
-    data.offers = {
-      '@type': 'Offer',
-      price: product.priceNumeric,
+  if (product.priceNumeric) {
+    const gemeinsam = {
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
-      url: href,
+      url: liveEtsyHref(product) ?? seite,
+      seller: { '@id': ORG_ID },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'DE' },
+      },
     };
+    data.offers = /^\s*ab(\s|$)/i.test(product.price)
+      ? { '@type': 'AggregateOffer', lowPrice: product.priceNumeric, ...gemeinsam }
+      : { '@type': 'Offer', price: product.priceNumeric, ...gemeinsam };
   }
   return data;
 }
