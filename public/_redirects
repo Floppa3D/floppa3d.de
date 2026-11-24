@@ -12,3 +12,17 @@
 /material /material.html 301
 /journal /journal/index.html 301
 /journal/ /journal/index.html 301
+
+# Entfernte Produkte (2026-11) leiten auf den Shop
+/produkte/nordic-flow.html /shop.html 301
+/produkte/nordic-flow /shop.html 301
+/produkte/stack-pot.html /shop.html 301
+/produkte/stack-pot /shop.html 301
+/produkte/leaf-dock.html /shop.html 301
+/produkte/leaf-dock /shop.html 301
+/produkte/luma-arch.html /shop.html 301
+/produkte/luma-arch /shop.html 301
+/produkte/cozy-bunny.html /shop.html 301
+/produkte/cozy-bunny /shop.html 301
+/produkte/orbit-key-tray.html /shop.html 301
+/produkte/orbit-key-tray /shop.html 301

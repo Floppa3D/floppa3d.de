@@ -36,7 +36,7 @@ function pruefeSlugs(): void {
   (data.products as Array<{ slug?: unknown; name?: unknown }>).forEach((p, i) => {
     const wer = `Produkt Nr. ${i + 1}${typeof p.name === 'string' && p.name ? ` („${p.name}")` : ''}`;
     if (typeof p.slug !== 'string' || !p.slug.trim()) {
-      throw new Error(`src/data/products.json: ${wer} hat kein Feld "slug". Jedes Produkt braucht einen eigenen slug (die Adresse, z. B. "nordic-flow").`);
+      throw new Error(`src/data/products.json: ${wer} hat kein Feld "slug". Jedes Produkt braucht einen eigenen slug (die Adresse, z. B. "swirl-tree").`);
     }
     if (gesehen.has(p.slug)) {
       throw new Error(`src/data/products.json: Der slug "${p.slug}" kommt doppelt vor (Produkt Nr. ${gesehen.get(p.slug)} und ${wer}). Jeder slug darf nur einmal vergeben sein.`);
