@@ -24,7 +24,7 @@ order: 1
 <p><strong>Optik:</strong> PLA matt und detailscharf, PETG einen Hauch glänzender und robuster. Geschmackssache ist das nur drinnen – draußen entscheidet die Funktion.</p>
 
 <h2 class="serif">Unsere Empfehlung.</h2>
-<p>Für Schreibtisch, Regal und Fensterbrett ohne pralle Sonne: PLA-Stücke wie der «Luma Arch» oder der «Orbit Key Tray» – dort spielen Detailschärfe und matte Oberfläche ihre Stärken aus. Für alles, was gegossen wird oder auf Balkon und Terrasse (überdacht) steht: PETG-Töpfe wie der «Nordic Flow» oder der «StackPot». Bei extremen Minusgraden holen Sie empfindlichere Stücke besser ins Innere – Frost macht jeden Kunststoff spröder.</p>
+<p>Für Schreibtisch, Regal und Fensterbrett ohne pralle Sonne: PLA-Stücke wie unser gedrehter Mini-Tannenbaum oder das Lichthaus – dort spielen Detailschärfe und matte Oberfläche ihre Stärken aus. Für alles, was gegossen wird oder auf Balkon und Terrasse (überdacht) steht: PETG. Bei extremen Minusgraden holen Sie empfindlichere Stücke besser ins Innere – Frost macht jeden Kunststoff spröder.</p>
 
 <h2 class="serif">Noch ein Pflege-Hinweis.</h2>
 <p>Egal welches Material: Reinigen Sie Ihre Stücke mit einem leicht feuchten Tuch und lauwarmem Wasser, ohne aggressive oder scheuernde Mittel. Wie das im Detail geht – und was Sie bei Kratzern tun können – steht in unserem Beitrag <a href="/journal/3d-druck-deko-pflegen.html">3D-gedruckte Deko richtig pflegen</a>.</p>

@@ -4,7 +4,7 @@
 
 ## [Etsy] Angebots-Link je Produkt eintragen (je 1 Min)
 - **Stand:** Der Etsy-Shop ist live (`etsyShopUrl` ist gesetzt). Bis ein Produkt seinen eigenen Link hat, führt der Knopf auf der Produktseite zum Shop („Im Etsy-Shop ansehen"), und die Strukturdaten (JSON-LD) enthalten noch kein Preisangebot (`offers`).
-- **Was fehlt:** Die Adresse des einzelnen Angebots (Listing) für `nordic-flow`, `stack-pot`, `leaf-dock`, `luma-arch`, `cozy-bunny`, `orbit-key-tray`. `custom-fonts` ist Auftragsdruck („auf Anfrage") und verweist auf Kontakt/Auftragsdruck — dort keinen Etsy-Link eintragen.
+- **Was fehlt:** Die Adresse des einzelnen Angebots (Listing) für `swirl-tree` (Entwurf 4622107830), `glow-house` und `custom-fonts` (fertige Auswahl; der zweite Knopf führt weiter zum Auftragsdruck).
 - **Wo:** `src/data/products.json` → je Produkt `etsyUrl` (Format `https://www.etsy.com/de/listing/…`). Schritt für Schritt: README.md.
 - **Danach:** `npm test`, committen, Pull Request. Knopf („Auf Etsy ansehen") und `offers` schalten automatisch um.
 
@@ -23,7 +23,7 @@
 - **Schema:** `public/assets/products/<slug>/farbe-<name>.webp` (Name kleingeschrieben, Leerzeichen → `-`, Umlaute ae/oe/ue/ss; z. B. `farbe-sand-beige.webp`)
 - **Danach:** Committen, Pull Request. Beim Build bekommen die Farbfelder automatisch `data-img` (`src/components/ProductColors.astro`) und wechseln das Hauptbild.
 
-## [P6] GLB + USDZ für die sechs Etsy-Produkte exportieren (ca. 20 Min/Produkt)
+## [P6] GLB + USDZ für die Etsy-Produkte (Swirl Tree, Glow House) exportieren (ca. 20 Min/Produkt)
 - **Was fehlt:** 3D-Modelle unter `public/assets/models/<slug>.glb` (+ `.usdz` für iOS-AR)
 - **Anleitung:** `tools/README-3D.md` — der Viewer erscheint automatisch (Prüfung im Browser), sobald die Dateien liegen.
 

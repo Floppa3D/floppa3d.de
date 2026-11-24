@@ -496,9 +496,18 @@ function setupContactPrefill() {
 }
 
 /**
+ * Hinweisbanner oben: nach dem Zeitpunkt in data-bis ausblenden.
+ */
+function setupSiteBanner() {
+  const banner = document.querySelector('.site-banner[data-bis]');
+  if (banner && Date.now() >= Date.parse(banner.dataset.bis)) banner.hidden = true;
+}
+
+/**
  * Main initialization function
  */
 function init() {
+  setupSiteBanner();
   setupMobileNav();
   setupSmoothScroll();
   setupRevealObserver();

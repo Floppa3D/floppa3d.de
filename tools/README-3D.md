@@ -2,7 +2,7 @@
 
 Der Viewer auf den Produktseiten blendet sich automatisch ein, sobald unter
 `public/assets/models/<slug>.glb` ein Modell liegt (iOS-AR zusätzlich `<slug>.usdz`).
-Slugs: `nordic-flow`, `stack-pot`, `leaf-dock`, `luma-arch`, `cozy-bunny`, `orbit-key-tray` (`custom-fonts` ist Auftragsdruck, dafür gibt es kein Modell).
+Slugs: `swirl-tree`, `glow-house`, `custom-fonts`.
 
 ## Schritt für Schritt (ca. 20 Min pro Produkt)
 

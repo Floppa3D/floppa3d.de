@@ -28,7 +28,7 @@ const PAGES = [
   ['kontakt', '/kontakt.html'],
   ['faq', '/faq.html'],
   ['material', '/material.html'],
-  ['produkt', '/produkte/nordic-flow.html'],
+  ['produkt', '/produkte/swirl-tree.html'],
   ['impressum', '/impressum.html'],
   ['journal', '/journal/index.html'],
 ];

@@ -10,6 +10,19 @@
    1. SITE HEADER
    ============================================================================= */
 
+/* Hinweisbanner über dem Kopf (Neustart) */
+.site-banner {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  text-align: center;
+  padding-block: var(--space-2);
+}
+.site-banner p {
+  margin: 0;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -1646,7 +1659,8 @@ html.nav-open {
 /* Per-category background images */
 .category-tile--blumen        { background-image: url('/assets/categories/category-blumen.webp'); }
 .category-tile--organisation  { background-image: url('/assets/categories/category-organisation.webp'); }
-.category-tile--deko          { background-image: url('/assets/categories/category-deko.webp'); }
+.category-tile--deko          { background-image: url('/assets/products/swirl-tree/02.webp'); }
+.category-tile--auftragsdruck { background-image: url('/assets/video/hero-timelapse-poster.webp'); background-position: center top; }
 
 .category-tile__image {
   position: absolute;

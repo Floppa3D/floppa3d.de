@@ -21,7 +21,7 @@ const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
     `<rect x="64" y="${418 + i * 30}" width="${380 - i * 48}" height="12" rx="6" fill="${ACCENT}" opacity="${0.95 - i * 0.16}"/>`
   ).join('')}
   <text x="64" y="210" font-family="Georgia, 'Times New Roman', serif" font-size="86" font-weight="700" fill="${FG}">Floppa3D</text>
-  <text x="64" y="285" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="${MUTED}">3D-gedruckte Pflanztöpfe &amp; Deko · Made in Bavaria</text>
+  <text x="64" y="285" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="${MUTED}">3D-gedruckte Deko &amp; Auftragsdruck · Made in Bavaria</text>
   <text x="64" y="340" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="${ACCENT}">floppa3d.de</text>
 </svg>`;
 
