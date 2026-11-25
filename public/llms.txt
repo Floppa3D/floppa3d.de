@@ -22,7 +22,7 @@
 
 ## Journal
 
-- [PLA oder PETG – welcher Topf passt zu Ihnen?](https://floppa3d.de/journal/pla-vs-petg.html)
+- [PLA oder PETG – welches Material passt zu Ihrem Stück?](https://floppa3d.de/journal/pla-vs-petg.html)
 - [3D-gedruckte Deko richtig pflegen](https://floppa3d.de/journal/3d-druck-deko-pflegen.html)
 - [Journal-Übersicht](https://floppa3d.de/journal/index.html)
 
