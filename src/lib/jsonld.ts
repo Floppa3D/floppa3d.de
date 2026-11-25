@@ -4,7 +4,9 @@ import { etsyShopUrl } from './etsy';
 export const ORG_ID = `${SITE_URL}/#org`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
-const sameAs = ['https://www.instagram.com/floppa3d_ppstudio/'];
+// Google-Unternehmensprofil über die feste Knowledge-Graph-Kennung (share.google-Links leiten nur weiter).
+const GOOGLE_PROFIL = 'https://www.google.com/search?kgmid=/g/11zy5234dy';
+const sameAs = ['https://www.instagram.com/floppa3d_ppstudio/', GOOGLE_PROFIL];
 if (etsyShopUrl && etsyShopUrl.startsWith('https://www.etsy.com/')) sameAs.push(etsyShopUrl);
 
 /** Organisations-Block; das Layout hängt ihn an jede Seite. */
