@@ -25,7 +25,7 @@ export const faqSections = [
     "items": [
       {
         "q": "PLA oder PETG – was ist der Unterschied?",
-        "a": "PLA wird aus pflanzlichen Rohstoffen gewonnen und eignet sich für Innenobjekte. Es ist steif, detailscharf und matt in der Oberfläche. PETG ist ein technischer Kunststoff: schlagfester, feuchtigkeitsresistenter und deutlich UV-stabiler – deshalb unsere Wahl für Blumentöpfe und Außenobjekte."
+        "a": "PLA wird aus pflanzlichen Rohstoffen gewonnen und eignet sich für Innenobjekte. Es ist steif, detailscharf und matt in der Oberfläche. PETG ist ein technischer Kunststoff: schlagfester, feuchtigkeitsresistenter und deutlich UV-stabiler – deshalb unsere Wahl für Funktionsteile und Stücke für den überdachten Außenbereich im Auftragsdruck."
       },
       {
         "q": "Ist PLA kompostierbar?",
@@ -40,8 +40,8 @@ export const faqSections = [
         "a": "Nein, ins Glow House gehören nur LED-Kerzen, die nicht heiß werden, niemals echte Kerzen oder Teelichter. Das Haus ist aus PLA gedruckt, und PLA wird ab etwa 55–60 °C weich. Die LED-Kerze ist nicht im Lieferumfang enthalten; verkauft wird nur das Haus (ca. 6,9 × 5,1 × 6,3 cm)."
       },
       {
-        "q": "Sind die Blumentöpfe für draußen geeignet?",
-        "a": "Unsere Blumentöpfe werden aus PETG gedruckt und sind für überdachte Außenbereiche (Balkon, Terrasse) ausgelegt. PETG ist feuchtigkeitsbeständig und gegenüber UV-Strahlung deutlich stabiler als PLA – bei dauerhafter direkter Sonneneinstrahlung kann es allerdings langfristig zu Farbveränderungen kommen. Bei extremen Minusgraden empfehlen wir, empfindlichere Stücke ins Innere zu holen."
+        "q": "Sind eure Stücke für draußen geeignet?",
+        "a": "Unsere Deko ist aus PLA und für drinnen gedacht. Für draußen drucken wir im Auftrag aus PETG, ausgelegt für überdachte Außenbereiche (Balkon, Terrasse). PETG ist feuchtigkeitsbeständig und gegenüber UV-Strahlung deutlich stabiler als PLA – bei dauerhafter direkter Sonneneinstrahlung kann es allerdings langfristig zu Farbveränderungen kommen. Bei extremen Minusgraden empfehlen wir, empfindlichere Stücke ins Innere zu holen."
       }
     ]
   },
