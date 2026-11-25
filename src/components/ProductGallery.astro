@@ -14,6 +14,9 @@ const { images, name, slug, imageAlts, kiFlags = [] } = Astro.props;
 const ki = (i: number) => kiFlags[i] === true;
 const irgendKi = kiFlags.some(Boolean);
 // Alt-Text je Bild, sonst wie bisher der Produktname am ersten Bild
+// fetchpriority=high nur am Hauptbild: Desktop/Tablet zeigt .gallery__main, unter 480 px die Swipe-Galerie.
+// Das erste Swipe-Bild lädt eager ohne eigene Priorität; es hat dieselbe Adresse wie das Hauptbild,
+// der Browser holt die Datei also nur einmal (kein Doppel-Download, kein zweites high).
 const alt = (i: number) => imageAlts?.[i] ?? (i === 0 ? name : '');
 ---
 {images && images.length > 0 && (
@@ -31,7 +34,7 @@ const alt = (i: number) => imageAlts?.[i] ?? (i === 0 ? name : '');
   <div class="gallery__swipe">
     <div class="gallery__swipe-track">
       {images.map((img, i) => (
-        <figure class="gallery__swipe-slide"><Picture src={`/assets/products/${img}`} alt={alt(i)} priority={i === 0} />{ki(i) && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}</figure>
+        <figure class="gallery__swipe-slide"><Picture src={`/assets/products/${img}`} alt={alt(i)} {...(i === 0 ? { loading: 'eager' } : {})} />{ki(i) && <span class="ki-badge" aria-hidden="true">Mit KI verbessert</span>}</figure>
       ))}
     </div>
     {images.length > 1 && (

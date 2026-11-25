@@ -78,8 +78,10 @@ docs/                     diese Regeln, Analytics-Anleitung; docs/archiv/ = alte
 | `description` | string | Meta-Beschreibung |
 | `path` | string | Ausgabepfad ohne führenden Schrägstrich, z. B. `shop.html`; `''` für die Startseite |
 | `ogType` | string? | Standard `website` |
-| `ogImage` | string? | absolute Adresse; Standard Logo `full-on-light.png` |
-| `jsonLd` | object[]? | zusätzliche JSON-LD-Blöcke; Organisation hängt das Layout immer selbst an (zuerst) |
+| `ogImage` | string? | absolute Adresse; Standard `/assets/og/home.png` (1200×630); Produkte nutzen `/assets/og/produkt-<slug>.jpg` (`tools/make-product-og.mjs`) |
+| `ogImageWidth`/`ogImageHeight`/`ogImageAlt` | number?/string? | für `og:image:*`; beim Standardbild automatisch gesetzt |
+| `noindex` | boolean? | `<meta name="robots" content="noindex">` statt canonical (404) |
+| `jsonLd` | object[]? | zusätzliche JSON-LD-Blöcke; Organisation und WebSite hängt das Layout immer selbst an (zuerst) |
 
 Slot: Seiteninhalt (landet in `<main id="main">`). Benannter Slot `scripts` für zusätzliche
 Skript-Tags am Ende des `<body>` (zurzeit von keiner Seite genutzt).

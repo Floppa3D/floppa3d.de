@@ -4,7 +4,8 @@ import Basis from '../layouts/Basis.astro';
 ---
 <Basis
   title={"Material & Nachhaltigkeit"}
-  description={"Was PLA und PETG wirklich können: Eigenschaften, Grenzen und eine ehrliche Einordnung der Kompostierbarkeit. Produktion auf Bestellung statt Lager."}
+  titleTag={"PLA oder PETG? Material & Nachhaltigkeit | Floppa3D"}
+  description={"PLA und PETG im 3D-Druck: Hitze, Wasser, UV und Optik im Vergleich, ehrlich eingeordnet. Dazu Kompostierbarkeit und Druck auf Bestellung."}
   path="material.html"
   ogType="article"
 >
@@ -46,6 +47,33 @@ import Basis from '../layouts/Basis.astro';
 
 <hr class="section-divider section-divider--full">
 
+<!-- VERGLEICH -->
+<section class="section" aria-label="PLA und PETG im Vergleich">
+  <div class="container--narrow prose flow">
+    <p class="eyebrow">Auf einen Blick</p>
+    <h2 class="serif layer-reveal">PLA und PETG im Vergleich.</h2>
+<div class="vergleich">
+<table class="vergleich__tabelle">
+<caption>PLA und PETG im Vergleich</caption>
+<thead>
+<tr><td></td><th scope="col">PLA</th><th scope="col">PETG</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Rohstoff</th><td>aus pflanzlichen Rohstoffen wie Maisstärke</td><td>technischer Kunststoff, verwandt mit PET aus Getränkeflaschen</td></tr>
+<tr><th scope="row">Hitze</th><td>verformt sich ab ca. 55–60 °C</td><td>hält bis etwa 70–80 °C</td></tr>
+<tr><th scope="row">Wasser und Feuchte</th><td>übersteht Spritzer, keine dauerhafte Nässe</td><td>feuchtigkeitsbeständig</td></tr>
+<tr><th scope="row">Sonne und UV</th><td>direkte Sonne vermeiden</td><td>deutlich UV-stabiler; bei Dauersonne langfristig Farbveränderungen möglich</td></tr>
+<tr><th scope="row">Optik</th><td>matt, sehr detailscharf</td><td>etwas glänzender, feine Details minimal weicher</td></tr>
+<tr><th scope="row">Spülmaschine</th><td>nicht geeignet</td><td>nicht geeignet</td></tr>
+<tr><th scope="row">Einsatz bei Floppa3D</th><td>Deko und Organizer für drinnen</td><td>Blumentöpfe und Funktionsteile, überdachter Außenbereich</td></tr>
+</tbody>
+</table>
+</div>
+  </div>
+</section>
+
+<hr class="section-divider section-divider--full">
+
 <!-- PRODUKTION -->
 <section class="section" aria-label="Produktion auf Bestellung">
   <div class="container--narrow prose flow">
@@ -64,7 +92,7 @@ import Basis from '../layouts/Basis.astro';
   <div class="container--narrow flow">
     <p class="eyebrow">Weiterlesen</p>
     <h2 class="serif">Noch mehr Details?</h2>
-    <p class="lead">Im <a href="/journal/index.html">Journal</a> vergleichen wir PLA und PETG im Detail und zeigen, wie Sie 3D-gedruckte Stücke richtig pflegen. Konkrete Fragen beantwortet das <a href="/faq.html">FAQ</a>.</p>
+    <p class="lead">Im <a href="/journal/index.html">Journal</a> vergleichen wir <a href="/journal/pla-vs-petg.html">PLA und PETG im Detail</a> und zeigen, wie Sie 3D-gedruckte Stücke <a href="/journal/3d-druck-deko-pflegen.html">richtig pflegen</a>. Konkrete Fragen beantwortet das <a href="/faq.html">FAQ</a>.</p>
   </div>
 </section>
 </Basis>

@@ -5,6 +5,8 @@ eyebrow: "Material"
 lead: "Beide Materialien laufen bei uns durch dieselben Drucker – und trotzdem würden wir Ihnen nie denselben Topf für Fensterbrett und Balkon empfehlen. Hier ist der ehrliche Vergleich."
 teaser: "Die Kurzantwort gibt es im ersten Absatz, die ehrliche Langfassung danach: Wasser, Sonne, Hitze und Optik im direkten Vergleich – und welche Wahl für Fensterbrett oder Balkon die richtige ist."
 order: 1
+datum: "2026-11-15"
+aktualisiert: "2026-11-24"
 ---
 <h2 class="serif">Die Kurzantwort.</h2>
 <p>Steht das Stück drinnen und bleibt trocken: PLA. Kommt regelmäßig Wasser ins Spiel oder steht es auf dem (überdachten) Balkon: PETG. Wenn Sie sich nur einen Satz merken wollen, ist es dieser – alles Weitere sind die Gründe dahinter.</p>
@@ -18,13 +20,31 @@ order: 1
 <p>Der Preis dafür: PETG glänzt etwas mehr und bildet feine Details minimal weicher ab als PLA. Für Töpfe und Funktionsteile ist das egal, für filigrane Deko bevorzugen wir PLA.</p>
 
 <h2 class="serif">Der direkte Vergleich.</h2>
+<div class="vergleich">
+<table class="vergleich__tabelle">
+<caption>PLA und PETG im Vergleich</caption>
+<thead>
+<tr><td></td><th scope="col">PLA</th><th scope="col">PETG</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Rohstoff</th><td>aus pflanzlichen Rohstoffen wie Maisstärke</td><td>technischer Kunststoff, verwandt mit PET aus Getränkeflaschen</td></tr>
+<tr><th scope="row">Hitze</th><td>verformt sich ab ca. 55–60 °C</td><td>hält bis etwa 70–80 °C</td></tr>
+<tr><th scope="row">Wasser und Feuchte</th><td>übersteht Spritzer, keine dauerhafte Nässe</td><td>feuchtigkeitsbeständig</td></tr>
+<tr><th scope="row">Sonne und UV</th><td>direkte Sonne vermeiden</td><td>deutlich UV-stabiler; bei Dauersonne langfristig Farbveränderungen möglich</td></tr>
+<tr><th scope="row">Optik</th><td>matt, sehr detailscharf</td><td>etwas glänzender, feine Details minimal weicher</td></tr>
+<tr><th scope="row">Spülmaschine</th><td>nicht geeignet</td><td>nicht geeignet</td></tr>
+<tr><th scope="row">Einsatz bei Floppa3D</th><td>Deko und Organizer für drinnen</td><td>Blumentöpfe und Funktionsteile, überdachter Außenbereich</td></tr>
+</tbody>
+</table>
+</div>
+<p>Die Gründe im Einzelnen:</p>
 <p><strong>Wasser:</strong> PETG klar vorn. PLA übersteht Spritzer und gelegentliches Abwischen, dauerhafte Nässe gehört zu PETG.</p>
 <p><strong>Sonne/UV:</strong> PETG ist deutlich UV-stabiler als PLA. Aber auch hier bleiben wir ehrlich: Bei dauerhafter direkter Sonneneinstrahlung kann es langfristig zu Farbveränderungen kommen – „UV-stabiler" heißt nicht „unverwüstlich".</p>
 <p><strong>Hitze:</strong> PLA verformt sich ab ca. 55–60 °C, PETG hält bis etwa 70–80 °C durch. Spülmaschine und Mikrowelle sind für beide tabu.</p>
 <p><strong>Optik:</strong> PLA matt und detailscharf, PETG einen Hauch glänzender und robuster. Geschmackssache ist das nur drinnen – draußen entscheidet die Funktion.</p>
 
 <h2 class="serif">Unsere Empfehlung.</h2>
-<p>Für Schreibtisch, Regal und Fensterbrett ohne pralle Sonne: PLA-Stücke wie unser gedrehter Mini-Tannenbaum oder das Lichthaus – dort spielen Detailschärfe und matte Oberfläche ihre Stärken aus. Für alles, was gegossen wird oder auf Balkon und Terrasse (überdacht) steht: PETG. Bei extremen Minusgraden holen Sie empfindlichere Stücke besser ins Innere – Frost macht jeden Kunststoff spröder.</p>
+<p>Für Schreibtisch, Regal und Fensterbrett ohne pralle Sonne: PLA-Stücke wie unser gedrehter Mini-Tannenbaum <a href="/produkte/swirl-tree.html">Swirl Tree</a> oder das <a href="/produkte/glow-house.html">Glow House</a> – dort spielen Detailschärfe und matte Oberfläche ihre Stärken aus. Für alles, was gegossen wird oder auf Balkon und Terrasse (überdacht) steht: PETG. Bei extremen Minusgraden holen Sie empfindlichere Stücke besser ins Innere – Frost macht jeden Kunststoff spröder. Brauchen Sie ein Einzelstück und sind beim Material unsicher, beraten wir Sie im <a href="/auftragsdruck.html">Auftragsdruck</a> zur Wahl zwischen PLA und PETG.</p>
 
 <h2 class="serif">Noch ein Pflege-Hinweis.</h2>
 <p>Egal welches Material: Reinigen Sie Ihre Stücke mit einem leicht feuchten Tuch und lauwarmem Wasser, ohne aggressive oder scheuernde Mittel. Wie das im Detail geht – und was Sie bei Kratzern tun können – steht in unserem Beitrag <a href="/journal/3d-druck-deko-pflegen.html">3D-gedruckte Deko richtig pflegen</a>.</p>
