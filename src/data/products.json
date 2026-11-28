@@ -71,16 +71,16 @@
       "colors": ["Weiß", "Schwarz", "Rot", "Gold", "Silber", "Grün", "Blau"],
       "farbwahl": false,
       "images": [
-        "swirl-tree/01.png",
-        "swirl-tree/02.png",
-        "swirl-tree/03.png",
-        "swirl-tree/04.png",
-        "swirl-tree/05.png",
-        "swirl-tree/06.png",
-        "swirl-tree/07.png",
-        "swirl-tree/08.png",
-        "swirl-tree/09.png",
-        "swirl-tree/10.png"
+        "swirl-tree/foto-gruppe-sieben-baeume.png",
+        "swirl-tree/foto-drei-grosse-baeume.png",
+        "swirl-tree/uebersicht-klein.png",
+        "swirl-tree/uebersicht-mittel.png",
+        "swirl-tree/uebersicht-gross.png",
+        "swirl-tree/foto-schwarz-gross.png",
+        "swirl-tree/foto-rot-fuzzy.png",
+        "swirl-tree/foto-rot-fuzzy-seite.png",
+        "swirl-tree/foto-drei-kleine-baeume.png",
+        "swirl-tree/foto-rot-weiss-klein.png"
       ],
       "imageAlts": [
         "Echtes Foto: sieben gedrehte Weihnachtsbäume in Grün, Schwarz, Rot, Gold, Silber und Rot-Weiß auf einer roten Tischdecke",
@@ -91,21 +91,21 @@
         "Echtes Foto: einzelner schwarzer gedrehter Weihnachtsbaum",
         "Echtes Foto: roter Weihnachtsbaum mit fein aufgerauter Oberfläche",
         "Echtes Foto: roter Weihnachtsbaum mit fein aufgerauter Oberfläche von der Seite",
-        "Echtes Foto: kleiner rot-weiß gestreifter Weihnachtsbaum",
-        "Echtes Foto: drei kleine Weihnachtsbäume in Rot-Weiß, Rot und Silber"
+        "Echtes Foto: drei kleine Weihnachtsbäume in Rot-Weiß, Rot und Silber",
+        "Echtes Foto: kleiner rot-weiß gestreifter Weihnachtsbaum"
       ],
       "etsyUrl": "",
       "tags": ["deko", "weihnachten", "tannenbaum", "set", "pla", "indoor"],
       "featured": true,
       "kiBilder": true,
       "echteBilder": [
-        "swirl-tree/01.png",
-        "swirl-tree/02.png",
-        "swirl-tree/06.png",
-        "swirl-tree/07.png",
-        "swirl-tree/08.png",
-        "swirl-tree/09.png",
-        "swirl-tree/10.png"
+        "swirl-tree/foto-gruppe-sieben-baeume.png",
+        "swirl-tree/foto-drei-grosse-baeume.png",
+        "swirl-tree/foto-schwarz-gross.png",
+        "swirl-tree/foto-rot-fuzzy.png",
+        "swirl-tree/foto-rot-fuzzy-seite.png",
+        "swirl-tree/foto-drei-kleine-baeume.png",
+        "swirl-tree/foto-rot-weiss-klein.png"
       ]
     },
     {
@@ -131,17 +131,17 @@
       "colors": ["Metallic Rot", "Schwarz", "Gold", "Weiß", "Silber", "Grün", "Königsblau", "Aprikose", "Beige"],
       "farbwahl": false,
       "images": [
-        "glow-house/01.png",
-        "glow-house/02.png",
-        "glow-house/03.png",
-        "glow-house/04.png",
-        "glow-house/05.png",
-        "glow-house/06.png",
-        "glow-house/07.png",
-        "glow-house/08.png",
-        "glow-house/09.png",
-        "glow-house/10.png",
-        "glow-house/11.png"
+        "glow-house/szene-alle-modelle.png",
+        "glow-house/uebersicht-modelle-farben.png",
+        "glow-house/regal-alle-farben.png",
+        "glow-house/classic-farbreihe.png",
+        "glow-house/simple-farbreihe.png",
+        "glow-house/foto-set-vier-modelle.png",
+        "glow-house/foto-simple-glowhouse.png",
+        "glow-house/foto-classic-glowhouse.png",
+        "glow-house/foto-townhouse.png",
+        "glow-house/foto-lighthouse-leuchtend.png",
+        "glow-house/foto-lighthouse.png"
       ],
       "imageAlts": [
         "Die vier Glow-House-Modelle mit leuchtenden Fenstern auf einer Holzscheibe zwischen Tannenzweigen: silbernes Simple Glowhouse, goldenes Townhouse, goldener Lighthouse und rotes Classic Glowhouse",
@@ -150,23 +150,23 @@
         "Zehn Classic Glowhouses in verschiedenen Farben mit leuchtenden Fenstern auf einer Holzscheibe",
         "Zehn Simple Glowhouses in verschiedenen Farben mit leuchtenden Fenstern vor einem Holzstern",
         "Echtes Foto: goldener Lighthouse, goldenes Townhouse, silbernes Simple Glowhouse und rotes Classic Glowhouse auf einer roten Tischdecke",
-        "Echtes Foto: goldener Lighthouse von vorne auf einer roten Tischdecke",
-        "Echtes Foto: goldener Lighthouse mit leuchtender LED-Kerze in der Laterne",
-        "Echtes Foto: goldenes Townhouse mit leuchtenden Fenstern",
         "Echtes Foto: silbernes Simple Glowhouse mit leuchtenden Fenstern",
-        "Echtes Foto: rotes Classic Glowhouse mit leuchtenden Fenstern"
+        "Echtes Foto: rotes Classic Glowhouse mit leuchtenden Fenstern",
+        "Echtes Foto: goldenes Townhouse mit leuchtenden Fenstern",
+        "Echtes Foto: goldener Lighthouse mit leuchtender LED-Kerze in der Laterne",
+        "Echtes Foto: goldener Lighthouse von vorne auf einer roten Tischdecke"
       ],
       "etsyUrl": "",
       "tags": ["deko", "weihnachten", "haus", "leuchtturm", "set", "led", "pla", "indoor"],
       "featured": true,
       "kiBilder": true,
       "echteBilder": [
-        "glow-house/06.png",
-        "glow-house/07.png",
-        "glow-house/08.png",
-        "glow-house/09.png",
-        "glow-house/10.png",
-        "glow-house/11.png"
+        "glow-house/foto-set-vier-modelle.png",
+        "glow-house/foto-simple-glowhouse.png",
+        "glow-house/foto-classic-glowhouse.png",
+        "glow-house/foto-townhouse.png",
+        "glow-house/foto-lighthouse-leuchtend.png",
+        "glow-house/foto-lighthouse.png"
       ]
     }
   ]

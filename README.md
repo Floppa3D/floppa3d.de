@@ -86,6 +86,7 @@ Man muss Astro nicht kennen. Texte und Produkte stehen in normalen Textdateien (
 
 ### Bild oder Video ablegen
 - Bilder nach `public/assets/…` (Produkte: `public/assets/products/<slug>/`). Zu jeder PNG die WebP-Version mit `node tools/optimize-images.mjs` erzeugen. Große Originale, die nur als WebP gebraucht werden (Kategorie- und Hero-Bilder), kommen nach `quellen/bilder/<Unterordner>/`; das Skript schreibt die WebP dann nach `public/assets/<Unterordner>/`.
+- Bilder austauschen: neue Bilder immer unter **neuen Dateinamen** ablegen (sprechend, z. B. `foto-townhouse.png`), nie alte Dateien unter demselben Namen überschreiben. `/assets/*` darf laut `public/_headers` einen Tag im Browser liegen und bis zu sieben Tage veraltet weiter gezeigt werden; unter altem Namen sehen Besucher sonst noch tagelang die alten Bilder.
 - Hero-Video der Auftragsdruck-Seite (`src/pages/auftragsdruck.astro`, `.hero--video`): vier Dateien in `public/assets/video/`: `hero-timelapse.mp4` (1920×1080), `hero-timelapse-720.mp4` (1280×720, für Bildschirme unter 768 px), dazu die Standbilder `hero-timelapse-poster.webp` und `hero-timelapse-poster-720.webp`. Die Standbilder sind der Hero-Hintergrund dieser Seite (auch ohne JavaScript und bei Reduced-Motion, dort startet das Video erst per Knopf „Zeitraffer abspielen“). Austauschen mit ffmpeg (Quelle ohne Ton, Standbild bei Sekunde 4,5; Video unter 15 MB):
   ```
   ffmpeg -i quelle.mp4 -an -c:v libx264 -preset slow -crf 24 -profile:v high -pix_fmt yuv420p -movflags +faststart hero-timelapse.mp4
