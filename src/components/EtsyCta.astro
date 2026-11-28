@@ -7,15 +7,18 @@ interface Props {
 }
 
 const { product } = Astro.props;
-const href = liveEtsyHref(product);
-const shopHref = shopEtsyHref();
+// baldVerfuegbar: noch kein Kauf möglich, also auch keine Etsy-Links
+const bald = product.baldVerfuegbar === true;
+const href = bald ? null : liveEtsyHref(product);
+const shopHref = bald ? null : shopEtsyHref();
 // Auftragsdruck: Einzelangebot, sonst Etsy-Shop
 const etsyTarget = href ?? shopHref;
 ---
 {product.category === 'auftragsdruck' ? (
 <>
-<p class="text-sm text-muted">{etsyTarget ? 'Fertige Auswahl auf Etsy, alles andere per Auftragsdruck.' : 'Anfragen und Bestellung über Auftragsdruck-Service.'}</p>
+<p class="text-sm text-muted">{bald ? 'Die fertige Auswahl ist bald auf Etsy verfügbar. Individuelle Wünsche schon jetzt per Auftragsdruck.' : etsyTarget ? 'Fertige Auswahl auf Etsy, alles andere per Auftragsdruck.' : 'Anfragen und Bestellung über Auftragsdruck-Service.'}</p>
 <div class="cta-pair">
+{bald && <span class="btn btn--primary is-coming-soon" aria-disabled="true">Bald verfügbar</span>}
 {etsyTarget && (
 <a class="btn btn--primary" href={etsyTarget} target="_blank" rel="noopener noreferrer">
   <span>Fertige Auswahl auf Etsy</span>
@@ -24,8 +27,8 @@ const etsyTarget = href ?? shopHref;
   </svg>
 </a>
 )}
-<a class={etsyTarget ? 'btn btn--ghost' : 'btn btn--primary'} href="/auftragsdruck.html">
-  <span>{etsyTarget ? 'Individuell per Auftragsdruck' : 'Zur Auftragsdruck-Seite'}</span>
+<a class={etsyTarget || bald ? 'btn btn--ghost' : 'btn btn--primary'} href="/auftragsdruck.html">
+  <span>{etsyTarget || bald ? 'Individuell per Auftragsdruck' : 'Zur Auftragsdruck-Seite'}</span>
 </a>
 </div>
 <a class="etsy-hint text-sm" href="/kontakt.html">Direkter Kontakt →</a>
@@ -55,7 +58,7 @@ const etsyTarget = href ?? shopHref;
 ) : (
 <>
 <p class="text-sm text-muted">Der Verkauf startet in Kürze über Etsy.</p>
-<span class="btn btn--primary is-coming-soon" aria-disabled="true">Bald auf Etsy verfügbar</span>
+<span class="btn btn--primary is-coming-soon" aria-disabled="true">Bald verfügbar</span>
 <a class="etsy-hint text-sm" href="/kontakt.html">Frage vorab stellen →</a>
 </>
 )}
