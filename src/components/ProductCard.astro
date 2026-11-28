@@ -25,6 +25,6 @@ const filter = filterAttrs
     <div class="product-card__body">
       <p class="eyebrow">{p.categoryLabel} · {p.material}</p>
       <h3 class="product-card__title serif">{p.name}</h3>
-      <p class="product-card__price">{p.price}</p>
+      <p class="product-card__price">{p.baldVerfuegbar ? 'Bald verfügbar' : p.price}</p>
     </div>
   </a>

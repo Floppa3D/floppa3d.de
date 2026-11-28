@@ -10,19 +10,6 @@
    1. SITE HEADER
    ============================================================================= */
 
-/* Hinweisbanner über dem Kopf (Neustart) */
-.site-banner {
-  background-color: var(--color-fg);
-  color: var(--color-bg);
-  font-size: var(--fs-sm);
-  line-height: 1.4;
-  text-align: center;
-  padding-block: var(--space-2);
-}
-.site-banner p {
-  margin: 0;
-}
-
 .site-header {
   position: sticky;
   top: 0;

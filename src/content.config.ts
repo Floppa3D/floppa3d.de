@@ -24,6 +24,7 @@ const products = defineCollection({
     longDescription: z.string().min(1),
     details: z.record(z.string(), z.string()),
     colors: z.array(z.string().min(1)),
+    baldVerfuegbar: z.boolean().optional(), // true: noch nicht kaufbar, Etsy-Knöpfe zeigen "Bald verfügbar"
     farbwahl: z.boolean().optional(), // false: Farben nur anzeigen (Auswahl erfolgt auf Etsy), Standard true = anklickbare Swatches
     images: z.array(z.string().min(1)),
     imageAlts: z.array(z.string().min(1)).optional(), // Alt-Texte je Bild, gleiche Reihenfolge wie images; ohne Angabe gilt der Produktname

@@ -18,6 +18,7 @@
         "Fertige Auswahl": "Größen, Farben und Schriftarten im Etsy-Shop",
         "Größe": "Ein Buchstabe in einem Stück bis etwa 25 cm (Bauraum 250 × 220 × 270 mm); größere Buchstaben in mehreren Teilen, zusammengesetzt"
       },
+      "baldVerfuegbar": true,
       "colors": ["Frei wählbar"],
       "images": [
         "custom-fonts/f-einzeln-weiss.png",

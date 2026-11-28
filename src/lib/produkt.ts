@@ -21,6 +21,7 @@ export interface Product {
   details: Record<string, string>;
   colors: string[];
   farbwahl?: boolean;
+  baldVerfuegbar?: boolean;
   images: string[];
   imageAlts?: string[];
   tags: string[];
