@@ -37,7 +37,7 @@ export const faqSections = [
       },
       {
         "q": "Kann ich echte Kerzen ins Glow House stellen?",
-        "a": "Nein, ins Glow House gehören nur LED-Kerzen, die nicht heiß werden, niemals echte Kerzen oder Teelichter. Das Haus ist aus PLA gedruckt, und PLA wird ab etwa 55–60 °C weich. Die LED-Kerze ist nicht im Lieferumfang enthalten; verkauft wird nur das Haus (ca. 6,9 × 5,1 × 6,3 cm)."
+        "a": "Nein, ins Glow House gehören nur LED-Kerzen, die nicht heiß werden, niemals echte Kerzen oder Teelichter. Das Haus ist aus PLA gedruckt, und PLA wird ab etwa 55–60 °C weich. Die LED-Kerze ist nicht im Lieferumfang enthalten; verkauft werden nur die Häuser."
       },
       {
         "q": "Sind eure Stücke für draußen geeignet?",

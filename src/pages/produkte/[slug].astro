@@ -89,7 +89,7 @@ const poster = first ? `/assets/products/${first}`.replace(/\.png$/i, '.webp') :
           )}
         </section>
 
-        <ProductColors colors={product.colors} slug={product.slug} />
+        <ProductColors colors={product.colors} slug={product.slug} farbwahl={product.farbwahl !== false} />
 
         <section class="product__cta" aria-label="Kauf">
           <p class="product__price serif">{product.price}</p>

@@ -20,6 +20,7 @@ export interface Product {
   longDescription: string;
   details: Record<string, string>;
   colors: string[];
+  farbwahl?: boolean;
   images: string[];
   imageAlts?: string[];
   tags: string[];
@@ -92,6 +93,10 @@ const COLOR_HEX: Record<string, string> = {
   'Blau': '#1F3FA0',
   'Pink-Beige': '#E8C4B8',
   'Peach': '#F4A77A',
+  'Metallic Rot': '#B3202A',
+  'Königsblau': '#1F3FA0',
+  'Aprikose': '#F2B27A',
+  'Beige': '#E6D3B3',
 };
 
 export function colorHex(name: string): string {

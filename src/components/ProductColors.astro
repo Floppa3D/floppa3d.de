@@ -1,16 +1,18 @@
 ---
 // Farb-Swatches (Nachbau von generateColors aus build.js).
 // Bildwechsel (data-img) nur, wenn das Farbbild wirklich existiert.
+// farbwahl=false: Farben nur als Übersicht mit Namen, nicht anklickbar (Auswahl erfolgt auf Etsy).
 import { colorHex, colorImage } from '../lib/produkt';
 
 interface Props {
   colors: string[];
   slug: string;
+  farbwahl?: boolean;
 }
 
-const { colors, slug } = Astro.props;
+const { colors, slug, farbwahl = true } = Astro.props;
 ---
-{colors && colors.length > 0 && (
+{colors && colors.length > 0 && farbwahl && (
 <section class="product__colors" aria-label="Verfügbare Farben">
   <h3 class="eyebrow">Farben</h3>
   <div class="swatches" role="group" aria-label="Farbe wählen">
@@ -19,5 +21,16 @@ const { colors, slug } = Astro.props;
     ))}
   </div>
   <p class="swatch-label text-sm">Gewählte Farbe: {colors[0]}</p>
+</section>
+)}
+{colors && colors.length > 0 && !farbwahl && (
+<section class="product__colors" aria-label="Verfügbare Farben">
+  <h3 class="eyebrow">Erhältlich in {colors.length} Farben</h3>
+  <ul class="farbliste">
+    {colors.map((c) => (
+      <li><span class="farbliste__punkt" style={`--sw:${colorHex(c)}`} aria-hidden="true"></span>{c}</li>
+    ))}
+  </ul>
+  <p class="swatch-label text-sm">Die Farbe wählen Sie bei der Bestellung auf Etsy.</p>
 </section>
 )}
