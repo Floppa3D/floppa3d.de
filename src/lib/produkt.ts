@@ -20,6 +20,7 @@ export interface Product {
   longDescription: string;
   details: Record<string, string>;
   colors: string[];
+  farbwahl?: boolean;
   images: string[];
   imageAlts?: string[];
   tags: string[];
@@ -85,13 +86,17 @@ const COLOR_HEX: Record<string, string> = {
   'Matte Cream': '#EFE6D5',
   'Schwarz': '#2B2B2B',
   'Weiß': '#F4F4F2',
-  'Grün': '#1A9792',
+  'Grün': '#1E7B3C',
   'Rot': '#A6252F',
   'Gold': '#BA7A47',
   'Silber': '#C0C3C7',
   'Blau': '#1F3FA0',
   'Pink-Beige': '#E8C4B8',
   'Peach': '#F4A77A',
+  'Metallic Rot': '#B3202A',
+  'Königsblau': '#1F3FA0',
+  'Aprikose': '#F2B27A',
+  'Beige': '#E6D3B3',
 };
 
 export function colorHex(name: string): string {

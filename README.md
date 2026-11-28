@@ -44,6 +44,7 @@ Man muss Astro nicht kennen. Texte und Produkte stehen in normalen Textdateien (
    - `slug`: die Adresse des Produkts (`/produkte/<slug>.html`). Nur Kleinbuchstaben, Ziffern und Bindestriche, keine Leerzeichen. Jeder slug darf nur einmal vorkommen.
    - `modelId`, `name`, `price` (so, wie es auf der Seite stehen soll, z. B. `22,00 €`) und `priceNumeric` (derselbe Preis mit Punkt, z. B. `22.00`; bei Preis auf Anfrage leer lassen).
    - `shortDescription`, `longDescription`, `details`, `colors`, `tags`.
+   - Optional `farbwahl: false`: Die Farben aus `colors` erscheinen dann nur als Übersicht mit Namen („Erhältlich in N Farben“), nicht anklickbar; gewählt wird auf Etsy. Ohne das Feld sind die Farben anklickbare Swatches.
    - `images` (siehe unten) und `etsyUrl` (leer lassen, bis es das Angebot bei Etsy gibt).
 4. `category` und `categoryLabel` gehören zusammen. Erlaubt sind nur diese Paare:
 
