@@ -86,7 +86,7 @@ const COLOR_HEX: Record<string, string> = {
   'Matte Cream': '#EFE6D5',
   'Schwarz': '#2B2B2B',
   'Weiß': '#F4F4F2',
-  'Grün': '#1A9792',
+  'Grün': '#1E7B3C',
   'Rot': '#A6252F',
   'Gold': '#BA7A47',
   'Silber': '#C0C3C7',
